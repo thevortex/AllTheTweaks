@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "allthetweaks",
+  "pattern": [
+    "aaa",
+    "aaa",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "tag": "allthetweaks:atm_star"
+    }
+  },
+  "result": {
+    "item": "allthetweaks:atm_star_block"
+  }
+}

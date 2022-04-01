@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "allthetweaks:block/nether_star_block"
+  }
+}

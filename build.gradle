@@ -1,0 +1,206 @@
+buildscript {
+    repositories {
+        maven { url = 'https://maven.minecraftforge.net/' }
+        jcenter()
+        maven { url = "https://sizableshrimp.me/maven" }
+        maven {url='https://repo.spongepowered.org/repository/maven-public/'}
+        mavenCentral()
+        mavenLocal()
+    }
+    dependencies {
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1+', changing: true
+        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
+    }
+}
+
+apply plugin: 'net.minecraftforge.gradle'
+// Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
+apply plugin: 'eclipse'
+apply plugin: 'maven-publish'
+apply plugin: 'org.spongepowered.mixin'
+
+
+mixin {
+    add sourceSets.main, "allthetweaks.refmap.json"
+}
+version = "${verx}-${forge}"
+group = 'com.thevortex.allthetweaks' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = 'allthetweaks'
+sourceSets.main.resources { srcDir 'src/generated/resources' }
+
+// Mojang ships Java 16 to end users in 1.17+ instead of Java 8 in 1.16 or lower, so your mod should target Java 16.
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
+
+minecraft {
+    // The mappings can be changed at any time, and must be in the following format.
+    // snapshot_YYYYMMDD   Snapshot are built nightly.
+    // stable_#            Stables are built at the discretion of the MCP team.
+    // Use non-default mappings at your own risk. they may not always work.
+    // Simply re-run your setup task after changing the mappings to update your workspace.
+    mappings channel: 'official', version: '1.18.2'
+    // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
+    	accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
+    // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
+
+    // Default run configurations.
+    // These can be tweaked, removed, or duplicated as needed.
+    runs {
+        client {
+            workingDirectory project.file('run')
+			arg "-mixin.config=allthetweaks.mixins.json"
+            // Recommended logging data for a userdev environment
+            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+
+            // Recommended logging level for the console
+            property 'forge.logging.console.level', 'debug'
+
+            mods {
+                allthetweaks {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        server {
+            workingDirectory project.file('run')
+			arg "-mixin.config=allthetweaks.mixins.json"
+            // Recommended logging data for a userdev environment
+            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            // Recommended logging level for the console
+            property 'forge.logging.console.level', 'debug'
+
+            mods {
+                allthetweaks {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        data {
+            workingDirectory project.file('run')
+
+            // Recommended logging data for a userdev environment
+            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            // Recommended logging level for the console
+            property 'forge.logging.console.level', 'debug'
+
+            args '--mod', 'allthetweaks', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+
+            mods {
+                allthetweaks {
+                    source sourceSets.main
+                }
+            }
+        }
+    }
+}
+configurations {
+    library
+    implementation.extendsFrom library
+}
+minecraft.runs.all {
+        property 'mergeModules', 'guava=guava-jre'
+       lazyToken('minecraft_classpath') {
+        configurations.library.copyRecursive().resolve().collect { it.absolutePath }.join(File.pathSeparator)
+    }
+}
+afterEvaluate {
+    configurations.compileClasspath.resolvedConfiguration.firstLevelModuleDependencies.each { dep ->
+        dependencies.annotationProcessor([group: dep.moduleGroup, name: dep.moduleName, version: dep.moduleVersion])
+    }
+}
+repositories{
+	 maven {url='https://repo.spongepowered.org/repository/maven-public/'}
+
+    jcenter()
+    mavenCentral()
+}
+repositories {
+    maven {
+        url "https://www.cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
+}
+dependencies {
+    // Specify the version of Minecraft to use, If this is any group other then 'net.minecraft' it is assumed
+    // that the dep is a ForgeGradle 'patcher' dependency. And it's patches will be applied.
+    // The userdev artifact is a special name and will get all sorts of transformations applied to it.
+    minecraft "net.minecraftforge:forge:${forge}"
+
+    annotationProcessor "org.spongepowered:mixin:0.8.5"
+
+    //compile fg.deobf("curse.maven:${jei}")
+    //compile fg.deobf("curse.maven:${theoneprobe}")
+    //compile fg.deobf("curse.maven:${industrialforegoing}")
+    //compile fg.deobf("curse.maven:${resourcefulbees}")
+    //compile fg.deobf("curse.maven:${titanium}")
+    //compile fg.deobf("curse.maven:${cyclic}")
+    //implementation fg.deobf("curse.maven:${allthemodium}")
+    //implementation fg.deobf("curse.maven:${hexerei}")
+    //implementation fg.deobf("curse.maven:${ironjetpacks}")
+    //compile fg.deobf("curse.maven:${cyclopscore}")
+    //compile fg.deobf("curse.maven:${iceandfire}")
+
+    //compile fg.deobf("curse.maven:${citadel}")
+    //compile fg.deobf("curse.maven:${patchouli}")
+    //compile fg.deobf("curse.maven:${curios}")
+    
+
+    // Real examples
+    // compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // adds buildcraft to the dev env
+    // compile 'com.googlecode.efficient-java-matrix-library:ejml:0.24' // adds ejml to the dev env
+
+    // The 'provided' configuration is for optional dependencies that exist at compile-time but might not at runtime.
+    //provided 'net.telepathicgrunt.bumblezone:1.0.2:dev'
+
+    // These dependencies get remapped to your current MCP mappings
+    
+
+    // For more info...
+    // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
+    // http://www.gradle.org/docs/current/userguide/dependency_management.html
+
+}
+
+// Example for how to get properties into the manifest for reading by the runtime..
+jar {
+    manifest {
+        attributes([
+            "Specification-Title": "allthetweaks",
+            "Specification-Vendor": "thevortex",
+            "Specification-Version": "1", // We are version 1 of ourselves
+            "Implementation-Title": project.name,
+            "Implementation-Version": "${version}",
+            "Implementation-Vendor" :"thevortex",
+            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+            "MixinConfigs": "allthetweaks.mixins.json",
+            "MixinConnector":"com.thevortex.allthetweaks.mixin.MixinConnector"
+        ])
+    }
+}
+
+// Example configuration to allow publishing using the maven-publish task
+// we define a custom artifact that is sourced from the reobfJar output task
+// and then declare that to be published
+// Note you'll need to add a repository here
+def reobfFile = file("$buildDir/reobfJar/allthetweaks-${version}-${forge}.jar")
+def reobfArtifact = artifacts.add('default', reobfFile) {
+    type 'jar'
+    builtBy 'reobfJar'
+}
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifact reobfArtifact
+        }
+    }
+    repositories {
+        maven {
+            url "file:///${project.projectDir}/mcmodsrepo"
+        }
+    }
+}

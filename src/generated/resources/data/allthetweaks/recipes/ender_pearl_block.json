@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "allthetweaks",
+  "pattern": [
+    "ppp",
+    "ppp",
+    "ppp"
+  ],
+  "key": {
+    "p": {
+      "tag": "forge:ender_pearls"
+    }
+  },
+  "result": {
+    "item": "allthetweaks:ender_pearl_block"
+  }
+}

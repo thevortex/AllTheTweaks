@@ -1,0 +1,7 @@
+/.apt_generated/
+/Users/
+
+# Project exclude paths
+/.gradle/
+/build/
+/build/classes/java/main/

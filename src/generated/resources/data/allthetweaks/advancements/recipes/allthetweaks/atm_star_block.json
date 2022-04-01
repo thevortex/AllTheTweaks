@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "allthetweaks:atm_star_block"
+    ]
+  },
+  "criteria": {
+    "has_atm_star": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "allthetweaks:atm_star"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "allthetweaks:atm_star_block"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_atm_star",
+      "has_the_recipe"
+    ]
+  ]
+}
