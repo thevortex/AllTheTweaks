@@ -27,7 +27,7 @@ public class AllTheTweaks
 {
 	public static final String MODID = "allthetweaks";
 	public static final Logger LOGGER = LogManager.getLogger(MODID);
-	public static IProxy proxy =  DistExecutor.runForDist(() -> ClientProxy::new, () -> ServerProxy::new);
+	public static IProxy proxy = DistExecutor.safeRunForDist(() -> ClientProxy::new, () -> ServerProxy::new);
 	public static long IPCC;
 	public static String ATM;
 	public static String DISPLAY;

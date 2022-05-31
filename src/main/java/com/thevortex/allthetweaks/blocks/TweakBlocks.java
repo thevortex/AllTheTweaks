@@ -30,6 +30,18 @@ public class TweakBlocks {
     public static final RegistryObject<Item> ATMSTAR_BLOCK_ITEM = ITEMS.register("atm_star_block",
             () -> new BlockItem(ATMSTAR_BLOCK.get(), new Item.Properties().tab(Reference.GROUP)));
 
-    public static final RegistryObject<Item> ATMSTAR = ITEMS.register("atm_star", () -> new Item(new Item.Properties().tab(Reference.GROUP)));
+    public static final RegistryObject<Item> ATMSTAR = ITEMS.register("atm_star", () -> new Shiny(new Item.Properties()));
+    public static final RegistryObject<Item> ATMSTAR_SHARD = ITEMS.register("atm_star_shard", () -> new Shiny(new Item.Properties()));
+    public static final RegistryObject<Item> CATALYST = ITEMS.register("allthecatalystium",() -> new Shiny(new Item.Properties()));
+    public static final RegistryObject<Item> DIM_SEED = ITEMS.register("dimensional_seed", () -> new Item(new Item.Properties().tab(Reference.GROUP)));
+    public static final RegistryObject<Item> DRAGON_SOUL = ITEMS.register("dragon_soul", () -> new Item(new Item.Properties().tab(Reference.GROUP)));
+    public static final RegistryObject<Item> IMPPD = ITEMS.register("improbable_probability_device", () -> new Item(new Item.Properties().tab(Reference.GROUP)));
+    public static final RegistryObject<Item> NEXIUM_EMITTER = ITEMS.register("nexium_emitter", () -> new Item(new Item.Properties().tab(Reference.GROUP)));
+    public static final RegistryObject<Item> OBLIV_SHARD = ITEMS.register("oblivion_shard", () -> new Item(new Item.Properties().tab(Reference.GROUP)));
+    public static final RegistryObject<Item> PATRICK_STAR = ITEMS.register("patrick_star", () -> new Item(new Item.Properties().tab(Reference.GROUP)));
+    public static final RegistryObject<Item> PHIL_FUEL = ITEMS.register("philosophers_fuel", () -> new Item(new Item.Properties().tab(Reference.GROUP)));
+    public static final RegistryObject<Item> PULSE_BLACK_HOLE = ITEMS.register("pulsating_black_hole", () -> new Item(new Item.Properties().tab(Reference.GROUP)));
+    public static final RegistryObject<Item> WITHER_COMPASS = ITEMS.register("withers_compass", () -> new WitherCompass(new Item.Properties().tab(Reference.GROUP)));
+
 
 }

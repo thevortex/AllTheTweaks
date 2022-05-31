@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "allthetweaks:item/atm_star_shard"
+  }
+}

@@ -1,0 +1,269 @@
+diff --git a/.gitignore b/.gitignore
+index 12aa139..8a618d0 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -4,4 +4,6 @@
+ # Project exclude paths
+ /.gradle/
+ /build/
+-/build/classes/java/main/
+\ No newline at end of file
++/build/classes/java/main/
++/.idea/
++/run/
+\ No newline at end of file
+diff --git a/build.gradle b/build.gradle
+index c047927..b6cf832 100644
+--- a/build.gradle
++++ b/build.gradle
+@@ -1,7 +1,6 @@
+ buildscript {
+     repositories {
+         maven { url = 'https://maven.minecraftforge.net/' }
+-        jcenter()
+         maven { url = "https://sizableshrimp.me/maven" }
+         maven {url='https://repo.spongepowered.org/repository/maven-public/'}
+         mavenCentral()
+@@ -114,7 +113,6 @@ afterEvaluate {
+ repositories{
+ 	 maven {url='https://repo.spongepowered.org/repository/maven-public/'}
+ 
+-    jcenter()
+     mavenCentral()
+ }
+ repositories {
+diff --git a/src/main/java/com/thevortex/allthetweaks/AllTheTweaks.java b/src/main/java/com/thevortex/allthetweaks/AllTheTweaks.java
+index f846646..ea15f12 100644
+--- a/src/main/java/com/thevortex/allthetweaks/AllTheTweaks.java
++++ b/src/main/java/com/thevortex/allthetweaks/AllTheTweaks.java
+@@ -27,7 +27,7 @@ public class AllTheTweaks
+ {
+ 	public static final String MODID = "allthetweaks";
+ 	public static final Logger LOGGER = LogManager.getLogger(MODID);
+-	public static IProxy proxy =  DistExecutor.runForDist(() -> ClientProxy::new, () -> ServerProxy::new);
++	public static IProxy proxy = DistExecutor.safeRunForDist(() -> ClientProxy::new, () -> ServerProxy::new);
+ 	public static long IPCC;
+ 	public static String ATM;
+ 	public static String DISPLAY;
+diff --git a/src/main/java/com/thevortex/allthetweaks/proxy/MyCons.java b/src/main/java/com/thevortex/allthetweaks/proxy/MyCons.java
+index 16075f7..f950692 100644
+--- a/src/main/java/com/thevortex/allthetweaks/proxy/MyCons.java
++++ b/src/main/java/com/thevortex/allthetweaks/proxy/MyCons.java
+@@ -4,20 +4,15 @@ import com.mojang.blaze3d.platform.TextureUtil;
+ import com.mojang.blaze3d.systems.RenderSystem;
+ import com.thevortex.allthetweaks.AllTheTweaks;
+ import com.thevortex.allthetweaks.config.Configuration;
+-import net.minecraft.client.Minecraft;
+ import net.minecraft.resources.ResourceLocation;
+-import net.minecraft.server.packs.PackType;
+ import org.lwjgl.glfw.GLFW;
+ 
+ import org.lwjgl.glfw.GLFWImage;
+ import org.lwjgl.stb.STBImage;
+ import org.lwjgl.system.MemoryStack;
+ import org.lwjgl.system.MemoryUtil;
+-import org.spongepowered.asm.mixin.Mixin;
+-import org.spongepowered.asm.mixin.Overwrite;
+ 
+ import javax.annotation.Nullable;
+-import java.io.FileNotFoundException;
+ import java.io.IOException;
+ import java.io.InputStream;
+ import java.nio.ByteBuffer;
+@@ -25,97 +20,81 @@ import java.nio.IntBuffer;
+ 
+ public class MyCons {
+ 
+-	public static void setWindowIcon() {
+-
+-
+-		InputStream inputstream = null;
+-		  InputStream inputstream1 = null;
+-	   RenderSystem.assertInInitPhase();
+-	   try {
+-			 if(Configuration.COMMON.mainmode.get() == 3) {
+-				 inputstream = AllTheTweaks.proxy.getMinecraft().getInstance().getClientPackSource().getVanillaPack().getResource(PackType.CLIENT_RESOURCES, new ResourceLocation("allthetweaks", "icons_magic/icon_16x16.png"));
+-				 inputstream1 = AllTheTweaks.proxy.getMinecraft().getInstance().getClientPackSource().getVanillaPack().getResource(PackType.CLIENT_RESOURCES, new ResourceLocation("allthetweaks", "icons_magic/icon_32x32.png"));
+-
+-			 }
+-	   	if(Configuration.COMMON.mainmode.get() == 2) {
+-				inputstream = AllTheTweaks.proxy.getMinecraft().getInstance().getClientPackSource().getVanillaPack().getResource(PackType.CLIENT_RESOURCES, new ResourceLocation("allthetweaks", "icons_sky/icon_16x16.png"));
+-				inputstream1 = AllTheTweaks.proxy.getMinecraft().getInstance().getClientPackSource().getVanillaPack().getResource(PackType.CLIENT_RESOURCES, new ResourceLocation("allthetweaks", "icons_sky/icon_32x32.png"));
+-
+-			}
+-	   	if(Configuration.COMMON.mainmode.get() <= 1) {
+-
+-				inputstream = Minecraft.getInstance().getClientPackSource().getVanillaPack().getResource(PackType.CLIENT_RESOURCES,new ResourceLocation("allthetweaks:textures/icons/icon_16x16.png"));
+-				inputstream1 = Minecraft.getInstance().getClientPackSource().getVanillaPack().getResource(PackType.CLIENT_RESOURCES, new ResourceLocation("allthetweaks:textures/icons/icon_32x32.png"));
+-			}
+-
+-	   
+-	   } catch(IOException io) {
+-	  	 
+-	   }
+-	   try (MemoryStack memorystack = MemoryStack.stackPush()) {
+-
+-	     if (inputstream == null) {
+-	      throw new FileNotFoundException("icons/icon_16x16.png");
+-	     }
+-
+-	     if (inputstream1 == null) {
+-	      throw new FileNotFoundException("icons/icon_32x32.png");
+-	     }
+-
+-
+-
+-	     IntBuffer intbuffer = memorystack.mallocInt(1);
+-	     IntBuffer intbuffer1 = memorystack.mallocInt(1);
+-	     IntBuffer intbuffer2 = memorystack.mallocInt(1);
+-	     GLFWImage.Buffer buffer = GLFWImage.mallocStack(2, memorystack);
+-	     ByteBuffer bytebuffer = loadIco(inputstream, intbuffer, intbuffer1, intbuffer2);
+-	     if (bytebuffer == null) {
+-	      throw new IllegalStateException("Could not load icon: " + STBImage.stbi_failure_reason());
+-	     }
+-
+-	     buffer.position(0);
+-	     buffer.width(intbuffer.get(0));
+-	     buffer.height(intbuffer1.get(0));
+-	     buffer.pixels(bytebuffer);
+-	     ByteBuffer bytebuffer1 = loadIco(inputstream1, intbuffer, intbuffer1, intbuffer2);
+-	     if (bytebuffer1 == null) {
+-	      throw new IllegalStateException("Could not load icon: " + STBImage.stbi_failure_reason());
+-	     }
+-
+-	     buffer.position(1);
+-	     buffer.width(intbuffer.get(0));
+-	     buffer.height(intbuffer1.get(0));
+-	     buffer.pixels(bytebuffer1);
+-	     buffer.position(0);
+-	     GLFW.glfwSetWindowIcon(AllTheTweaks.proxy.getMinecraft().getWindow().getWindow(), buffer);
+-	     STBImage.stbi_image_free(bytebuffer);
+-	     STBImage.stbi_image_free(bytebuffer1);
+-	   } catch (IOException ioexception) {
+-	     AllTheTweaks.LOGGER.error("Couldn't set icon", (Throwable)ioexception);
+-	   }
+-	}
+-		@Nullable
+-		private static ByteBuffer loadIco(InputStream p_198111_1_, IntBuffer p_198111_2_, IntBuffer p_198111_3_, IntBuffer p_198111_4_) throws IOException {
+-
+-			RenderSystem.assertInInitPhase();
+-			ByteBuffer bytebuffer = null;
+-
+-			ByteBuffer bytebuffer1;
+-			try {
+-				bytebuffer = TextureUtil.readResource(p_198111_1_);
+-				((java.nio.Buffer)bytebuffer).rewind();
+-				bytebuffer1 = STBImage.stbi_load_from_memory(bytebuffer, p_198111_2_, p_198111_3_, p_198111_4_, 0);
+-			} finally {
+-				if (bytebuffer != null) {
+-					MemoryUtil.memFree(bytebuffer);
+-				}
+-
+-			}
+-
+-			return bytebuffer1;
+-
+-		}
+-
++    private static InputStream iconStream(String prefix, String size) throws IOException {
++        var location = String.format("textures/%s/icon_%s.png", prefix, size);
++        return AllTheTweaks.proxy.getMinecraft()
++                .getResourceManager()
++                .getResource(new ResourceLocation("allthetweaks", location))
++                .getInputStream();
++    }
++
++    public static void setWindowIcon() {
++        RenderSystem.assertInInitPhase();
++
++        String prefix = switch (Configuration.COMMON.mainmode.get()) {
++            case 3 -> "icons_magic";
++            case 2 -> "icons_sky";
++            default -> "icons";
++        };
++
++        try (var inputStream16 = iconStream(prefix, "16x16");
++             var inputStream32 = iconStream(prefix, "32x32");
++             var memoryStack = MemoryStack.stackPush()) {
++
++            IntBuffer intbuffer = memoryStack.mallocInt(1);
++            IntBuffer intbuffer1 = memoryStack.mallocInt(1);
++            IntBuffer intbuffer2 = memoryStack.mallocInt(1);
++            GLFWImage.Buffer buffer = GLFWImage.mallocStack(2, memoryStack);
++            ByteBuffer bytebuffer = loadIco(inputStream16, intbuffer, intbuffer1, intbuffer2);
++            if (bytebuffer == null) {
++                throw new IllegalStateException("Could not load icon: " + STBImage.stbi_failure_reason());
++            }
++
++            buffer.position(0);
++            buffer.width(intbuffer.get(0));
++            buffer.height(intbuffer1.get(0));
++            buffer.pixels(bytebuffer);
++            ByteBuffer bytebuffer1 = loadIco(inputStream32, intbuffer, intbuffer1, intbuffer2);
++            if (bytebuffer1 == null) {
++                throw new IllegalStateException("Could not load icon: " + STBImage.stbi_failure_reason());
++            }
++
++            buffer.position(1);
++            buffer.width(intbuffer.get(0));
++            buffer.height(intbuffer1.get(0));
++            buffer.pixels(bytebuffer1);
++            buffer.position(0);
++            GLFW.glfwSetWindowIcon(AllTheTweaks.proxy.getMinecraft().getWindow().getWindow(), buffer);
++            STBImage.stbi_image_free(bytebuffer);
++            STBImage.stbi_image_free(bytebuffer1);
++
++
++        } catch (IOException e) {
++            AllTheTweaks.LOGGER.error("Couldn't set icon", e);
++        }
++    }
++
++    @Nullable
++    private static ByteBuffer loadIco(InputStream p_198111_1_, IntBuffer p_198111_2_, IntBuffer p_198111_3_, IntBuffer p_198111_4_) throws IOException {
++
++        RenderSystem.assertInInitPhase();
++        ByteBuffer bytebuffer = null;
++
++        ByteBuffer bytebuffer1;
++        try {
++            bytebuffer = TextureUtil.readResource(p_198111_1_);
++            bytebuffer.rewind();
++            bytebuffer1 = STBImage.stbi_load_from_memory(bytebuffer, p_198111_2_, p_198111_3_, p_198111_4_, 0);
++        } finally {
++            if (bytebuffer != null) {
++                MemoryUtil.memFree(bytebuffer);
++            }
++
++        }
++
++        return bytebuffer1;
++
++    }
+ 
+ 
+ }
+diff --git a/src/main/resources/assets/allthetweaks/icons/icon_16x16.png b/src/main/resources/assets/allthetweaks/icons/icon_16x16.png
+deleted file mode 100644
+index e354251..0000000
+Binary files a/src/main/resources/assets/allthetweaks/icons/icon_16x16.png and /dev/null differ
+diff --git a/src/main/resources/assets/allthetweaks/icons/icon_32x32.png b/src/main/resources/assets/allthetweaks/icons/icon_32x32.png
+deleted file mode 100644
+index c7f4b17..0000000
+Binary files a/src/main/resources/assets/allthetweaks/icons/icon_32x32.png and /dev/null differ
+diff --git a/src/main/resources/assets/allthetweaks/icons_sky/icon_16x16.png b/src/main/resources/assets/allthetweaks/icons_sky/icon_16x16.png
+deleted file mode 100644
+index 8fb4a3e..0000000
+Binary files a/src/main/resources/assets/allthetweaks/icons_sky/icon_16x16.png and /dev/null differ
+diff --git a/src/main/resources/assets/allthetweaks/icons_sky/icon_32x32.png b/src/main/resources/assets/allthetweaks/icons_sky/icon_32x32.png
+deleted file mode 100644
+index fa0c7d1..0000000
+Binary files a/src/main/resources/assets/allthetweaks/icons_sky/icon_32x32.png and /dev/null differ
+diff --git a/src/main/resources/assets/icons/icon_16x16.png b/src/main/resources/assets/icons/icon_16x16.png
+deleted file mode 100644
+index e354251..0000000
+Binary files a/src/main/resources/assets/icons/icon_16x16.png and /dev/null differ
+diff --git a/src/main/resources/assets/icons/icon_32x32.png b/src/main/resources/assets/icons/icon_32x32.png
+deleted file mode 100644
+index c7f4b17..0000000
+Binary files a/src/main/resources/assets/icons/icon_32x32.png and /dev/null differ
