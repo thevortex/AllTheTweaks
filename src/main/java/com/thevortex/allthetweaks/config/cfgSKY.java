@@ -7,6 +7,6 @@ public class cfgSKY {
 
 	public static long IPCC = 805226201694208030L;
 	public static String ATM = "atm6-sky";
-	public static String DISPLAY = "ATM6: To The Sky";
+	public static String DISPLAY = "ATM7: Back To The Sky";
 	public static ResourceLocation BACKGROUND = new ResourceLocation(AllTheTweaks.MODID,"textures/gui/title/background.2.png");
 }

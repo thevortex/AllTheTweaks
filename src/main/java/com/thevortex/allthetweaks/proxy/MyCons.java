@@ -34,6 +34,7 @@ public class MyCons {
         String prefix = switch (Configuration.COMMON.mainmode.get()) {
             case 3 -> "icons_magic";
             case 2 -> "icons_sky";
+            case 1 -> "icons_slop";
             default -> "icons";
         };
 
