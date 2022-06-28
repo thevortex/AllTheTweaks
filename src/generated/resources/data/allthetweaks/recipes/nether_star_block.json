@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "group": "allthetweaks",
-  "pattern": [
-    "sss",
-    "sss",
-    "sss"
-  ],
   "key": {
     "s": {
       "tag": "forge:nether_stars"
     }
   },
+  "pattern": [
+    "sss",
+    "sss",
+    "sss"
+  ],
   "result": {
     "item": "allthetweaks:nether_star_block"
   }

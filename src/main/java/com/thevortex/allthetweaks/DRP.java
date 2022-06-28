@@ -78,7 +78,7 @@ public class DRP {
 	
 	public static State getStateFromDimension(ResourceKey<Level> world) {
 		//func_236063_b_ = .getType()
-		AllTheTweaks.LOGGER.debug(world.getRegistryName());
+		//AllTheTweaks.LOGGER.debug(world.getRegistryName());
 					return getStateFromDimension(world.location().getPath());
 		
 	}

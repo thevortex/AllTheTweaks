@@ -25,7 +25,7 @@ public class MyCons {
         return AllTheTweaks.proxy.getMinecraft()
                 .getResourceManager()
                 .getResource(new ResourceLocation("allthetweaks", location))
-                .getInputStream();
+                .get().open();
     }
 
     public static void setWindowIcon() {
