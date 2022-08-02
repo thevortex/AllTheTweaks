@@ -14,4 +14,5 @@ public class Events {
     public static void setup(FMLClientSetupEvent event) {
         MyCons.setWindowIcon();
 }
+
 }

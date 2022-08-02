@@ -33,7 +33,11 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
-
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
 minecraft {
     // The mappings can be changed at any time, and must be in the following format.
     // snapshot_YYYYMMDD   Snapshot are built nightly.
@@ -138,17 +142,52 @@ dependencies {
     //compile fg.deobf("curse.maven:${industrialforegoing}")
     //compile fg.deobf("curse.maven:${resourcefulbees}")
     //compile fg.deobf("curse.maven:${titanium}")
-    //compile fg.deobf("curse.maven:${cyclic}")
+
     //implementation fg.deobf("curse.maven:${allthemodium}")
     //implementation fg.deobf("curse.maven:${hexerei}")
     //implementation fg.deobf("curse.maven:${ironjetpacks}")
-    //compile fg.deobf("curse.maven:${cyclopscore}")
-    //compile fg.deobf("curse.maven:${iceandfire}")
+    //implementation fg.deobf("curse.maven:${allthemodium}")
+    /*
+    implementation fg.deobf("curse.maven:${flywheel}")
+    implementation fg.deobf("curse.maven:${buildinggadgets}")
+    implementation fg.deobf("curse.maven:${mcjtylib}")
+    implementation fg.deobf("curse.maven:${rftools}")
+    implementation fg.deobf("curse.maven:${rftoolsbuilder}")
+    implementation fg.deobf("curse.maven:${aem}")
+    implementation fg.deobf("curse.maven:${modularrouters}")
+    implementation fg.deobf("curse.maven:${create}")
+    implementation fg.deobf("curse.maven:${immersiveengineering}")
+    implementation fg.deobf("curse.maven:${ftbic}")
+    implementation fg.deobf("curse.maven:${mekanism}")
+    implementation fg.deobf("curse.maven:${architectury}")
+    implementation fg.deobf("curse.maven:${myrtrees}")
+    implementation fg.deobf("curse.maven:${industrialforegoing}")
+    implementation fg.deobf("curse.maven:${engineerdecor}")
+    implementation fg.deobf("curse.maven:${rangedpumps}")
+    implementation fg.deobf("curse.maven:${scala}")
+    implementation fg.deobf("curse.maven:${cctweaked}")
+    implementation fg.deobf("curse.maven:${titanium}")
+    implementation fg.deobf("curse.maven:${ftblib}")
 
-    //compile fg.deobf("curse.maven:${citadel}")
-    //compile fg.deobf("curse.maven:${patchouli}")
-    //compile fg.deobf("curse.maven:${curios}")
-    
+    implementation fg.deobf("curse.maven:${cyclopscore}")
+    implementation fg.deobf("curse.maven:${commoncapabilities}")
+    implementation fg.deobf("curse.maven:${botania}")
+    implementation fg.deobf("curse.maven:${patchouli}")
+    implementation fg.deobf("curse.maven:${curios}")
+
+    implementation fg.deobf("curse.maven:${pneumaticraft}")
+
+    implementation fg.deobf("curse.maven:${ae2}")
+    implementation fg.deobf("curse.maven:${refinedstorage}")
+    implementation fg.deobf("curse.maven:${bloodmagic}")
+
+    implementation fg.deobf("curse.maven:${integratedtunnels}")
+
+    implementation fg.deobf("curse.maven:${integrateddynamics}")
+    implementation fg.deobf("curse.maven:${cabletiers}")
+
+
+     */
 
     // Real examples
     // compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // adds buildcraft to the dev env
