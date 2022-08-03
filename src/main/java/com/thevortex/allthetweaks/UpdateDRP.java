@@ -11,7 +11,8 @@ import net.minecraft.client.gui.screens.worldselection.SelectWorldScreen;
 import net.minecraft.client.player.LocalPlayer;
 
 import net.minecraftforge.client.event.ScreenEvent;
-import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+
+import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 
@@ -21,7 +22,7 @@ import net.minecraftforge.api.distmarker.Dist;
 public class UpdateDRP {
 		
 		@SubscribeEvent
-		public void on(ScreenEvent.InitScreenEvent.Pre event) {
+		public void on(ScreenEvent.Init.Pre event) {
 			if (!DRP.isEnabled()) {
 				return;
 			}
@@ -34,14 +35,14 @@ public class UpdateDRP {
 		}
 		
 		@SubscribeEvent
-		public void on(EntityJoinWorldEvent event) {
+		public void on(EntityJoinLevelEvent event) {
 			if (!DRP.isEnabled()) {
 				return;
 			}
 			if (event.getEntity() instanceof LocalPlayer) {
 				final LocalPlayer player = (LocalPlayer) event.getEntity();
 				if (player.getUUID().equals(Minecraft.getInstance().player.getUUID())) {
-					DRP.setDimension(event.getWorld().dimension());
+					DRP.setDimension(event.getLevel().dimension());
 
 				}
 			}

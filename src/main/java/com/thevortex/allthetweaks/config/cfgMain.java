@@ -7,6 +7,6 @@ public class cfgMain {
 
 	public static long IPCC = 880219356976537661L;
 	public static String ATM = "atm7";
-	public static String DISPLAY = "All The Mods 7";
+	public static String DISPLAY = "All The Mods 8";
 	public static ResourceLocation BACKGROUND = new ResourceLocation(AllTheTweaks.MODID,"textures/gui/title/background.0.png");
 }

@@ -24,8 +24,8 @@ public class MyCons {
         var location = String.format("textures/%s/icon_%s.png", prefix, size);
         return AllTheTweaks.proxy.getMinecraft()
                 .getResourceManager()
-                .getResource(new ResourceLocation("allthetweaks", location))
-                .getInputStream();
+                .open(new ResourceLocation("allthetweaks", location));
+
     }
 
     public static void setWindowIcon() {
