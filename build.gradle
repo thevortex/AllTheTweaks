@@ -7,240 +7,170 @@ plugins    {
     }
 
 
-
-version = "${verx}-${forge}"
-group = 'com.thevortex.allthetweaks' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'allthetweaks'
-sourceSets.main.resources { srcDir 'src/generated/resources' }
 mixin {
-    add sourceSets.main, "allthetweaks.refmap.json"
+    add sourceSets.main, "${mod_id}.refmap.json"
+    config "${mod_id}.mixins.json"
 }
-// Mojang ships Java 16 to end users in 1.17+ instead of Java 8 in 1.16 or lower, so your mod should target Java 16.
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
-println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
+// Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
+    java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
-minecraft {
-    // The mappings can be changed at any time, and must be in the following format.
-    // snapshot_YYYYMMDD   Snapshot are built nightly.
-    // stable_#            Stables are built at the discretion of the MCP team.
-    // Use non-default mappings at your own risk. they may not always work.
-    // Simply re-run your setup task after changing the mappings to update your workspace.
-    mappings channel: 'parchment', version: '2022.06.05-1.18.2'
-    runs {
-        client {
-            workingDirectory project.file('run')
+    println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
+    minecraft {
+        // The mappings can be changed at any time and must be in the following format.
+        // Channel:   Version:
+        // snapshot   YYYYMMDD   Snapshot are built nightly.
+        // stable     #          Stables are built at the discretion of the MCP team.
+        // official   MCVersion  Official field/method names from Mojang mapping files
+        //
+        // You must be aware of the Mojang license when using the 'official' mappings.
+        // See more information here: https://github.com/MinecraftForge/MCPConfig/blob/master/Mojang.md
+        //
+        // Use non-default mappings at your own risk. They may not always work.
+        // Simply re-run your setup task after changing the mappings to update your workspace.
+        mappings channel: 'parchment', version: '2022.06.05-1.18.2'
 
-            // Recommended logging data for a userdev environment
-            // The markers can be added/remove as needed separated by commas.
-            // "SCAN": For mods scan.
-            // "REGISTRIES": For firing of registry events.
-            // "REGISTRYDUMP": For getting the contents of all registries.
-            property 'forge.logging.markers', 'REGISTRIES'
+        // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg') // Currently, this location cannot be changed from the default.
 
-            // Recommended logging level for the console
-            // You can set various levels here.
-            // Please read: https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels
-            property 'forge.logging.console.level', 'debug'
+        // Default run configurations.
+        // These can be tweaked, removed, or duplicated as needed.
+        runs {
+            client {
+                workingDirectory project.file('run')
 
-            // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'allthetweaks'
+                // Recommended logging data for a userdev environment
+                // The markers can be added/remove as needed separated by commas.
+                // "SCAN": For mods scan.
+                // "REGISTRIES": For firing of registry events.
+                // "REGISTRYDUMP": For getting the contents of all registries.
+                property 'forge.logging.markers', 'REGISTRIES'
 
-            mods {
-                allthetweaks {
-                    source sourceSets.main
+                // Recommended logging level for the console
+                // You can set various levels here.
+                // Please read: https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels
+                property 'forge.logging.console.level', 'debug'
+
+                // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
+                property 'forge.enabledGameTestNamespaces', 'allthetweaks'
+
+                mods {
+                    allthetweaks {
+                        source sourceSets.main
+                    }
+                }
+            }
+
+            server {
+                workingDirectory project.file('run')
+
+                property 'forge.logging.markers', 'REGISTRIES'
+
+                property 'forge.logging.console.level', 'debug'
+
+                property 'forge.enabledGameTestNamespaces', 'allthetweaks'
+
+                mods {
+                    allthetweaks {
+                        source sourceSets.main
+                    }
+                }
+            }
+
+            // This run config launches GameTestServer and runs all registered gametests, then exits.
+            // By default, the server will crash when no gametests are provided.
+            // The gametest system is also enabled by default for other run configs under the /test command.
+            gameTestServer {
+                workingDirectory project.file('run')
+
+                property 'forge.logging.markers', 'REGISTRIES'
+
+                property 'forge.logging.console.level', 'debug'
+
+                property 'forge.enabledGameTestNamespaces', 'allthetweaks'
+
+                mods {
+                    allthetweaks {
+                        source sourceSets.main
+                    }
+                }
+            }
+
+            data {
+                workingDirectory project.file('run')
+
+                property 'forge.logging.markers', 'REGISTRIES'
+
+                property 'forge.logging.console.level', 'debug'
+
+                // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
+                args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+
+                mods {
+                    allthetweaks {
+                        source sourceSets.main
+                    }
                 }
             }
         }
-
-        server {
-            workingDirectory project.file('run')
-
-            property 'forge.logging.markers', 'REGISTRIES'
-
-            property 'forge.logging.console.level', 'debug'
-
-            property 'forge.enabledGameTestNamespaces', 'allthetweaks'
-
-            mods {
-                allthetweaks {
-                    source sourceSets.main
-                }
-            }
-        }
-
-        // This run config launches GameTestServer and runs all registered gametests, then exits.
-        // By default, the server will crash when no gametests are provided.
-        // The gametest system is also enabled by default for other run configs under the /test command.
-        gameTestServer {
-            workingDirectory project.file('run')
-
-            property 'forge.logging.markers', 'REGISTRIES'
-
-            property 'forge.logging.console.level', 'debug'
-
-            property 'forge.enabledGameTestNamespaces', 'allthetweaks'
-
-            mods {
-                allthetweaks {
-                    source sourceSets.main
-                }
-            }
-        }
-
-        data {
-            workingDirectory project.file('run')
-
-            property 'forge.logging.markers', 'REGISTRIES'
-
-            property 'forge.logging.console.level', 'debug'
-
-            // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', 'allthetweaks', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
-
-            mods {
-                allthetweaks {
-                    source sourceSets.main
-                }
-            }
-        }
     }
-}
 
-configurations {
-    library
-    implementation.extendsFrom library
-}
-minecraft.runs.all {
-        property 'mergeModules', 'guava=guava-jre'
-       lazyToken('minecraft_classpath') {
-        configurations.library.copyRecursive().resolve().collect { it.absolutePath }.join(File.pathSeparator)
-    }
-}
-afterEvaluate {
-    configurations.compileClasspath.resolvedConfiguration.firstLevelModuleDependencies.each { dep ->
-        dependencies.annotationProcessor([group: dep.moduleGroup, name: dep.moduleName, version: dep.moduleVersion])
-    }
-}
-repositories {
-    maven {
-        url "https://www.cursemaven.com"
-        content {
-            includeGroup "curse.maven"
-        }
-    }
-}
-dependencies {
-    // Specify the version of Minecraft to use, If this is any group other then 'net.minecraft' it is assumed
-    // that the dep is a ForgeGradle 'patcher' dependency. And it's patches will be applied.
-    // The userdev artifact is a special name and will get all sorts of transformations applied to it.
-    minecraft "net.minecraftforge:forge:${forge}"
+// Include resources generated by data generators.
+    sourceSets.main.resources { srcDir 'src/generated/resources' }
 
-    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
-
-    //compile fg.deobf("curse.maven:${jei}")
-    //compile fg.deobf("curse.maven:${theoneprobe}")
-    //compile fg.deobf("curse.maven:${industrialforegoing}")
-    //compile fg.deobf("curse.maven:${resourcefulbees}")
-    //compile fg.deobf("curse.maven:${titanium}")
-
-    //implementation fg.deobf("curse.maven:${allthemodium}")
-    //implementation fg.deobf("curse.maven:${hexerei}")
-    //implementation fg.deobf("curse.maven:${ironjetpacks}")
-    //implementation fg.deobf("curse.maven:${allthemodium}")
-    /*
-    implementation fg.deobf("curse.maven:${flywheel}")
-    implementation fg.deobf("curse.maven:${buildinggadgets}")
-    implementation fg.deobf("curse.maven:${mcjtylib}")
-    implementation fg.deobf("curse.maven:${rftools}")
-    implementation fg.deobf("curse.maven:${rftoolsbuilder}")
-    implementation fg.deobf("curse.maven:${aem}")
-    implementation fg.deobf("curse.maven:${modularrouters}")
-    implementation fg.deobf("curse.maven:${create}")
-    implementation fg.deobf("curse.maven:${immersiveengineering}")
-    implementation fg.deobf("curse.maven:${ftbic}")
-    implementation fg.deobf("curse.maven:${mekanism}")
-    implementation fg.deobf("curse.maven:${architectury}")
-    implementation fg.deobf("curse.maven:${myrtrees}")
-    implementation fg.deobf("curse.maven:${industrialforegoing}")
-    implementation fg.deobf("curse.maven:${engineerdecor}")
-    implementation fg.deobf("curse.maven:${rangedpumps}")
-    implementation fg.deobf("curse.maven:${scala}")
-    implementation fg.deobf("curse.maven:${cctweaked}")
-    implementation fg.deobf("curse.maven:${titanium}")
-    implementation fg.deobf("curse.maven:${ftblib}")
-
-    implementation fg.deobf("curse.maven:${cyclopscore}")
-    implementation fg.deobf("curse.maven:${commoncapabilities}")
-    implementation fg.deobf("curse.maven:${botania}")
-    implementation fg.deobf("curse.maven:${patchouli}")
-    implementation fg.deobf("curse.maven:${curios}")
-
-    implementation fg.deobf("curse.maven:${pneumaticraft}")
-
-    implementation fg.deobf("curse.maven:${ae2}")
-    implementation fg.deobf("curse.maven:${refinedstorage}")
-    implementation fg.deobf("curse.maven:${bloodmagic}")
-
-    implementation fg.deobf("curse.maven:${integratedtunnels}")
-
-    implementation fg.deobf("curse.maven:${integrateddynamics}")
-    implementation fg.deobf("curse.maven:${cabletiers}")
-
-
-     */
-
-    // Real examples
-    // compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // adds buildcraft to the dev env
-    // compile 'com.googlecode.efficient-java-matrix-library:ejml:0.24' // adds ejml to the dev env
-
-    // The 'provided' configuration is for optional dependencies that exist at compile-time but might not at runtime.
-    //provided 'net.telepathicgrunt.bumblezone:1.0.2:dev'
-
-    // These dependencies get remapped to your current MCP mappings
-    
-
-    // For more info...
-    // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
-    // http://www.gradle.org/docs/current/userguide/dependency_management.html
-
-}
-
-// Example for how to get properties into the manifest for reading by the runtime..
-jar {
-    manifest {
-        attributes([
-            "Specification-Title": "allthetweaks",
-            "Specification-Vendor": "thevortex",
-            "Specification-Version": "1", // We are version 1 of ourselves
-            "Implementation-Title": project.name,
-            "Implementation-Version": "${version}",
-            "Implementation-Vendor" :"thevortex",
-            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-            "MixinConfigs": "allthetweaks.mixins.json",
-            "MixinConnector":"com.thevortex.allthetweaks.mixin.MixinConnector"
-        ])
-    }
-}
-
-// Example configuration to allow publishing using the maven-publish task
-// we define a custom artifact that is sourced from the reobfJar output task
-// and then declare that to be published
-// Note you'll need to add a repository here
-def reobfFile = file("$buildDir/reobfJar/allthetweaks-${version}-${forge}.jar")
-def reobfArtifact = artifacts.add('default', reobfFile) {
-    type 'jar'
-    builtBy 'reobfJar'
-}
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            artifact reobfArtifact
-        }
-    }
     repositories {
-        maven {
-            url "file:///${project.projectDir}/mcmodsrepo"
+        // Put repositories for dependencies here
+        // ForgeGradle automatically adds the Forge maven and Maven Central for you
+
+        // If you have mod jar dependencies in ./libs, you can declare them as a repository like so:
+        // flatDir {
+        //     dir 'libs'
+        // }
+    }
+
+    dependencies {
+        // Specify the version of Minecraft to use. If this is any group other than 'net.minecraft', it is assumed
+        // that the dep is a ForgeGradle 'patcher' dependency, and its patches will be applied.
+        // The userdev artifact is a special name and will get all sorts of transformations applied to it.
+        minecraft 'net.minecraftforge:forge:1.19.1-42.0.1'
+
+        annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+    }
+
+// Example for how to get properties into the manifest for reading at runtime.
+    jar {
+        archiveBaseName.set("${mod_id}-${verx}-${forge}")
+        manifest {
+            attributes([
+                    "Specification-Title"     : mod_id,
+                    "Specification-Vendor"    : group,
+                    "Specification-Version"   : "1", // We are version 1 of ourselves
+                    "Implementation-Title"    : project.name,
+                    "Implementation-Version"  : project.jar.archiveVersion,
+                    "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                    "MixinConfigs": "${mod_id}.mixins.json"
+            ])
         }
     }
-}
+
+// Example configuration to allow publishing using the maven-publish plugin
+// This is the preferred method to reobfuscate your jar file
+    jar.finalizedBy('reobfJar')
+// However if you are in a multi-project build, dev time needs unobfed jar files, so you can delay the obfuscation until publishing by doing
+// publish.dependsOn('reobfJar')
+
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                artifact jar
+            }
+        }
+        repositories {
+            maven {
+                url "file://${project.projectDir}/mcmodsrepo"
+            }
+        }
+    }
+
+    tasks.withType(JavaCompile).configureEach {
+        options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+    }
