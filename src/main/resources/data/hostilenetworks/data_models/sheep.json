@@ -16,6 +16,7 @@
 	"trivia": "hostilenetworks.trivia.sheep",
 	"fabricator_drops": [
 		{
+			"optional": true,
 			"item": "silentgear:sinew",
 			"count": 2
 		},

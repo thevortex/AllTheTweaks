@@ -20,6 +20,7 @@
 			"count": 16
 		},
 		{
+			"optional": true,
 			"item": "silentgear:sinew",
 			"count": 2
 		}

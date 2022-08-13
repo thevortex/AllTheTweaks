@@ -28,6 +28,7 @@
 			"count": 1
 		},
 		{
+			"optional": true,
 			"item": "bhc:wither_bone",
 			"count": 1
 		}
