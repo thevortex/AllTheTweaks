@@ -18,6 +18,11 @@
 		{
 			"item": "minecraft:blaze_rod",
 			"count": 10
+		},
+		{
+			"optional": true,
+			"item": "thermal:sulfur",
+			"count": 16
 		}
 	]
 }
