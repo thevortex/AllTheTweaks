@@ -29,6 +29,9 @@ public class Configuration {
 		public final ForgeConfigSpec.IntValue minorver;
 		public final ForgeConfigSpec.IntValue minorrevver;
 		//public final ForgeConfigSpec.IntValue tickSpeed;
+
+		// tweaks
+		public final ForgeConfigSpec.BooleanValue chickensShedFeathers;
 		
 		public Common(ForgeConfigSpec.Builder BUILDER) {
 			BUILDER.push("packmode");
@@ -55,6 +58,10 @@ public class Configuration {
 					0, 0, 32768);
 			BUILDER.pop();
 
+			BUILDER.push("tweaks");
+			chickensShedFeathers = BUILDER.comment("Chickens randomly shed feathers")
+					.define("chickensShedFeathers", true);
+			BUILDER.pop();
 
 		}
 	}
