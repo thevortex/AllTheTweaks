@@ -2,6 +2,7 @@ package com.thevortex.allthetweaks.proxy;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Locale;
 
 import com.thevortex.allthetweaks.AllTheTweaks;
 import com.thevortex.allthetweaks.DRP;
@@ -20,8 +21,8 @@ import net.minecraftforge.common.MinecraftForge;
 public class ClientProxy implements IProxy {
     @Override
     public void init() {
-    MyCons.setWindowIcon();
-        if(Configuration.COMMON.discord.get()) {
+   if(!System.getProperty("os.name").toLowerCase(Locale.ENGLISH).contains("mac")) { MyCons.setWindowIcon(); }
+   if(Configuration.COMMON.discord.get()) {
             MinecraftForge.EVENT_BUS.register(new UpdateDRP());
             DRP.start();
         }

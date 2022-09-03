@@ -15,6 +15,7 @@ import net.minecraft.util.Mth;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import com.thevortex.allthetweaks.AllTheTweaks;
 
@@ -58,7 +59,7 @@ public abstract class ProgressLoadGuiMixin {
 			LoadingOverlay.blit(matrixStack, j2 - k1, i1 - j1, k1, (int)d0, -0.0625F, 0.0F, 120, 60, 120, 120);
 			LoadingOverlay.blit(matrixStack, j2, i1 - j1, k1, (int)d0, 0.0625F, 60.0F, 120, 60, 120, 120);
 			RenderSystem.setShaderTexture(0,FLAME);
-			renderStack(matrixStack,i4,j2-k1,i,j,k1);
+			renderStack(matrixStack,i4 + 5,j2-k1,i,j,k1);
 			break;
 		case 1:
 			FLAME = new ResourceLocation("allthetweaks","textures/gui/title/pie-loading.png");
@@ -108,43 +109,18 @@ public abstract class ProgressLoadGuiMixin {
 
 	@Overwrite
 	private static int replaceAlpha(int one, int two) {
-		return one & 0 | two;
+		return 0;
 	}
 
-/*
-	@ModifyArg(method = {
-			"func_238629_a_" }, at = @At(value = "INVOKE", ordinal = 1, target = "Lnet/minecraft/client/gui/ResourceLoadProgressGui;func_238467_a_(Lcom/mojang/blaze3d/matrix/MatrixStack;IIIII)V", remap = false), index = 5)
-	private int barBorderColor(int color) {
-		return ColorHelper.PackedColor.func_233006_a_(255, 185, 55, 35);
+
+
+	@Inject(method = "drawProgressBar", at = @At(value = "HEAD", target = "Lnet/minecraft/client/gui/screens/LoadingOverlay;drawProgressBar(Lcom/mojang/blaze3d/vertex/PoseStack;IIIIF)V"), cancellable = true)
+	private void cancelGoHome(PoseStack pPoseStack, int pMinX, int pMinY, int pMaxX, int pMaxY, float pPartialTick,CallbackInfo cin) {
+		cin.cancel();
 	}
 
-	@ModifyArg(method = {
-			"func_238629_a_" }, at = @At(value = "INVOKE", ordinal = 2, target = "Lnet/minecraft/client/gui/ResourceLoadProgressGui;func_238467_a_(Lcom/mojang/blaze3d/matrix/MatrixStack;IIIII)V", remap = false), index = 5)
-	private int barBorderColor1(int color) {
-		return ColorHelper.PackedColor.func_233006_a_(255, 185, 55, 35);
-	}
-
-	@ModifyArg(method = {
-			"func_238629_a_" }, at = @At(value = "INVOKE", ordinal = 3, target = "Lnet/minecraft/client/gui/ResourceLoadProgressGui;func_238467_a_(Lcom/mojang/blaze3d/matrix/MatrixStack;IIIII)V", remap = false), index = 5)
-	private int barBorderColor2(int color) {
-		return ColorHelper.PackedColor.func_233006_a_(255, 185, 55, 35);
-	}
-
-	@ModifyArg(method = {
-			"func_238629_a_" }, at = @At(value = "INVOKE", ordinal = 4, target = "Lnet/minecraft/client/gui/ResourceLoadProgressGui;func_238467_a_(Lcom/mojang/blaze3d/matrix/MatrixStack;IIIII)V", remap = false), index = 5)
-	private int barBorderColor3(int color) {
-		return ColorHelper.PackedColor.func_233006_a_(255, 185, 55, 35);
-	}
-
-	@ModifyArg(method = {
-			"func_238629_a_" }, at = @At(value = "INVOKE", ordinal = 5, target = "Lnet/minecraft/client/gui/ResourceLoadProgressGui;func_238467_a_(Lcom/mojang/blaze3d/matrix/MatrixStack;IIIII)V", remap = false), index = 5)
-	private int barColor(int color) {
-		return ColorHelper.PackedColor.func_233006_a_(255, 251, 238, 30);
-	}
-
-	*/
 
 
 
- }
+}
 
