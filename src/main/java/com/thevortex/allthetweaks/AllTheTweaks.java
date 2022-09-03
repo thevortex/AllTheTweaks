@@ -3,6 +3,7 @@ package com.thevortex.allthetweaks;
 import com.thevortex.allthetweaks.blocks.TweakBlocks;
 import com.thevortex.allthetweaks.config.Configuration;
 import com.thevortex.allthetweaks.events.Events;
+import com.thevortex.allthetweaks.filters.ResourceCacheFilter;
 import com.thevortex.allthetweaks.proxy.*;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
@@ -54,6 +55,12 @@ public class AllTheTweaks
         MinecraftForge.EVENT_BUS.register(Configuration.class);
         MinecraftForge.EVENT_BUS.register(Events.class);
 
+		Logger rootLogger = LogManager.getRootLogger();
+		if (rootLogger instanceof org.apache.logging.log4j.core.Logger logger) {
+			logger.addFilter(new ResourceCacheFilter());
+		} else {
+			LOGGER.error("Registration failed with unexpected class: {}", rootLogger.getClass());
+		}
     }
 
 	public void setup(final FMLCommonSetupEvent event) {
