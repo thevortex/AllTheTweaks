@@ -20,7 +20,9 @@ import net.minecraftforge.common.MinecraftForge;
 public class ClientProxy implements IProxy {
     @Override
     public void init() {
-    MyCons.setWindowIcon();
+        if(!System.getProperties().get("os.name").toString().toLowerCase().contains("mac")){
+            MyCons.setWindowIcon();
+        }
         if(Configuration.COMMON.discord.get()) {
             MinecraftForge.EVENT_BUS.register(new UpdateDRP());
             DRP.start();

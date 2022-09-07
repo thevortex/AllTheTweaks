@@ -12,7 +12,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 public class Events {
     @SubscribeEvent
     public static void setup(FMLClientSetupEvent event) {
-        MyCons.setWindowIcon();
+        //MyCons.setWindowIcon();
 }
 
 }

@@ -91,8 +91,12 @@ public abstract class ProgressLoadGuiMixin {
 			renderStack(matrixStack,i4,j2-k1,i,j,k1);
 			break;
 		case 4:
-			RenderSystem.setShaderTexture(0,cfgMain.BACKGROUND);
+			FLAME = new ResourceLocation("allthetweaks","textures/item/patrick_star.png");
+			RenderSystem.setShaderTexture(0,cfgExpert.BACKGROUND);
 			LoadingOverlay.blit(matrixStack, 0, 0, i, j, -0.0625F,0.0F, 120, 120, 120, 120);
+			RenderSystem.setShaderTexture(0,MOJANG_DRUNK);
+			LoadingOverlay.blit(matrixStack, j2 - k1, i1 - j1, k1, (int)d0, -0.0625F, 0.0F, 120, 60, 120, 120);
+			LoadingOverlay.blit(matrixStack, j2, i1 - j1, k1, (int)d0, 0.0625F, 60.0F, 120, 60, 120, 120);
 			RenderSystem.setShaderTexture(0,FLAME);
 			renderStack(matrixStack,i4,j2-k1,i,j,k1);
 			break;
