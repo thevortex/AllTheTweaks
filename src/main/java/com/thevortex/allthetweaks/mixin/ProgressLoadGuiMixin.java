@@ -51,7 +51,15 @@ public abstract class ProgressLoadGuiMixin {
 		int k1 = (int)(d1 * 0.5D);
 		//FLAME = new ResourceLocation("allthetweaks" , "textures/gui/options_background." + Configuration.COMMON.mainmode.get() + ".png");
 		FLAME = new ResourceLocation("allthetweaks","textures/item/atm_star.png");
-		switch (Configuration.COMMON.mainmode.get()) {
+		RenderSystem.assertOnRenderThreadOrInit();
+		int packmode;
+		if(AllTheTweaks.configFire) {
+			packmode = Configuration.COMMON.mainmode.get();
+		} else {
+			packmode = 0;
+		}
+
+		switch (packmode) {
 		case 0:
 			RenderSystem.setShaderTexture(0,cfgMain.BACKGROUND);
 			LoadingOverlay.blit(matrixStack, 0, 0, i, j, -0.0625F,0.0F, 120, 120, 120, 120);
