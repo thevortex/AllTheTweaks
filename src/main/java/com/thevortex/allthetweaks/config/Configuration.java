@@ -68,7 +68,7 @@ public class Configuration {
 	@SubscribeEvent
 	public static void onModConfigEvent(final ModConfigEvent configEvent) {
 		bakeConfigs();
-		
+		AllTheTweaks.configFire = true;
 	}
 	@SubscribeEvent
 	public static void commonSetupEvent(final FMLCommonSetupEvent event) {
