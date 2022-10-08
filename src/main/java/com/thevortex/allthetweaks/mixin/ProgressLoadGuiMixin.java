@@ -7,8 +7,11 @@ import com.thevortex.allthetweaks.config.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.screens.LoadingOverlay;
+import net.minecraft.client.gui.screens.Overlay;
 import net.minecraft.client.gui.screens.ProgressScreen;
 
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
@@ -22,7 +25,7 @@ import com.thevortex.allthetweaks.AllTheTweaks;
 import static net.minecraft.client.gui.GuiComponent.fill;
 
 @Mixin(value = LoadingOverlay.class, priority = 1)
-public abstract class ProgressLoadGuiMixin {
+public abstract class ProgressLoadGuiMixin extends Overlay {
 
 
 	@Shadow
@@ -32,6 +35,8 @@ public abstract class ProgressLoadGuiMixin {
 	private static final ResourceLocation MOJANG_DRUNK = new ResourceLocation("allthetweaks",
 																				  "textures/gui/title/mojangstudios.png");
 	private static ResourceLocation FLAME = new ResourceLocation("minecraft","textures/block/fire_0.png");
+
+
 
 	@Inject(method = "render", at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/systems/RenderSystem;setShaderTexture(ILnet/minecraft/resources/ResourceLocation;)V"))
 	private void myRender(PoseStack matrixStack, int p_230430_2_, int p_230430_3_, float p_230430_4_,
@@ -62,10 +67,10 @@ public abstract class ProgressLoadGuiMixin {
 		switch (packmode) {
 		case 0:
 			RenderSystem.setShaderTexture(0,cfgMain.BACKGROUND);
-			LoadingOverlay.blit(matrixStack, 0, 0, i, j, -0.0625F,0.0F, 120, 120, 120, 120);
+			blit(matrixStack, 0, 0, i, j, -0.0625F,0.0F, 120, 120, 120, 120);
 			RenderSystem.setShaderTexture(0,MOJANG_DRUNK);
-			LoadingOverlay.blit(matrixStack, j2 - k1, i1 - j1, k1, (int)d0, -0.0625F, 0.0F, 120, 60, 120, 120);
-			LoadingOverlay.blit(matrixStack, j2, i1 - j1, k1, (int)d0, 0.0625F, 60.0F, 120, 60, 120, 120);
+			blit(matrixStack, j2 - k1, i1 - j1, k1, (int)d0, -0.0625F, 0.0F, 120, 60, 120, 120);
+			blit(matrixStack, j2, i1 - j1, k1, (int)d0, 0.0625F, 60.0F, 120, 60, 120, 120);
 			RenderSystem.setShaderTexture(0,FLAME);
 			renderStack(matrixStack,i4 + 5,j2-k1,i,j,k1);
 			break;
@@ -73,35 +78,35 @@ public abstract class ProgressLoadGuiMixin {
 			FLAME = new ResourceLocation("allthetweaks","textures/gui/title/pie-loading.png");
 
 			RenderSystem.setShaderTexture(0,cfgSLOP.BACKGROUND);
-			LoadingOverlay.blit(matrixStack, 0, 0, i, j, -0.0625F, 0.0F, 120, 120, 120, 120);
+			blit(matrixStack, 0, 0, i, j, -0.0625F, 0.0F, 120, 120, 120, 120);
 			RenderSystem.setShaderTexture(0,MOJANG_DRUNK);
-			LoadingOverlay.blit(matrixStack, j2 - k1, i1 - j1, k1, (int)d0, -0.0625F, 0.0F, 120, 60, 120, 120);
-			LoadingOverlay.blit(matrixStack, j2, i1 - j1, k1, (int)d0, 0.0625F, 60.0F, 120, 60, 120, 120);
+			blit(matrixStack, j2 - k1, i1 - j1, k1, (int)d0, -0.0625F, 0.0F, 120, 60, 120, 120);
+			blit(matrixStack, j2, i1 - j1, k1, (int)d0, 0.0625F, 60.0F, 120, 60, 120, 120);
 			RenderSystem.setShaderTexture(0,FLAME);
 			renderStack(matrixStack,i4,j2-k1,i,j,k1);
 			break;
 
 		case 2:
 			RenderSystem.setShaderTexture(0,cfgSKY.BACKGROUND);
-			LoadingOverlay.blit(matrixStack, 0, 0, i, j, -0.0625F, 0.0F, 120, 120, 120, 120);
+			blit(matrixStack, 0, 0, i, j, -0.0625F, 0.0F, 120, 120, 120, 120);
 			RenderSystem.setShaderTexture(0,MOJANG_DRUNK);
-			LoadingOverlay.blit(matrixStack, j2 - k1, i1 - j1, k1, (int)d0, -0.0625F, 0.0F, 120, 60, 120, 120);
-			LoadingOverlay.blit(matrixStack, j2, i1 - j1, k1, (int)d0, 0.0625F, 60.0F, 120, 60, 120, 120);
+			blit(matrixStack, j2 - k1, i1 - j1, k1, (int)d0, -0.0625F, 0.0F, 120, 60, 120, 120);
+			blit(matrixStack, j2, i1 - j1, k1, (int)d0, 0.0625F, 60.0F, 120, 60, 120, 120);
 			RenderSystem.setShaderTexture(0,FLAME);
 			renderStack(matrixStack,i4,j2-k1,i,j,k1);
 			break;
 		case 3:
 			RenderSystem.setShaderTexture(0,cfgMAGIC.BACKGROUND);
-			LoadingOverlay.blit(matrixStack, 0, 0, i, j, -0.0625F, 0.0F, 120, 120, 120, 120);
+			blit(matrixStack, 0, 0, i, j, -0.0625F, 0.0F, 120, 120, 120, 120);
 			RenderSystem.setShaderTexture(0,MOJANG_DRUNK);
-			LoadingOverlay.blit(matrixStack, j2 - k1, i1 - j1, k1, (int)d0, -0.0625F, 0.0F, 120, 60, 120, 120);
-			LoadingOverlay.blit(matrixStack, j2, i1 - j1, k1, (int)d0, 0.0625F, 60.0F, 120, 60, 120, 120);
+			blit(matrixStack, j2 - k1, i1 - j1, k1, (int)d0, -0.0625F, 0.0F, 120, 60, 120, 120);
+			blit(matrixStack, j2, i1 - j1, k1, (int)d0, 0.0625F, 60.0F, 120, 60, 120, 120);
 			RenderSystem.setShaderTexture(0,FLAME);
 			renderStack(matrixStack,i4,j2-k1,i,j,k1);
 			break;
 		case 4:
 			RenderSystem.setShaderTexture(0,cfgMain.BACKGROUND);
-			LoadingOverlay.blit(matrixStack, 0, 0, i, j, -0.0625F,0.0F, 120, 120, 120, 120);
+			blit(matrixStack, 0, 0, i, j, -0.0625F,0.0F, 120, 120, 120, 120);
 			RenderSystem.setShaderTexture(0,FLAME);
 			renderStack(matrixStack,i4,j2-k1,i,j,k1);
 			break;
@@ -111,7 +116,7 @@ public abstract class ProgressLoadGuiMixin {
 
 	private void renderStack(PoseStack stack,int i4,int j4, int i, int j, int k1) {
 		int w = Mth.ceil((float)(i4*3-j4 + k1/4) * this.currentProgress);
-		LoadingOverlay.blit(stack, j4, i4*3,j4+w,16,0.0F,0.0F,j4+w,16,16,16);
+		blit(stack, j4, i4*3,j4+w,16,0.0F,0.0F,j4+w,16,16,16);
 
 	}
 
