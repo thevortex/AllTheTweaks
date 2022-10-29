@@ -120,9 +120,14 @@ public abstract class ProgressLoadGuiMixin {
 
 	@Overwrite
 	private static int replaceAlpha(int one, int two) {
-		return one & 0 | two;
+		return 0;
 	}
 
+
+	@Inject(method = "drawProgressBar", at = @At(value = "HEAD", target = "Lnet/minecraft/client/gui/screens/LoadingOverlay;drawProgressBar(Lcom/mojang/blaze3d/vertex/PoseStack;IIIIF)V"), cancellable = true)
+	private void cancelGoHome(PoseStack pPoseStack, int pMinX, int pMinY, int pMaxX, int pMaxY, float pPartialTick,CallbackInfo cin) {
+		cin.cancel();
+	}
 /*
 	@ModifyArg(method = {
 			"func_238629_a_" }, at = @At(value = "INVOKE", ordinal = 1, target = "Lnet/minecraft/client/gui/ResourceLoadProgressGui;func_238467_a_(Lcom/mojang/blaze3d/matrix/MatrixStack;IIIII)V", remap = false), index = 5)

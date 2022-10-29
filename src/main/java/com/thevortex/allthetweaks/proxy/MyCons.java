@@ -29,7 +29,7 @@ public class MyCons {
     }
 
     public static void setWindowIcon() {
-        RenderSystem.assertInInitPhase();
+        if(System.getProperties().getProperty("os.name").contains("OS")) { return; }
 
         String prefix = switch (Configuration.COMMON.mainmode.get()) {
             case 3 -> "icons_magic";
