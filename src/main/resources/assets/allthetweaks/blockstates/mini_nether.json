@@ -1,7 +1,19 @@
 {
-    "variants": {
-      "": {
-        "model": "allthetweaks:block/mini_nether"
-      }
+  "variants": {
+    "facing=north": {
+      "model": "allthetweaks:block/mini_nether"
+    },
+    "facing=east": {
+      "model": "allthetweaks:block/mini_nether",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "allthetweaks:block/mini_nether",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "allthetweaks:block/mini_nether",
+      "y": 270
     }
   }
+}
