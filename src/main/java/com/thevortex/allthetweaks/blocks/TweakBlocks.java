@@ -23,6 +23,7 @@ public class TweakBlocks {
     public static final RegistryObject<Block> MINI_EXIT_BLOCK = BLOCKS.register("mini_exit",() -> new Block(Block.Properties.of(Material.HEAVY_METAL).strength(0.75f).sound(SoundType.STONE).noOcclusion()));
     public static final RegistryObject<Block> MINI_NETHER_BLOCK = BLOCKS.register("mini_nether",() -> new Block(Block.Properties.of(Material.HEAVY_METAL).strength(0.75f).sound(SoundType.NETHERRACK).noOcclusion()));
 
+    public static final RegistryObject<Block> ATM_TROPHY = BLOCKS.register("trophy_atm",() -> new Block(Block.Properties.of(Material.HEAVY_METAL).strength(0.75f).sound(SoundType.NETHERRACK).noOcclusion()));
 
     public static final RegistryObject<Item> ENDERPEARL_BLOCK_ITEM = ITEMS.register("ender_pearl_block",
             () -> new BlockItem(ENDERPEARL_BLOCK.get(), new Item.Properties().tab(Reference.GROUP)));
@@ -41,6 +42,8 @@ public class TweakBlocks {
             
     public static final RegistryObject<Item> MINI_NETHER_BLOCK_ITEM = ITEMS.register("mini_nether",
     () -> new BlockItem(MINI_NETHER_BLOCK.get(), new Item.Properties().tab(Reference.GROUP)));
+    public static final RegistryObject<Item> TROPHY_ATM = ITEMS.register("trophy_atm",
+            () -> new BlockItem(ATM_TROPHY.get(), new Item.Properties()));
 
     public static final RegistryObject<Item> ATMSTAR = ITEMS.register("atm_star", () -> new Shiny(new Item.Properties()));
     public static final RegistryObject<Item> ATMSTAR_SHARD = ITEMS.register("atm_star_shard", () -> new Shiny(new Item.Properties()));
