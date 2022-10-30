@@ -19,6 +19,9 @@ public class TweakBlocks {
     public static final RegistryObject<Block> ENDERPEARL_BLOCK = BLOCKS.register("ender_pearl_block",() -> new Block(Block.Properties.of(Material.METAL).strength(0.85f,1.0f).sound(SoundType.GLASS)));
     public static final RegistryObject<Block> NETHERSTAR_BLOCK = BLOCKS.register("nether_star_block",() -> new Block(Block.Properties.of(Material.METAL).strength(0.85f,1.0f).sound(SoundType.GLASS)));
     public static final RegistryObject<Block> ATMSTAR_BLOCK = BLOCKS.register("atm_star_block",() -> new Block(Block.Properties.of(Material.METAL).strength(0.85f,1.0f).sound(SoundType.METAL)));
+    public static final RegistryObject<Block> MINI_END_BLOCK = BLOCKS.register("mini_end",() -> new Block(Block.Properties.of(Material.HEAVY_METAL).strength(0.75f).sound(SoundType.STONE).noOcclusion()));
+    public static final RegistryObject<Block> MINI_EXIT_BLOCK = BLOCKS.register("mini_exit",() -> new Block(Block.Properties.of(Material.HEAVY_METAL).strength(0.75f).sound(SoundType.STONE).noOcclusion()));
+    public static final RegistryObject<Block> MINI_NETHER_BLOCK = BLOCKS.register("mini_nether",() -> new Block(Block.Properties.of(Material.HEAVY_METAL).strength(0.75f).sound(SoundType.NETHERRACK).noOcclusion()));
 
 
     public static final RegistryObject<Item> ENDERPEARL_BLOCK_ITEM = ITEMS.register("ender_pearl_block",
@@ -29,6 +32,15 @@ public class TweakBlocks {
 
     public static final RegistryObject<Item> ATMSTAR_BLOCK_ITEM = ITEMS.register("atm_star_block",
             () -> new BlockItem(ATMSTAR_BLOCK.get(), new Item.Properties().tab(Reference.GROUP)));
+
+    public static final RegistryObject<Item> MINI_END_BLOCK_ITEM = ITEMS.register("mini_end",
+    () -> new BlockItem(MINI_END_BLOCK.get(), new Item.Properties().tab(Reference.GROUP)));
+    
+    public static final RegistryObject<Item> MINI_EXIT_BLOCK_ITEM = ITEMS.register("mini_exit",
+            () -> new BlockItem(MINI_EXIT_BLOCK.get(), new Item.Properties().tab(Reference.GROUP)));
+            
+    public static final RegistryObject<Item> MINI_NETHER_BLOCK_ITEM = ITEMS.register("mini_nether",
+    () -> new BlockItem(MINI_NETHER_BLOCK.get(), new Item.Properties().tab(Reference.GROUP)));
 
     public static final RegistryObject<Item> ATMSTAR = ITEMS.register("atm_star", () -> new Shiny(new Item.Properties()));
     public static final RegistryObject<Item> ATMSTAR_SHARD = ITEMS.register("atm_star_shard", () -> new Shiny(new Item.Properties()));
