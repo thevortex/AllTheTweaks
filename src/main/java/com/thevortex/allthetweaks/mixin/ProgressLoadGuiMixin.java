@@ -34,7 +34,7 @@ public abstract class ProgressLoadGuiMixin extends Overlay {
 	private static final String launch = Minecraft.getInstance().gameDirectory.getAbsolutePath();
 	private static final ResourceLocation MOJANG_DRUNK = new ResourceLocation("allthetweaks",
 																				  "textures/gui/title/mojangstudios.png");
-	private static ResourceLocation FLAME = new ResourceLocation("minecraft","textures/block/fire_0.png");
+	private static ResourceLocation FLAME = new ResourceLocation("allthetweaks","textures/item/atm_star.png");
 
 
 
@@ -107,6 +107,16 @@ public abstract class ProgressLoadGuiMixin extends Overlay {
 		case 4:
 			RenderSystem.setShaderTexture(0,cfgMain.BACKGROUND);
 			blit(matrixStack, 0, 0, i, j, -0.0625F,0.0F, 120, 120, 120, 120);
+			RenderSystem.setShaderTexture(0,FLAME);
+			renderStack(matrixStack,i4,j2-k1,i,j,k1);
+			break;
+		case 5:
+
+			RenderSystem.setShaderTexture(0,cfgVB.BACKGROUND);
+			blit(matrixStack, 0, 0, i, j, -0.0625F, 0.0F, 120, 120, 120, 120);
+			RenderSystem.setShaderTexture(0,MOJANG_DRUNK);
+			blit(matrixStack, j2 - k1, i1 - j1, k1, (int)d0, -0.0625F, 0.0F, 120, 60, 120, 120);
+			blit(matrixStack, j2, i1 - j1, k1, (int)d0, 0.0625F, 60.0F, 120, 60, 120, 120);
 			RenderSystem.setShaderTexture(0,FLAME);
 			renderStack(matrixStack,i4,j2-k1,i,j,k1);
 			break;
