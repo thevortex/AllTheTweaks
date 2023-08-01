@@ -35,8 +35,8 @@ public class Configuration {
 		
 		public Common(ForgeConfigSpec.Builder BUILDER) {
 			BUILDER.push("packmode");
-			mainmode = BUILDER.comment("ATM = 0 SLOP = 1 SKY = 2 MAGIC = 3 EXPERT = 4").defineInRange("enable",
-					0, 0, 4);
+			mainmode = BUILDER.comment("ATM = 0 SLOP = 1 SKY = 2 MAGIC = 3 EXPERT = 4 GRAVITAS = 5").defineInRange("enable",
+					0, 0, 5);
 			BUILDER.pop();
 
 			BUILDER.push("discord");
@@ -107,6 +107,14 @@ public class Configuration {
 			AllTheTweaks.ATM = cfgExpert.ATM;
 			AllTheTweaks.DISPLAY = cfgExpert.DISPLAY;
 			AllTheTweaks.BACKGROUND = cfgExpert.BACKGROUND;
+			return;
+		}
+		int GRAV = Configuration.COMMON.mainmode.get();
+		if (GRAV == 5) {
+			AllTheTweaks.IPCC = cfgGrav.IPCC;
+			AllTheTweaks.ATM = cfgGrav.ATM;
+			AllTheTweaks.DISPLAY = cfgGrav.DISPLAY;
+			AllTheTweaks.BACKGROUND = cfgGrav.BACKGROUND;
 			return;
 		}
 		else {

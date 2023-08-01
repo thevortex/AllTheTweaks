@@ -5,6 +5,7 @@ import com.thevortex.allthetweaks.config.Reference;
 
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import javax.annotation.Nullable;
 
@@ -20,5 +21,6 @@ public class BlockTags extends BlockTagsProvider {
         tag(Reference.NETHERSTAR_BLOCK).add(TweakBlocks.NETHERSTAR_BLOCK.get());
         tag(Reference.ATMSTAR_BLOCK).add(TweakBlocks.ATMSTAR_BLOCK.get());
 
+        tag(Reference.FARMLAND).add(Blocks.FARMLAND);
        }
 }

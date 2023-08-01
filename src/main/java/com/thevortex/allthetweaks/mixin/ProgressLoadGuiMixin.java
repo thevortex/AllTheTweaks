@@ -26,14 +26,14 @@ public abstract class ProgressLoadGuiMixin {
 
 	@Shadow
 	public float currentProgress;
-
+	private int flip = 0;
 	private static final String launch = Minecraft.getInstance().gameDirectory.getAbsolutePath();
 	private static final ResourceLocation MOJANG_DRUNK = new ResourceLocation("allthetweaks",
 																				  "textures/gui/title/mojangstudios.png");
 	private static ResourceLocation FLAME = new ResourceLocation("minecraft","textures/block/fire_0.png");
 
 	@Inject(method = "render", at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/systems/RenderSystem;setShaderTexture(ILnet/minecraft/resources/ResourceLocation;)V"))
-	private void myRender(PoseStack matrixStack, int p_230430_2_, int p_230430_3_, float p_230430_4_,
+	private void myRender(PoseStack matrixStack, int p_230430_2_, int p_230430_3_, float f,
 						  CallbackInfo ci) {
 
 		//LoadingOverlay.MOJANG_STUDIOS_LOGO_LOCATION = MOJANG_DRUNK;
@@ -57,7 +57,6 @@ public abstract class ProgressLoadGuiMixin {
 		} else {
 			packmode = 0;
 		}
-
 		switch (packmode) {
 		case 0:
 			RenderSystem.setShaderTexture(0,cfgMain.BACKGROUND);
@@ -101,6 +100,16 @@ public abstract class ProgressLoadGuiMixin {
 		case 4:
 			FLAME = new ResourceLocation("allthetweaks","textures/item/patrick_star.png");
 			RenderSystem.setShaderTexture(0,cfgExpert.BACKGROUND);
+			LoadingOverlay.blit(matrixStack, 0, 0, i, j, -0.0625F,0.0F, 120, 120, 120, 120);
+			RenderSystem.setShaderTexture(0,MOJANG_DRUNK);
+			LoadingOverlay.blit(matrixStack, j2 - k1, i1 - j1, k1, (int)d0, -0.0625F, 0.0F, 120, 60, 120, 120);
+			LoadingOverlay.blit(matrixStack, j2, i1 - j1, k1, (int)d0, 0.0625F, 60.0F, 120, 60, 120, 120);
+			RenderSystem.setShaderTexture(0,FLAME);
+			renderStack(matrixStack,i4,j2-k1,i,j,k1);
+			break;
+		case 5:
+			FLAME = new ResourceLocation("tfc", "textures/item/metal/bucket/red_steel.png");
+			RenderSystem.setShaderTexture(0,cfgGrav.BACKGROUND);
 			LoadingOverlay.blit(matrixStack, 0, 0, i, j, -0.0625F,0.0F, 120, 120, 120, 120);
 			RenderSystem.setShaderTexture(0,MOJANG_DRUNK);
 			LoadingOverlay.blit(matrixStack, j2 - k1, i1 - j1, k1, (int)d0, -0.0625F, 0.0F, 120, 60, 120, 120);

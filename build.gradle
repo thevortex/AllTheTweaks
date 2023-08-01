@@ -136,6 +136,18 @@ dependencies {
     minecraft "net.minecraftforge:forge:${forge}"
 
     annotationProcessor "org.spongepowered:mixin:0.8.5"
+    implementation fg.deobf("curse.maven:${bloodmagic}")
+    implementation fg.deobf("curse.maven:${patchouli}")
+    implementation fg.deobf("curse.maven:${beyond_earth}")
+    implementation fg.deobf("curse.maven:${curios}")
+    implementation fg.deobf("curse.maven:${tfcambiental}")
+    implementation fg.deobf("curse.maven:macaws-furniture-359540:4018178")
+    implementation fg.deobf("curse.maven:${tfc}")
+
+    implementation fg.deobf("curse.maven:${corail}")
+    implementation fg.deobf("curse.maven:${apotheosis}")
+    implementation fg.deobf("curse.maven:${craftingstation}")
+    implementation fg.deobf("curse.maven:${firmalife}")
 
     //compile fg.deobf("curse.maven:${jei}")
     //compile fg.deobf("curse.maven:${theoneprobe}")
@@ -172,14 +184,14 @@ dependencies {
     implementation fg.deobf("curse.maven:${cyclopscore}")
     implementation fg.deobf("curse.maven:${commoncapabilities}")
     implementation fg.deobf("curse.maven:${botania}")
-    implementation fg.deobf("curse.maven:${patchouli}")
-    implementation fg.deobf("curse.maven:${curios}")
+
+
 
     implementation fg.deobf("curse.maven:${pneumaticraft}")
 
     implementation fg.deobf("curse.maven:${ae2}")
     implementation fg.deobf("curse.maven:${refinedstorage}")
-    implementation fg.deobf("curse.maven:${bloodmagic}")
+
 
     implementation fg.deobf("curse.maven:${integratedtunnels}")
 

@@ -29,6 +29,7 @@ public class Reference {
         return forge("storage_blocks/" + path);
     }
 
+    public static final TagKey<Block> FARMLAND = BlockTags.create(Reference.forge("farmland"));
 
     public static final TagKey<Block> ENDERPEARL_BLOCK = BlockTags.create(block("ender_pearl"));
     public static final TagKey<Block> NETHERSTAR_BLOCK = BlockTags.create(block("nether_star"));
