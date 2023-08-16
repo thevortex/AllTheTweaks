@@ -8,7 +8,7 @@ public class Shiny extends Item {
 
     public Shiny(Item.Properties properties)
     {
-        super(properties.tab(Reference.GROUP));
+        super(properties);
     }
 
     @Override

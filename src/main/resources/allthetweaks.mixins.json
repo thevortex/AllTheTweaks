@@ -1,21 +1,18 @@
 {
-  "required": false,
+  "required": true,
   "package": "com.thevortex.allthetweaks.mixin",
   "compatibilityLevel": "JAVA_17",
+  "minVersion": "0.8",
   "refmap": "allthetweaks.refmap.json",
   "mixins": [
-    "BaghdadBob"
 
 
   ],
   "client": [
-    "AlphaDog",
     "NameBrandsOnly",
-    "BobSaysItsSafe",
     "ProgressLoadGuiMixin"
   ],
   "injectors": {
     "defaultRequire": 1
-  },
-  "minVersion": "0.8.5"
+  }
 }

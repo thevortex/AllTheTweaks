@@ -4,8 +4,8 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 import com.thevortex.allthetweaks.blocks.TweakBlocks;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.loot.BlockLoot;
 import net.minecraft.data.loot.LootTableProvider;
+import net.minecraft.data.loot.packs.VanillaBlockLoot;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LiquidBlock;
@@ -22,22 +22,13 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
-public class LootTables extends LootTableProvider {
+public class LootTables extends VanillaBlockLoot {
 
-    public LootTables(DataGenerator generator) {
-        super(generator);
-    }
 
-    @Override
-    protected List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootContextParamSet>> getTables()
-    {
-        return ImmutableList.of(Pair.of(Blocks::new, LootContextParamSets.BLOCK));
-    }
 
-    public static class Blocks extends BlockLoot
-    {
+
         @Override
-        public void addTables()
+        public void generate()
         {
             getKnownBlocks().forEach(this::dropSelf);
 
@@ -58,12 +49,6 @@ public class LootTables extends LootTableProvider {
         }
 
 
-    }
 
-    @Override
-    protected void validate(Map<ResourceLocation, LootTable> map, ValidationContext validationtracker)
-    {
-        map.forEach((name, table) -> net.minecraft.world.level.storage.loot.LootTables.validate(validationtracker, name, table));
-    }
 
 }

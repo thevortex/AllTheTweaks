@@ -5,6 +5,7 @@ import com.thevortex.allthetweaks.AllTheTweaks;
 import com.thevortex.allthetweaks.config.Configuration;
 
 import net.minecraftforge.common.ForgeI18n;
+import net.minecraftforge.fml.ModContainer;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.internal.BrandingControl;
 import net.minecraftforge.versions.forge.ForgeVersion;
@@ -14,8 +15,9 @@ import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 
 import java.util.List;
+import java.util.Optional;
 
-@Mixin(BrandingControl.class)
+@Mixin(value = BrandingControl.class, remap = false, priority = 1)
 
 public class NameBrandsOnly {
     @Shadow(remap = false)
@@ -42,5 +44,4 @@ public class NameBrandsOnly {
             brandingsNoMC = brandings.subList(1, brandings.size());
         }
     }
-
 }

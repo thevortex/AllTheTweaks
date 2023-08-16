@@ -44,7 +44,7 @@ public class ClientProxy implements IProxy {
 
     @Override
     public void assignBG(int packmode){
-        Gui.BACKGROUND_LOCATION = new ResourceLocation("allthetweaks" , "textures/gui/options_background." + packmode + ".png");
+       // Gui.VIGNETTE_LOCATION = new ResourceLocation("allthetweaks" , "textures/gui/options_background." + packmode + ".png");
 
     }
 }

@@ -13,11 +13,7 @@ import net.minecraft.world.level.block.Blocks;
 
 public class Reference {
     public static final String MOD_ID = "allthetweaks";
-    public static final CreativeModeTab GROUP = new CreativeModeTab(MOD_ID) {
-        public ItemStack makeIcon() {
-            return new ItemStack(TweakBlocks.ATMSTAR_BLOCK_ITEM.get());
-        }
-    };
+
     public static ResourceLocation tweaks(String path) {
         return new ResourceLocation("allthetweaks", path);
     }
