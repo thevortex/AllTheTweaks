@@ -44,7 +44,7 @@ minecraft {
     // stable_#            Stables are built at the discretion of the MCP team.
     // Use non-default mappings at your own risk. they may not always work.
     // Simply re-run your setup task after changing the mappings to update your workspace.
-    mappings channel: 'parchment', version: '2022.06.05-1.18.2'
+    mappings channel: 'parchment', version: '2022.11.06-1.18.2'
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
     	accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
     // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
@@ -149,6 +149,8 @@ dependencies {
     implementation fg.deobf("curse.maven:${craftingstation}")
     implementation fg.deobf("curse.maven:${firmalife}")
 
+    implementation fg.deobf("curse.maven:${immersiveengineering}")
+
     //compile fg.deobf("curse.maven:${jei}")
     //compile fg.deobf("curse.maven:${theoneprobe}")
     //compile fg.deobf("curse.maven:${industrialforegoing}")
@@ -168,7 +170,7 @@ dependencies {
     implementation fg.deobf("curse.maven:${aem}")
     implementation fg.deobf("curse.maven:${modularrouters}")
     implementation fg.deobf("curse.maven:${create}")
-    implementation fg.deobf("curse.maven:${immersiveengineering}")
+    
     implementation fg.deobf("curse.maven:${ftbic}")
     implementation fg.deobf("curse.maven:${mekanism}")
     implementation fg.deobf("curse.maven:${architectury}")

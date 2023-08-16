@@ -15,7 +15,8 @@
     "AlphaDog",
     "NameBrandsOnly",
     "BobSaysItsSafe",
-    "ProgressLoadGuiMixin"
+    "ProgressLoadGuiMixin",
+    "BlueprintKiller"
 
   ],
   "injectors": {
