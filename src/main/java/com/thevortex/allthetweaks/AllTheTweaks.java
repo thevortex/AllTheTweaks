@@ -50,7 +50,7 @@ public class AllTheTweaks
 		IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 		TweakBlocks.BLOCKS.register(modEventBus);
 		TweakBlocks.ITEMS.register(modEventBus);
-
+		TweakBlocks.CREATIVE_TABS.register(modEventBus);
 		MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(Configuration.class);
         MinecraftForge.EVENT_BUS.register(Events.class);

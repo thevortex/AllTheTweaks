@@ -9,8 +9,7 @@
 
   ],
   "client": [
-    "NameBrandsOnly",
-    "ProgressLoadGuiMixin"
+    "NameBrandsOnly"
   ],
   "injectors": {
     "defaultRequire": 1

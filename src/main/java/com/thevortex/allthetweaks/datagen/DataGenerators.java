@@ -26,22 +26,19 @@ public final class DataGenerators {
         DataGenerator generator = event.getGenerator();
         PackOutput packOutput = generator.getPackOutput();
         ExistingFileHelper fileHelper = event.getExistingFileHelper();
-
+        if (event.includeClient()) {
+           // generator.addProvider(true,new BlockStates(generator, fileHelper));
+            generator.addProvider(true,new ItemModels(generator, fileHelper));
+        }
         if (event.includeServer()) {
             BlockTags blockTags = new BlockTags(packOutput, event.getLookupProvider(), fileHelper);
             generator.addProvider(true,new ItemTags(packOutput, event.getLookupProvider(), blockTags.contentsGetter(), fileHelper));
             generator.addProvider(true,blockTags);
-            generator.addProvider(true,new CraftingRecipes(packOutput));
-            generator.addProvider(true,new ShapelessCrafting(packOutput));
-            generator.addProvider(true,new BlastingRecipes(packOutput));
-            generator.addProvider(true,new SmeltingRecipes(packOutput));
+
             generator.addProvider(true,new LootTableProvider(packOutput, Collections.emptySet(),
                     List.of(new LootTableProvider.SubProviderEntry(LootTables::new, LootContextParamSets.BLOCK))));
 
         }
-        if (event.includeClient()) {
-            generator.addProvider(true,new BlockStates(generator, fileHelper));
-            generator.addProvider(true,new ItemModels(generator, fileHelper));
-        }
+
     }
 }

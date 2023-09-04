@@ -24,7 +24,9 @@ public class Reference {
         return forge("storage_blocks/" + path);
     }
 
-
+    public static String tab() {
+        return String.format("itemGroup.%s", MOD_ID);
+    }
     public static final TagKey<Block> ENDERPEARL_BLOCK = BlockTags.create(block("ender_pearl"));
     public static final TagKey<Block> NETHERSTAR_BLOCK = BlockTags.create(block("nether_star"));
     public static final TagKey<Block> ATMSTAR_BLOCK = BlockTags.create(block("atm_star"));
