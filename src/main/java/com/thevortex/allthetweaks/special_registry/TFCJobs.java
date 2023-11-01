@@ -147,7 +147,7 @@ public class TFCJobs {
         }
         return new PoiType(CARTOGRAPHER_STATES, 1, 1);
     });
-    public static final RegistryObject<PoiType> ARMORSMITH = POI_TYPES.register("armorsmith", () -> {
+    public static final RegistryObject<PoiType> ARMORSMITH = POI_TYPES.register("armorer", () -> {
         ARMOR_STATES.removeAll(Blocks.BLAST_FURNACE.getStateDefinition().getPossibleStates());
         ArrayList<Block> METALANVILS = new ArrayList<>();
         TFCBlocks.METALS.forEach((metal, types) -> {
