@@ -7,6 +7,7 @@ import com.google.common.collect.ImmutableSet;
 import net.dries007.tfc.common.blockentities.TFCBlockEntities;
 import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.blocks.wood.Wood;
+import net.dries007.tfc.util.Metal;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.entity.ai.village.poi.PoiTypes;
 import net.minecraft.world.level.block.Block;
@@ -39,7 +40,7 @@ public class TFCJobs {
     private static final HashSet<BlockState> WEAPON_STATES = new HashSet<>(ForgeRegistries.POI_TYPES.getDelegateOrThrow(PoiTypes.WEAPONSMITH).get().matchingStates());
 
     private static final RegistryObject<Block>[] COMPOSTER = new RegistryObject[]{
-            TFCBlocks.COMPOSTER, FLBlocks.IRON_COMPOSTER
+            TFCBlocks.COMPOSTER, FLBlocks.IRON_COMPOSTER, FLBlocks.CLIMATE_STATION
     };
     private static final RegistryObject<Block>[] TOOLS = new RegistryObject[]{
             TFCBlocks.FIREPIT
@@ -47,16 +48,15 @@ public class TFCJobs {
     private static final RegistryObject<Block>[] CLERICAL = new RegistryObject[]{
             TFCBlocks.POT
     };
-    private static final RegistryObject<Block>[] ARMOR = new RegistryObject[]{
-            TFCBlocks.BELLOWS
-    };
     private static final RegistryObject<Block>[] BUTCHERY = new RegistryObject[]{
             TFCBlocks.GRILL, FLBlocks.STOVETOP_GRILL
     };
     private static final RegistryObject<Block>[] SCRAPING = new RegistryObject[]{
             TFCBlocks.SCRAPING
     };
-
+    private static final RegistryObject<Block>[] MASONRY = new RegistryObject[]{
+            TFCBlocks.QUERN
+    };
     public static final RegistryObject<PoiType> FARMER = POI_TYPES.register("farmer", () -> {
         FARMER_STATES.removeAll(Blocks.COMPOSTER.getStateDefinition().getPossibleStates());
         for (RegistryObject<Block> block : COMPOSTER) {
@@ -79,13 +79,6 @@ public class TFCJobs {
             WEAPON_STATES.addAll(block.get().getStateDefinition().getPossibleStates());
         }
         return new PoiType(WEAPON_STATES, 1, 1);
-    });
-    public static final RegistryObject<PoiType> ARMORSMITH = POI_TYPES.register("armorsmith", () -> {
-        ARMOR_STATES.removeAll(Blocks.BLAST_FURNACE.getStateDefinition().getPossibleStates());
-        for (RegistryObject<Block> block : ARMOR) {
-            ARMOR_STATES.addAll(block.get().getStateDefinition().getPossibleStates());
-        }
-        return new PoiType(ARMOR_STATES, 1, 1);
     });
     public static final RegistryObject<PoiType> CLERIC = POI_TYPES.register("cleric", () -> {
         CLERIC_STATES.removeAll(Blocks.BREWING_STAND.getStateDefinition().getPossibleStates());
@@ -142,6 +135,48 @@ public class TFCJobs {
             FISH_STATES.addAll(block.getStateDefinition().getPossibleStates());
         }
         return new PoiType(FISH_STATES, 1, 1);
+    });
+    public static final RegistryObject<PoiType> CARTOGRAPHER = POI_TYPES.register("cartographer", () -> {
+        CARTOGRAPHER_STATES.clear();
+        ArrayList<Block> SCRIBING = new ArrayList<>();
+        TFCBlocks.WOODS.forEach((wood, types) -> {
+            SCRIBING.add(types.get(Wood.BlockType.SCRIBING_TABLE).get());
+        });
+        for (Block block : SCRIBING) {
+            CARTOGRAPHER_STATES.addAll(block.getStateDefinition().getPossibleStates());
+        }
+        return new PoiType(CARTOGRAPHER_STATES, 1, 1);
+    });
+    public static final RegistryObject<PoiType> ARMORSMITH = POI_TYPES.register("armorsmith", () -> {
+        ARMOR_STATES.removeAll(Blocks.BLAST_FURNACE.getStateDefinition().getPossibleStates());
+        ArrayList<Block> METALANVILS = new ArrayList<>();
+        TFCBlocks.METALS.forEach((metal, types) -> {
+            if(metal.hasTools()) {
+                METALANVILS.add(types.get(Metal.BlockType.ANVIL).get());
+            }
+        });
+        for (Block block : METALANVILS) {
+            ARMOR_STATES.addAll(block.getStateDefinition().getPossibleStates());
+        }
+        return new PoiType(ARMOR_STATES, 1, 1);
+    });
+    public static final RegistryObject<PoiType> MASON = POI_TYPES.register("mason", () -> {
+        MASON_STATES.clear();
+        for (RegistryObject<Block> block : MASONRY) {
+            MASON_STATES.addAll(block.get().getStateDefinition().getPossibleStates());
+        }
+        return new PoiType(MASON_STATES, 1, 1);
+    });
+    public static final RegistryObject<PoiType> FLETCHER = POI_TYPES.register("fletcher", () -> {
+        FLETCHER_STATES.clear();
+        ArrayList<Block> CRAFTING = new ArrayList<>();
+        TFCBlocks.WOODS.forEach((wood, types) -> {
+            CRAFTING.add(types.get(Wood.BlockType.WORKBENCH).get());
+        });
+        for (Block block : CRAFTING) {
+            FLETCHER_STATES.addAll(block.getStateDefinition().getPossibleStates());
+        }
+        return new PoiType(FLETCHER_STATES, 1, 1);
     });
 }
 
