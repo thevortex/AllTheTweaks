@@ -5,8 +5,8 @@ import net.minecraft.resources.ResourceLocation;
 
 public class cfgGrav {
 
-    public static long IPCC = 1063283674294014022L;
-    public static String ATM = "atmg";
+    public static long IPCC = 1167635066638323832L;
+    public static String ATM = "atmg2";
     public static String DISPLAY = "AllTheMods: Gravitas²";
     public static ResourceLocation BACKGROUND = new ResourceLocation(AllTheTweaks.MODID,"textures/gui/title/background.5.png");
 }
