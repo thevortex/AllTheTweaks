@@ -1,10 +1,8 @@
 package com.thevortex.allthetweaks.special_registry;
 
-import com.eerussianguy.firmalife.FirmaLife;
-import com.eerussianguy.firmalife.common.blocks.FLBlocks;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
-import net.dries007.tfc.common.blockentities.TFCBlockEntities;
+
 import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.blocks.wood.Wood;
 import net.dries007.tfc.util.Metal;
@@ -40,16 +38,16 @@ public class TFCJobs {
     private static final HashSet<BlockState> WEAPON_STATES = new HashSet<>(ForgeRegistries.POI_TYPES.getDelegateOrThrow(PoiTypes.WEAPONSMITH).get().matchingStates());
 
     private static final RegistryObject<Block>[] COMPOSTER = new RegistryObject[]{
-            TFCBlocks.COMPOSTER, FLBlocks.IRON_COMPOSTER, FLBlocks.CLIMATE_STATION
+            TFCBlocks.COMPOSTER
     };
     private static final RegistryObject<Block>[] TOOLS = new RegistryObject[]{
-            TFCBlocks.FIREPIT
+            TFCBlocks.CHARCOAL_FORGE
     };
     private static final RegistryObject<Block>[] CLERICAL = new RegistryObject[]{
             TFCBlocks.POT
     };
     private static final RegistryObject<Block>[] BUTCHERY = new RegistryObject[]{
-            TFCBlocks.GRILL, FLBlocks.STOVETOP_GRILL
+            TFCBlocks.GRILL
     };
     private static final RegistryObject<Block>[] SCRAPING = new RegistryObject[]{
             TFCBlocks.SCRAPING
@@ -67,16 +65,28 @@ public class TFCJobs {
 
     public static final RegistryObject<PoiType> TOOLSMITH = POI_TYPES.register("toolsmith", () -> {
         TOOLSMITH_STATES.removeAll(Blocks.SMITHING_TABLE.getStateDefinition().getPossibleStates());
-        for (RegistryObject<Block> block : TOOLS) {
-            TOOLSMITH_STATES.addAll(block.get().getStateDefinition().getPossibleStates());
+        ArrayList<Block> METALANVILS = new ArrayList<>();
+        TFCBlocks.METALS.forEach((metal, types) -> {
+            if (((metal.metalTier() == Metal.Tier.TIER_I)) && metal.hasTools()) {
+                METALANVILS.add(types.get(Metal.BlockType.ANVIL).get());
+            }
+        });
+        for (Block block : METALANVILS) {
+            TOOLSMITH_STATES.addAll(block.getStateDefinition().getPossibleStates());
         }
         return new PoiType(TOOLSMITH_STATES, 1, 1);
     });
 
     public static final RegistryObject<PoiType> WEAPONSMITH = POI_TYPES.register("weaponsmith", () -> {
         WEAPON_STATES.removeAll(Blocks.GRINDSTONE.getStateDefinition().getPossibleStates());
-        for (RegistryObject<Block> block : TFCBlocks.ROCK_ANVILS.values()) {
-            WEAPON_STATES.addAll(block.get().getStateDefinition().getPossibleStates());
+        ArrayList<Block> METALANVILS = new ArrayList<>();
+        TFCBlocks.METALS.forEach((metal, types) -> {
+            if (((metal.metalTier() == Metal.Tier.TIER_II) || (metal.metalTier() == Metal.Tier.TIER_III)) && metal.hasTools()) {
+                METALANVILS.add(types.get(Metal.BlockType.ANVIL).get());
+            }
+        });
+        for (Block block : METALANVILS) {
+            WEAPON_STATES.addAll(block.getStateDefinition().getPossibleStates());
         }
         return new PoiType(WEAPON_STATES, 1, 1);
     });
@@ -151,7 +161,7 @@ public class TFCJobs {
         ARMOR_STATES.removeAll(Blocks.BLAST_FURNACE.getStateDefinition().getPossibleStates());
         ArrayList<Block> METALANVILS = new ArrayList<>();
         TFCBlocks.METALS.forEach((metal, types) -> {
-            if(metal.hasTools()) {
+            if(((metal.metalTier() == Metal.Tier.TIER_IV) || (metal.metalTier() == Metal.Tier.TIER_V) ) && metal.hasTools() ) {
                 METALANVILS.add(types.get(Metal.BlockType.ANVIL).get());
             }
         });

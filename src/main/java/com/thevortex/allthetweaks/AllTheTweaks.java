@@ -7,6 +7,8 @@ import com.thevortex.allthetweaks.proxy.*;
 import com.thevortex.allthetweaks.special_registry.TFCJobs;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageSources;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.carver.WorldCarver;
 import net.minecraftforge.common.MinecraftForge;
@@ -52,9 +54,10 @@ public class AllTheTweaks
 		TweakBlocks.BLOCKS.register(modEventBus);
 		TweakBlocks.ITEMS.register(modEventBus);
 		TweakBlocks.CREATIVE_TABS.register(modEventBus);
-		if(ModList.get().isLoaded("tfc") && ModList.get().isLoaded("firmalife")){
+		if(ModList.get().isLoaded("tfc") /*&& ModList.get().isLoaded("firmalife")*/){
 			TFCJobs.POI_TYPES.register(modEventBus);
 		}
+
 		MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(Configuration.class);
         MinecraftForge.EVENT_BUS.register(Events.class);

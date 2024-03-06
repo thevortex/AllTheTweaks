@@ -32,6 +32,7 @@ public class MyCons {
         if(System.getProperties().getProperty("os.name").contains("OS")) { return; }
 
         String prefix = switch (Configuration.COMMON.mainmode.get()) {
+            case 5 -> "icons_grav";
             case 3 -> "icons_magic";
             case 2 -> "icons_sky";
             case 1 -> "icons_slop";
