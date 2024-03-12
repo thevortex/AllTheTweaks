@@ -8,13 +8,14 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
+
 import javax.annotation.Nullable;
 import java.util.concurrent.CompletableFuture;
 
-public class BlockTags extends BlockTagsProvider {
-
+public class BlockTags extends BlockTagsProvider
+{
     public BlockTags(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
-        super(packOutput,lookupProvider, Reference.MOD_ID, existingFileHelper);
+        super(packOutput, lookupProvider, Reference.MOD_ID, existingFileHelper);
     }
 
     @Override
@@ -22,6 +23,6 @@ public class BlockTags extends BlockTagsProvider {
         tag(Reference.ENDERPEARL_BLOCK).add(TweakBlocks.ENDERPEARL_BLOCK.get());
         tag(Reference.NETHERSTAR_BLOCK).add(TweakBlocks.NETHERSTAR_BLOCK.get());
         tag(Reference.ATMSTAR_BLOCK).add(TweakBlocks.ATMSTAR_BLOCK.get());
-
-       }
+        tag(Reference.GREGSTAR_BLOCK).add(TweakBlocks.GREGSTAR_BLOCK.get());
+    }
 }

@@ -1,10 +1,8 @@
 package com.thevortex.allthetweaks.datagen.server;
 
-
 import com.thevortex.allthetweaks.blocks.TweakBlocks;
 import com.thevortex.allthetweaks.config.Reference;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.data.tags.TagsProvider;
@@ -20,9 +18,11 @@ public class ItemTags extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-            tag(Reference.ENDERPEARL_BLOCK_ITEM).add(TweakBlocks.ENDERPEARL_BLOCK_ITEM.get());
-            tag(Reference.NETHERSTAR_BLOCK_ITEM).add(TweakBlocks.NETHERSTAR_BLOCK_ITEM.get());
-            tag(Reference.ATMSTAR_BLOCK_ITEM).add(TweakBlocks.ATMSTAR_BLOCK_ITEM.get());
-            tag(Reference.ATMSTAR).add(TweakBlocks.ATMSTAR.get());
+        tag(Reference.ENDERPEARL_BLOCK_ITEM).add(TweakBlocks.ENDERPEARL_BLOCK_ITEM.get());
+        tag(Reference.NETHERSTAR_BLOCK_ITEM).add(TweakBlocks.NETHERSTAR_BLOCK_ITEM.get());
+        tag(Reference.ATMSTAR_BLOCK_ITEM).add(TweakBlocks.ATMSTAR_BLOCK_ITEM.get());
+        tag(Reference.GREGSTAR_BLOCK_ITEM).add(TweakBlocks.GREGSTAR_BLOCK_ITEM.get());
+        tag(Reference.ATMSTAR).add(TweakBlocks.ATMSTAR.get());
+        tag(Reference.GREGSTAR).add(TweakBlocks.GREGSTAR.get());
     }
 }

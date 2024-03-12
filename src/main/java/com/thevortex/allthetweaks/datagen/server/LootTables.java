@@ -22,33 +22,18 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
-public class LootTables extends VanillaBlockLoot {
+public class LootTables extends VanillaBlockLoot
+{
+    @Override
+    public void generate() {
+        getKnownBlocks().forEach(this::dropSelf);
+    }
 
-
-
-
-        @Override
-        public void generate()
-        {
-            getKnownBlocks().forEach(this::dropSelf);
-
-        }
-
-
-
-
-
-        @Override
-        protected Iterable<Block> getKnownBlocks()
-        {
-            return TweakBlocks.BLOCKS.getEntries()
+    @Override
+    protected Iterable<Block> getKnownBlocks() {
+        return TweakBlocks.BLOCKS.getEntries()
                 .stream().map(RegistryObject::get)
                 .filter(block -> !(block instanceof LiquidBlock))
                 .collect(Collectors.toList());
-
-        }
-
-
-
-
+    }
 }

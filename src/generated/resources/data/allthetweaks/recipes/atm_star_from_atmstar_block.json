@@ -1,12 +1,13 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "ingredients": [
     {
       "tag": "forge:storage_blocks/atm_star"
     }
   ],
   "result": {
-    "item": "allthetweaks:atm_star",
-    "count": 9
+    "count": 9,
+    "item": "allthetweaks:atm_star"
   }
 }

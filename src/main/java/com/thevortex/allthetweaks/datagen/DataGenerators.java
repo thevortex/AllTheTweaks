@@ -18,27 +18,27 @@ import java.util.Collections;
 import java.util.List;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
-public final class DataGenerators {
-    private DataGenerators() {}
+public final class DataGenerators
+{
+    private DataGenerators() {
+    }
 
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event) throws IOException {
         DataGenerator generator = event.getGenerator();
         PackOutput packOutput = generator.getPackOutput();
         ExistingFileHelper fileHelper = event.getExistingFileHelper();
-        if (event.includeClient()) {
-           // generator.addProvider(true,new BlockStates(generator, fileHelper));
-            generator.addProvider(true,new ItemModels(generator, fileHelper));
-        }
-        if (event.includeServer()) {
-            BlockTags blockTags = new BlockTags(packOutput, event.getLookupProvider(), fileHelper);
-            generator.addProvider(true,new ItemTags(packOutput, event.getLookupProvider(), blockTags.contentsGetter(), fileHelper));
-            generator.addProvider(true,blockTags);
 
-            generator.addProvider(true,new LootTableProvider(packOutput, Collections.emptySet(),
-                    List.of(new LootTableProvider.SubProviderEntry(LootTables::new, LootContextParamSets.BLOCK))));
+        generator.addProvider(event.includeClient(), new BlockStates(generator, fileHelper));
+        generator.addProvider(event.includeClient(), new ItemModels(generator, fileHelper));
 
-        }
+        BlockTags blockTags = new BlockTags(packOutput, event.getLookupProvider(), fileHelper);
+        generator.addProvider(event.includeServer(), blockTags);
+        generator.addProvider(event.includeServer(), new ItemTags(packOutput, event.getLookupProvider(), blockTags.contentsGetter(), fileHelper));
+        generator.addProvider(event.includeServer(), new LootTableProvider(packOutput, Collections.emptySet(),
+                List.of(new LootTableProvider.SubProviderEntry(LootTables::new, LootContextParamSets.BLOCK))));
 
+        generator.addProvider(event.includeClient(), new CraftingRecipes(packOutput));
+        generator.addProvider(event.includeClient(), new ShapelessCrafting(packOutput));
     }
 }

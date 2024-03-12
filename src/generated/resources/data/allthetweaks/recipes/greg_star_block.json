@@ -4,7 +4,7 @@
   "group": "allthetweaks",
   "key": {
     "a": {
-      "tag": "allthetweaks:atm_star"
+      "tag": "allthetweaks:greg_star"
     }
   },
   "pattern": [
@@ -13,7 +13,7 @@
     "aaa"
   ],
   "result": {
-    "item": "allthetweaks:atm_star_block"
+    "item": "allthetweaks:greg_star_block"
   },
   "show_notification": true
 }

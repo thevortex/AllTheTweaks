@@ -4,7 +4,7 @@
 		"0": "block/bedrock",
 		"1": "block/torch",
 		"2": "block/end_stone",
-		"3": "entity/end_portal",
+		"3": "block/obsidian",
 		"4": "block/dragon_egg",
 		"particle": "block/bedrock"
 	},

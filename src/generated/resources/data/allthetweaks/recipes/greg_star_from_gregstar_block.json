@@ -3,11 +3,11 @@
   "category": "misc",
   "ingredients": [
     {
-      "tag": "forge:storage_blocks/nether_star"
+      "tag": "forge:storage_blocks/greg_star"
     }
   ],
   "result": {
     "count": 9,
-    "item": "minecraft:nether_star"
+    "item": "allthetweaks:greg_star"
   }
 }
