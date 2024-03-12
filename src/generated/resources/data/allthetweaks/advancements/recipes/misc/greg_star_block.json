@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_nether_star_block": {
+    "has_greg_star_block": {
       "conditions": {
         "items": [
           {
-            "tag": "forge:storage_blocks/nether_star"
+            "tag": "allthetweaks:greg_star"
           }
         ]
       },
@@ -13,20 +13,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthetweaks:nether_star_from_nether_star_block"
+        "recipe": "allthetweaks:greg_star_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_nether_star_block",
+      "has_greg_star_block",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "allthetweaks:nether_star_from_nether_star_block"
+      "allthetweaks:greg_star_block"
     ]
   },
   "sends_telemetry_event": false

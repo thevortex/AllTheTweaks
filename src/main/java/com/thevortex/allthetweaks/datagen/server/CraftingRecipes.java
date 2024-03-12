@@ -39,14 +39,12 @@ public class CraftingRecipes extends RecipeProvider {
             .unlockedBy("has_platinum_ingot", has(ItemTagRegistry.PLATINUM_INGOT))
             .save(consumer);
 */
-        final String hasCondition = "has_item";
-
         shaped(TweakBlocks.ENDERPEARL_BLOCK.get())
                 .pattern("ppp")
                 .pattern("ppp")
                 .pattern("ppp")
                 .define('p',Tags.Items.ENDER_PEARLS)
-                .unlockedBy("has_ender_pearl",RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(Tags.Items.ENDER_PEARLS).build()))
+                .unlockedBy("has_ender_pearl", has(Tags.Items.ENDER_PEARLS))
                 .save(consumer);
 
         shaped(TweakBlocks.NETHERSTAR_BLOCK.get())
@@ -54,7 +52,7 @@ public class CraftingRecipes extends RecipeProvider {
                 .pattern("sss")
                 .pattern("sss")
                 .define('s',Tags.Items.NETHER_STARS)
-                .unlockedBy("has_nether_star",RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(Tags.Items.NETHER_STARS).build()))
+                .unlockedBy("has_nether_star", has(Tags.Items.NETHER_STARS))
                 .save(consumer);
 
         shaped(TweakBlocks.ATMSTAR_BLOCK.get())
@@ -62,7 +60,20 @@ public class CraftingRecipes extends RecipeProvider {
                 .pattern("aaa")
                 .pattern("aaa")
                 .define('a',Reference.ATMSTAR)
-                .unlockedBy("has_atm_star",RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(Reference.ATMSTAR).build()))
+                .unlockedBy("has_atm_star", has(Reference.ATMSTAR))
                 .save(consumer);
+
+        shaped(TweakBlocks.GREGSTAR_BLOCK.get())
+                .pattern("aaa")
+                .pattern("aaa")
+                .pattern("aaa")
+                .define('a', Reference.GREGSTAR)
+                .unlockedBy(getHasName(TweakBlocks.GREGSTAR_BLOCK.get()), has(Reference.GREGSTAR))
+                .save(consumer);
+    }
+
+    @Override
+    public String getName() {
+        return "ATT Crafting Recipes";
     }
 }

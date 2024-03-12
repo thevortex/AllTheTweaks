@@ -30,6 +30,7 @@ public class Reference {
     public static final TagKey<Block> ENDERPEARL_BLOCK = BlockTags.create(block("ender_pearl"));
     public static final TagKey<Block> NETHERSTAR_BLOCK = BlockTags.create(block("nether_star"));
     public static final TagKey<Block> ATMSTAR_BLOCK = BlockTags.create(block("atm_star"));
+    public static final TagKey<Block> GREGSTAR_BLOCK = BlockTags.create(block("greg_star"));
 
     public static final TagKey<Block> BuildingGadgets = BlockTags.create(new ResourceLocation("buildinggadgets","blacklist/copy_paste"));
     public static final TagKey<Block> BuildingGadgets_generic = BlockTags.create(new ResourceLocation("buildinggadgets","blacklist/generic"));
@@ -37,7 +38,9 @@ public class Reference {
     public static final TagKey<Item> ENDERPEARL_BLOCK_ITEM = ItemTags.create(Reference.block("ender_pearl"));
     public static final TagKey<Item> NETHERSTAR_BLOCK_ITEM = ItemTags.create(Reference.block("nether_star"));
     public static final TagKey<Item> ATMSTAR_BLOCK_ITEM = ItemTags.create(Reference.block("atm_star"));
+    public static final TagKey<Item> GREGSTAR_BLOCK_ITEM = ItemTags.create(Reference.block("greg_star"));
 
     public static final TagKey<Item> ATMSTAR = ItemTags.create(Reference.tweaks("atm_star"));
+    public static final TagKey<Item> GREGSTAR = ItemTags.create(Reference.tweaks("greg_star"));
 
 }

@@ -1,17 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "group": "allthetweaks",
-  "pattern": [
-    "ppp",
-    "ppp",
-    "ppp"
-  ],
   "key": {
     "p": {
       "tag": "forge:ender_pearls"
     }
   },
+  "pattern": [
+    "ppp",
+    "ppp",
+    "ppp"
+  ],
   "result": {
     "item": "allthetweaks:ender_pearl_block"
-  }
+  },
+  "show_notification": true
 }

@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "allthetweaks:nether_star_block"
+          "name": "allthetweaks:trophy_atm"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "allthetweaks:blocks/nether_star_block"
+  "random_sequence": "allthetweaks:blocks/trophy_atm"
 }

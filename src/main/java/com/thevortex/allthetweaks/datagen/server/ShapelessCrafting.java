@@ -33,21 +33,31 @@ private ResourceLocation recipeDir(String typeIn, String typeOut) {
 */      ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC,TweakBlocks.ATMSTAR.get(),9)
                 .requires(Reference.ATMSTAR_BLOCK_ITEM)
-                .unlockedBy(hasCondition,RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(Reference.ATMSTAR_BLOCK_ITEM).build()))
+                .unlockedBy(getHasName(TweakBlocks.ATMSTAR_BLOCK_ITEM.get()), has(Reference.ATMSTAR_BLOCK_ITEM))
                 .save(consumer,recipeDir("atm_star","atmstar_block"));
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.MISC,TweakBlocks.GREGSTAR.get(),9)
+                .requires(Reference.GREGSTAR_BLOCK_ITEM)
+                .unlockedBy(getHasName(TweakBlocks.GREGSTAR_BLOCK_ITEM.get()), has(Reference.GREGSTAR_BLOCK_ITEM))
+                .save(consumer,recipeDir("greg_star","gregstar_block"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC,Items.ENDER_PEARL,9)
                 .requires(Reference.ENDERPEARL_BLOCK_ITEM)
-                .unlockedBy(hasCondition,RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(Reference.ENDERPEARL_BLOCK_ITEM).build()))
+                .unlockedBy(getHasName(TweakBlocks.ENDERPEARL_BLOCK_ITEM.get()), has(Reference.ENDERPEARL_BLOCK_ITEM))
                 .save(consumer,recipeDir("ender_pearl","ender_pearl_block"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC,Items.NETHER_STAR,9)
                 .requires(Reference.NETHERSTAR_BLOCK_ITEM)
-                .unlockedBy(hasCondition,RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(Reference.NETHERSTAR_BLOCK_ITEM).build()))
+                .unlockedBy(getHasName(TweakBlocks.NETHERSTAR_BLOCK_ITEM.get()), has(Reference.NETHERSTAR_BLOCK_ITEM))
                 .save(consumer,recipeDir("nether_star","nether_star_block"));
     }
 
     public ShapelessCrafting(PackOutput packOutput) {
         super(packOutput);
+    }
+
+    @Override
+    public String getName() {
+        return "ATT Shapeless Recipes";
     }
 }

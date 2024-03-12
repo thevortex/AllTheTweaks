@@ -22,6 +22,7 @@ public class TweakBlocks {
     public static final RegistryObject<Block> ENDERPEARL_BLOCK = BLOCKS.register("ender_pearl_block",() -> new Block(Block.Properties.of().strength(0.85f,1.0f).sound(SoundType.GLASS)));
     public static final RegistryObject<Block> NETHERSTAR_BLOCK = BLOCKS.register("nether_star_block",() -> new Block(Block.Properties.of().strength(0.85f,1.0f).sound(SoundType.GLASS)));
     public static final RegistryObject<Block> ATMSTAR_BLOCK = BLOCKS.register("atm_star_block",() -> new Block(Block.Properties.of().strength(0.85f,1.0f).sound(SoundType.METAL)));
+    public static final RegistryObject<Block> GREGSTAR_BLOCK = BLOCKS.register("greg_star_block",() -> new Block(Block.Properties.of().strength(0.85f,1.0f).sound(SoundType.METAL)));
     public static final RegistryObject<Block> MINI_END_BLOCK = BLOCKS.register("mini_end",() -> new MiniPortalBlock(Block.Properties.of().strength(0.75f).sound(SoundType.STONE).noOcclusion()));
     public static final RegistryObject<Block> MINI_EXIT_BLOCK = BLOCKS.register("mini_exit",() -> new MiniPortalBlock(Block.Properties.of().strength(0.75f).sound(SoundType.STONE).noOcclusion()));
     public static final RegistryObject<Block> MINI_NETHER_BLOCK = BLOCKS.register("mini_nether",() -> new MiniPortalBlock(Block.Properties.of().strength(0.75f).sound(SoundType.NETHERRACK).noOcclusion()));
@@ -36,6 +37,9 @@ public class TweakBlocks {
 
     public static final RegistryObject<Item> ATMSTAR_BLOCK_ITEM = ITEMS.register("atm_star_block",
             () -> new BlockItem(ATMSTAR_BLOCK.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> GREGSTAR_BLOCK_ITEM = ITEMS.register("greg_star_block",
+            () -> new BlockItem(GREGSTAR_BLOCK.get(), new Item.Properties()));
 
     public static final RegistryObject<Item> MINI_END_BLOCK_ITEM = ITEMS.register("mini_end",
     () -> new BlockItem(MINI_END_BLOCK.get(), new Item.Properties()));
