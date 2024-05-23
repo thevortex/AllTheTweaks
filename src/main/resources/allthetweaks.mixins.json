@@ -5,7 +5,8 @@
   "minVersion": "0.8",
   "refmap": "allthetweaks.refmap.json",
   "mixins": [
-    "FluiDucts"
+    "FluiDucts",
+    "TESyncFix"
   ],
   "client": [
     "NameBrandsOnly"

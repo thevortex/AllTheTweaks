@@ -182,7 +182,7 @@ dependencies {
 //    implementation fg.deobf("curse.maven:create-steam-n-rails-688231:4836196")
     implementation fg.deobf("curse.maven:terrafirmacraft-302973:5133509")
     implementation fg.deobf("curse.maven:patchouli-306770:4966125")
-
+    implementation fg.deobf("curse.maven:eidolon-repraised-870250:5317920")
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
