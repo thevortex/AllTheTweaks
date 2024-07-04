@@ -2,35 +2,38 @@ package com.thevortex.allthetweaks.config;
 
 import java.util.Map;
 
-import net.minecraftforge.fml.event.config.ModConfigEvent;
+import java.nio.file.Path;
 import org.apache.commons.lang3.tuple.Pair;
 
+import com.electronwill.nightconfig.core.file.CommentedFileConfig;
+import com.electronwill.nightconfig.core.io.WritingMode;
 import com.thevortex.allthetweaks.AllTheTweaks;
+import com.thevortex.allthetweaks.proxy.ClientProxy;
 
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.config.IConfigEvent.ConfigConfig;
+import net.neoforged.fml.event.config.ModConfigEvent;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.common.ModConfigSpec;
 
-@EventBusSubscriber(modid = AllTheTweaks.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class Configuration {
-	public static final ForgeConfigSpec COMMON_SPEC;
+	public static final ModConfigSpec COMMON_SPEC;
 	public static final Common COMMON;
 	static {
-		final Pair<Common, ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(Common::new);
+		final Pair<Common, ModConfigSpec> specPair = new ModConfigSpec.Builder().configure(Common::new);
 		COMMON_SPEC = specPair.getRight();
 		COMMON = specPair.getLeft();
 	}
 	public static class Common {
-		public final ForgeConfigSpec.IntValue mainmode;
-		public final ForgeConfigSpec.BooleanValue discord;
-		public final ForgeConfigSpec.IntValue majorver;
-		public final ForgeConfigSpec.IntValue minorver;
-		public final ForgeConfigSpec.IntValue minorrevver;
+		public final ModConfigSpec.IntValue mainmode;
+		public final ModConfigSpec.BooleanValue discord;
+		public final ModConfigSpec.IntValue majorver;
+		public final ModConfigSpec.IntValue minorver;
+		public final ModConfigSpec.IntValue minorrevver;
 		//public final ForgeConfigSpec.IntValue tickSpeed;
 		
-		public Common(ForgeConfigSpec.Builder BUILDER) {
+		public Common(ModConfigSpec.Builder BUILDER) {
 			BUILDER.push("packmode");
 			mainmode = BUILDER.comment("ATM = 0 SLOP = 1 SKY = 2 MAGIC = 3 EXPERT = 4 GRAVITAS = 5").defineInRange("enable",
 					0, 0, 5);
@@ -58,19 +61,21 @@ public class Configuration {
 
 		}
 	}
-	@SubscribeEvent
-	public static void onModConfigEvent(final ModConfigEvent configEvent) {
-		bakeConfigs();
-		AllTheTweaks.configFire = true;
-		
-	}
-	@SubscribeEvent
-	public static void commonSetupEvent(final FMLCommonSetupEvent event) {
-		AllTheTweaks.proxy.init();
-	}
-	private static void bakeConfigs() {
+	public static void loadConfig(ModConfigSpec spec, Path path) {
+        final CommentedFileConfig configData =
+                CommentedFileConfig.builder(path)
+                        .sync()
+                        .autosave()
+                        .writingMode(WritingMode.REPLACE)
+                        .build();
 
-		AllTheTweaks.proxy.assignBG(Configuration.COMMON.mainmode.get());
+        configData.load();
+        spec.setConfig(configData);
+    }
+
+	public static void bakeConfigs() {
+
+		
 		int SLOP = Configuration.COMMON.mainmode.get();
 		if(SLOP == 1) {
         	AllTheTweaks.IPCC = cfgSLOP.IPCC;

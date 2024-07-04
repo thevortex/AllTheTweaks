@@ -9,5 +9,4 @@ public interface IProxy {
    ClientLevel getClientWorld();
    LocalPlayer getClientPlayer();
    Minecraft getMinecraft();
-   void assignBG(int packmode);
 }

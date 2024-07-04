@@ -1,0 +1,91 @@
+[24Jun2024 16:31:13.448] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--nogui, --launchTarget, forgeserveruserdev, --gameDir, ., --fml.neoForgeVersion, 21.0.13-beta, --fml.fmlVersion, 4.0.6, --fml.mcVersion, 1.21, --fml.neoFormVersion, 20240613.152323]
+[24Jun2024 16:31:13.451] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: JVM identified as Eclipse Adoptium OpenJDK 64-Bit Server VM 21.0.3+9-LTS
+[24Jun2024 16:31:13.452] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 11.0.3+main.0f24dec3 starting: java version 21.0.3 by Eclipse Adoptium; OS Windows 10 arch amd64 version 10.0
+[24Jun2024 16:31:13.541] [main/INFO] [net.neoforged.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgeserveruserdev
+[24Jun2024 16:31:13.579] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/thevortex/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.13.4+mixin.0.8.5/8adf0cff1795a169141b9e16ad7b9f6e2527a990/sponge-mixin-0.13.4+mixin.0.8.5.jar%23135!/ Service=ModLauncher Env=SERVER
+[24Jun2024 16:31:13.751] [main/INFO] [net.neoforged.fml.loading.moddiscovery.ModDiscoverer/SCAN]: Found mod file "neoforge-21.0.13-beta.jar" [locator: neoforge devenv provider ([C:\Users\thevortex\Documents\GitHub\AllTheTweaks\.gradle\repositories\ng_dummy_ng\net\neoforged\neoforge\21.0.13-beta\neoforge-21.0.13-beta.jar])]
+[24Jun2024 16:31:13.761] [main/INFO] [net.neoforged.fml.loading.moddiscovery.ModDiscoverer/SCAN]: Found mod file "neoforge-21.0.13-beta.jar" [locator: neoforge devenv provider ([C:\Users\thevortex\Documents\GitHub\AllTheTweaks\.gradle\repositories\ng_dummy_ng\net\neoforged\neoforge\21.0.13-beta\neoforge-21.0.13-beta.jar])]
+[24Jun2024 16:31:13.770] [main/INFO] [net.neoforged.fml.loading.moddiscovery.ModDiscoverer/SCAN]: Found mod file "main" [locator: userdev mods and services, reader: mod manifest]
+[24Jun2024 16:31:13.779] [main/INFO] [net.neoforged.fml.loading.moddiscovery.ModDiscoverer/SCAN]: Found mod file "neoforge-21.0.13-beta.jar" [locator: userdev mods and services, reader: mod manifest]
+[24Jun2024 16:31:13.796] [main/INFO] [net.neoforged.fml.loading.moddiscovery.ModDiscoverer/SCAN]: Found gamelibrary file "mixinextras-neoforge-0.3.5.jar" [locator: userdev mods and services, reader: mod manifest]
+[24Jun2024 16:31:13.892] [main/WARN] [net.neoforged.jarjar.selection.JarSelector/]: Attempted to select a dependency jar for JarJar which was passed in as source: mixinextras-neoforge-0.3.5.jar. Using Mod File: C:\Users\thevortex\.gradle\caches\modules-2\files-2.1\io.github.llamalad7\mixinextras-neoforge\0.3.5\ef3ffcf309dae656517b2f120189b1c9b21737dd\mixinextras-neoforge-0.3.5.jar
+[24Jun2024 16:31:13.892] [main/INFO] [net.neoforged.fml.loading.moddiscovery.locators.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
+[24Jun2024 16:31:14.038] [main/INFO] [net.neoforged.fml.loading.FMLServiceProvider/CORE]: Loading coremod script-engine for [neoforge]
+[24Jun2024 16:31:14.690] [main/INFO] [mixin/]: Successfully loaded Mixin Connector [com.thevortex.allthetweaks.mixin.MixinConnector]
+[24Jun2024 16:31:14.695] [main/INFO] [mixin/]: Compatibility level set to JAVA_21
+[24Jun2024 16:31:14.696] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeserveruserdev' with arguments [--gameDir, ., --nogui]
+[24Jun2024 16:31:14.765] [main/WARN] [mixin/]: Reference map 'allthetweaks.refmap.json' for allthetweaks.mixins.json could not be read. If this is a development environment you can ignore this message
+[24Jun2024 16:31:19.546] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[24Jun2024 16:31:19.547] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, targets] with inputs: [0.1 -0.5 .9, 0 0 0]
+[24Jun2024 16:31:19.549] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, destination] and [teleport, targets] with inputs: [Player, 0123, @e, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[24Jun2024 16:31:19.549] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, targets] and [teleport, destination] with inputs: [Player, 0123, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[24Jun2024 16:31:19.550] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, targets, location] and [teleport, targets, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[24Jun2024 16:31:19.596] [modloading-worker-0/INFO] [net.neoforged.neoforge.common.NeoForgeMod/NEOFORGE-MOD]: NeoForge mod loading, version 21.0.13-beta, for MC 1.21
+[24Jun2024 16:31:19.759] [modloading-sync-worker/WARN] [net.neoforged.neoforge.common.ModConfigSpec/CORE]: Configuration file C:\Users\thevortex\Documents\GitHub\AllTheTweaks\runs\server\config\neoforge-common.toml is not correct. Correcting
+[24Jun2024 16:31:19.760] [modloading-sync-worker/WARN] [net.neoforged.neoforge.common.ModConfigSpec/CORE]: Incorrect key general was corrected from null to its default, SimpleCommentedConfig:{}. 
+[24Jun2024 16:31:19.760] [modloading-sync-worker/WARN] [net.neoforged.neoforge.common.ModConfigSpec/CORE]: Incorrect key general.logUntranslatedItemTagWarnings was corrected from null to its default, SILENCED. 
+[24Jun2024 16:31:19.760] [modloading-sync-worker/WARN] [net.neoforged.neoforge.common.ModConfigSpec/CORE]: Incorrect key general.logLegacyTagWarnings was corrected from null to its default, DEV_SHORT. 
+[24Jun2024 16:31:19.803] [main/ERROR] [net.minecraft.server.dedicated.Settings/]: Failed to load properties from file: server.properties
+java.nio.file.NoSuchFileException: server.properties
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234) ~[?:?]
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:379) ~[?:?]
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:431) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420) ~[?:?]
+	at java.base/java.nio.file.Files.newInputStream(Files.java:159) ~[?:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.server.dedicated.Settings.loadFromFile(Settings.java:38) ~[neoforge-21.0.13-beta.jar%23190!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.server.dedicated.DedicatedServerProperties.fromFile(DedicatedServerProperties.java:132) ~[neoforge-21.0.13-beta.jar%23190!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.server.dedicated.DedicatedServerSettings.<init>(DedicatedServerSettings.java:12) ~[neoforge-21.0.13-beta.jar%23190!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.server.Main.main(Main.java:125) ~[neoforge-21.0.13-beta.jar%23190!/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at MC-BOOTSTRAP/fml_loader@4.0.6/net.neoforged.fml.loading.targets.CommonLaunchHandler.runTarget(CommonLaunchHandler.java:136) ~[loader-4.0.6.jar%23143!/:4.0]
+	at MC-BOOTSTRAP/fml_loader@4.0.6/net.neoforged.fml.loading.targets.CommonLaunchHandler.serverService(CommonLaunchHandler.java:128) ~[loader-4.0.6.jar%23143!/:4.0]
+	at MC-BOOTSTRAP/fml_loader@4.0.6/net.neoforged.fml.loading.targets.NeoForgeServerUserdevLaunchHandler.runService(NeoForgeServerUserdevLaunchHandler.java:23) ~[loader-4.0.6.jar%23143!/:4.0]
+	at MC-BOOTSTRAP/fml_loader@4.0.6/net.neoforged.fml.loading.targets.CommonLaunchHandler.lambda$launchService$4(CommonLaunchHandler.java:118) ~[loader-4.0.6.jar%23143!/:4.0]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.3/cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:30) [modlauncher-11.0.3.jar%23125!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.3/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:53) [modlauncher-11.0.3.jar%23125!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.3/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:71) [modlauncher-11.0.3.jar%23125!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.3/cpw.mods.modlauncher.Launcher.run(Launcher.java:103) [modlauncher-11.0.3.jar%23125!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.3/cpw.mods.modlauncher.Launcher.main(Launcher.java:74) [modlauncher-11.0.3.jar%23125!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.3/cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:26) [modlauncher-11.0.3.jar%23125!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.3/cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:23) [modlauncher-11.0.3.jar%23125!/:?]
+	at cpw.mods.bootstraplauncher@2.0.2/cpw.mods.bootstraplauncher.BootstrapLauncher.run(BootstrapLauncher.java:210) [bootstraplauncher-2.0.2.jar:?]
+	at cpw.mods.bootstraplauncher@2.0.2/cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:69) [bootstraplauncher-2.0.2.jar:?]
+[24Jun2024 16:31:19.822] [main/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[24Jun2024 16:31:19.867] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/thevortex/Documents/GitHub/AllTheTweaks/.gradle/repositories/ng_dummy_ng/net/neoforged/neoforge/21.0.13-beta/neoforge-21.0.13-beta.jar%23190!/assets/.mcassetsroot' uses unexpected schema
+[24Jun2024 16:31:19.867] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/thevortex/Documents/GitHub/AllTheTweaks/.gradle/repositories/ng_dummy_ng/net/neoforged/neoforge/21.0.13-beta/neoforge-21.0.13-beta.jar%23190!/data/.mcassetsroot' uses unexpected schema
+[24Jun2024 16:31:20.278] [main/INFO] [net.minecraft.server.Main/]: No existing world data, creating new world
+[24Jun2024 16:31:20.604] [main/INFO] [net.minecraft.world.item.crafting.RecipeManager/]: Loaded 1290 recipes
+[24Jun2024 16:31:20.711] [main/INFO] [net.minecraft.advancements.AdvancementTree/]: Loaded 1399 advancements
+[24Jun2024 16:31:21.045] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Starting minecraft server version 1.21
+[24Jun2024 16:31:21.045] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Loading properties
+[24Jun2024 16:31:21.045] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Default game type: SURVIVAL
+[24Jun2024 16:31:21.046] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Generating keypair
+[24Jun2024 16:31:21.091] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Starting Minecraft server on *:25565
+[24Jun2024 16:31:21.147] [Server thread/INFO] [net.minecraft.server.network.ServerConnectionListener/]: Using default channel type
+[24Jun2024 16:31:21.176] [Server thread/WARN] [net.minecraft.server.dedicated.DedicatedServer/]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[24Jun2024 16:31:21.176] [Server thread/WARN] [net.minecraft.server.dedicated.DedicatedServer/]: The server will make no attempt to authenticate usernames. Beware.
+[24Jun2024 16:31:21.176] [Server thread/WARN] [net.minecraft.server.dedicated.DedicatedServer/]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[24Jun2024 16:31:21.176] [Server thread/WARN] [net.minecraft.server.dedicated.DedicatedServer/]: To change this, set "online-mode" to "true" in the server.properties file.
+[24Jun2024 16:31:21.189] [Server thread/WARN] [net.neoforged.neoforge.common.ModConfigSpec/CORE]: Configuration file C:\Users\thevortex\Documents\GitHub\AllTheTweaks\runs\server\config\neoforge-server.toml is not correct. Correcting
+[24Jun2024 16:31:21.189] [Server thread/WARN] [net.neoforged.neoforge.common.ModConfigSpec/CORE]: Incorrect key server was corrected from null to its default, SimpleCommentedConfig:{}. 
+[24Jun2024 16:31:21.189] [Server thread/WARN] [net.neoforged.neoforge.common.ModConfigSpec/CORE]: Incorrect key server.removeErroringBlockEntities was corrected from null to its default, false. 
+[24Jun2024 16:31:21.189] [Server thread/WARN] [net.neoforged.neoforge.common.ModConfigSpec/CORE]: Incorrect key server.removeErroringEntities was corrected from null to its default, false. 
+[24Jun2024 16:31:21.189] [Server thread/WARN] [net.neoforged.neoforge.common.ModConfigSpec/CORE]: Incorrect key server.fullBoundingBoxLadders was corrected from null to its default, false. 
+[24Jun2024 16:31:21.190] [Server thread/WARN] [net.neoforged.neoforge.common.ModConfigSpec/CORE]: Incorrect key server.permissionHandler was corrected from null to its default, neoforge:default_handler. 
+[24Jun2024 16:31:21.190] [Server thread/WARN] [net.neoforged.neoforge.common.ModConfigSpec/CORE]: Incorrect key server.advertiseDedicatedServerToLan was corrected from null to its default, true. 
+[24Jun2024 16:31:21.198] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Preparing level "world"
+[24Jun2024 16:31:22.920] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Preparing start region for dimension minecraft:overworld
+[24Jun2024 16:31:22.939] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 2%
+[24Jun2024 16:31:23.425] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 2%
+[24Jun2024 16:31:23.925] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 18%
+[24Jun2024 16:31:24.426] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 26%
+[24Jun2024 16:31:24.974] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 51%
+[24Jun2024 16:31:25.424] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 51%
+[24Jun2024 16:31:25.505] [Server thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Time elapsed: 2585 ms
+[24Jun2024 16:31:25.505] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Done (4.319s)! For help, type "help"
+[24Jun2024 16:31:25.530] [Server thread/INFO] [net.neoforged.neoforge.gametest.GameTestHooks/]: Enabled Gametest Namespaces: []
+[24Jun2024 16:31:25.534] [Server thread/INFO] [net.neoforged.neoforge.server.permission.PermissionAPI/]: Successfully initialized permission handler neoforge:default_handler

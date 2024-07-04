@@ -4,6 +4,8 @@ import com.mojang.blaze3d.platform.TextureUtil;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.thevortex.allthetweaks.AllTheTweaks;
 import com.thevortex.allthetweaks.config.Configuration;
+
+import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import org.lwjgl.glfw.GLFW;
 
@@ -22,9 +24,9 @@ public class MyCons {
 
     private static InputStream iconStream(String prefix, String size) throws IOException {
         var location = String.format("textures/%s/icon_%s.png", prefix, size);
-        return AllTheTweaks.proxy.getMinecraft()
+        return Minecraft.getInstance()
                 .getResourceManager()
-                .open(new ResourceLocation("allthetweaks", location));
+                .open(ResourceLocation.fromNamespaceAndPath("allthetweaks", location));
 
     }
 
@@ -66,7 +68,7 @@ public class MyCons {
             buffer.height(intbuffer1.get(0));
             buffer.pixels(bytebuffer1);
             buffer.position(0);
-            GLFW.glfwSetWindowIcon(AllTheTweaks.proxy.getMinecraft().getWindow().getWindow(), buffer);
+            GLFW.glfwSetWindowIcon(Minecraft.getInstance().getWindow().getWindow(), buffer);
             STBImage.stbi_image_free(bytebuffer);
             STBImage.stbi_image_free(bytebuffer1);
 
@@ -79,7 +81,7 @@ public class MyCons {
     @Nullable
     private static ByteBuffer loadIco(InputStream p_198111_1_, IntBuffer p_198111_2_, IntBuffer p_198111_3_, IntBuffer p_198111_4_) throws IOException {
 
-        RenderSystem.assertInInitPhase();
+        
         ByteBuffer bytebuffer = null;
 
         ByteBuffer bytebuffer1;

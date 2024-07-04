@@ -2,25 +2,24 @@ package com.thevortex.allthetweaks.datagen.server;
 
 import com.thevortex.allthetweaks.blocks.TweakBlocks;
 import com.thevortex.allthetweaks.config.Reference;
-import net.minecraft.advancements.critereon.ItemPredicate;
-import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 
-import java.util.function.Consumer;
+import net.minecraft.core.HolderLookup.Provider;
+import java.util.concurrent.CompletableFuture;
 
 public class ShapelessCrafting extends RecipeProvider {
 
 private ResourceLocation recipeDir(String typeIn, String typeOut) {
-    return new ResourceLocation(Reference.MOD_ID,typeIn + "_from_" + typeOut);
+    return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID,typeIn + "_from_" + typeOut);
 }
     @Override
-    protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
+    protected void buildRecipes(RecipeOutput consumer) {
 
         final String hasCondition = "has_item";
 
@@ -52,12 +51,9 @@ private ResourceLocation recipeDir(String typeIn, String typeOut) {
                 .save(consumer,recipeDir("nether_star","nether_star_block"));
     }
 
-    public ShapelessCrafting(PackOutput packOutput) {
-        super(packOutput);
+    public ShapelessCrafting(PackOutput packOutput,CompletableFuture<Provider> provider) {
+        super(packOutput,provider);
     }
 
-    @Override
-    public String getName() {
-        return "ATT Shapeless Recipes";
-    }
+
 }

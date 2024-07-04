@@ -13,10 +13,10 @@ import net.minecraft.core.MappedRegistry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.dimension.DimensionType;
-import net.minecraftforge.api.distmarker.*;
-import net.minecraftforge.fml.ModList;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.fml.ModList;
 
-@OnlyIn(Dist.CLIENT)
+@OnlyIn(net.neoforged.api.distmarker.Dist.CLIENT)
 public class DRP {
 	
 	private static final IPCClient CLIENT = new IPCClient(AllTheTweaks.IPCC);

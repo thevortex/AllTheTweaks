@@ -8,16 +8,18 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
+
 
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
 public final class DataGenerators
 {
     private DataGenerators() {
@@ -35,10 +37,10 @@ public final class DataGenerators
         BlockTags blockTags = new BlockTags(packOutput, event.getLookupProvider(), fileHelper);
         generator.addProvider(event.includeServer(), blockTags);
         generator.addProvider(event.includeServer(), new ItemTags(packOutput, event.getLookupProvider(), blockTags.contentsGetter(), fileHelper));
-        generator.addProvider(event.includeServer(), new LootTableProvider(packOutput, Collections.emptySet(),
-                List.of(new LootTableProvider.SubProviderEntry(LootTables::new, LootContextParamSets.BLOCK))));
+        generator.addProvider(true,new LootTableProvider(packOutput, Collections.emptySet(),
+                    List.of(new LootTableProvider.SubProviderEntry(LootTables::new, LootContextParamSets.BLOCK)),event.getLookupProvider()));
 
-        generator.addProvider(event.includeClient(), new CraftingRecipes(packOutput));
-        generator.addProvider(event.includeClient(), new ShapelessCrafting(packOutput));
+        generator.addProvider(event.includeClient(), new CraftingRecipes(packOutput,event.getLookupProvider()));
+        generator.addProvider(event.includeClient(), new ShapelessCrafting(packOutput,event.getLookupProvider()));
     }
 }

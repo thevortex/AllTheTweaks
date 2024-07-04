@@ -5,8 +5,8 @@ import net.minecraft.resources.ResourceLocation;
 
 public class cfgMain {
 
-	public static long IPCC = 1120839371113910293L;
-	public static String ATM = "atm9";
-	public static String DISPLAY = "All The Mods 9";
-	public static ResourceLocation BACKGROUND = new ResourceLocation(AllTheTweaks.MODID,"textures/gui/title/background.0.png");
+	public static long IPCC = 1252859134282432572L;
+	public static String ATM = "atm10";
+	public static String DISPLAY = "All The Mods 10";
+	public static ResourceLocation BACKGROUND = ResourceLocation.fromNamespaceAndPath(AllTheTweaks.MODID,"textures/gui/title/background.0.png");
 }

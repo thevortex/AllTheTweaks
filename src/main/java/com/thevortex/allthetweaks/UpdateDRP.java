@@ -9,20 +9,18 @@ import net.minecraft.client.gui.screens.ConnectScreen;
 import net.minecraft.client.gui.screens.TitleScreen;
 import net.minecraft.client.gui.screens.worldselection.SelectWorldScreen;
 import net.minecraft.client.player.LocalPlayer;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.ScreenEvent;
+import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 
-import net.minecraftforge.client.event.ScreenEvent;
-
-import net.minecraftforge.event.entity.EntityJoinLevelEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-
-import net.minecraftforge.api.distmarker.Dist;
 
 @EventBusSubscriber(modid = AllTheTweaks.MODID, value = Dist.CLIENT)
 public class UpdateDRP {
 		
 		@SubscribeEvent
-		public void on(ScreenEvent.Init.Pre event) {
+		public static void on(ScreenEvent.Init.Pre event) {
 			if (!DRP.isEnabled()) {
 				return;
 			}
@@ -35,7 +33,7 @@ public class UpdateDRP {
 		}
 		
 		@SubscribeEvent
-		public void on(EntityJoinLevelEvent event) {
+		public static void on(EntityJoinLevelEvent event) {
 			if (!DRP.isEnabled()) {
 				return;
 			}

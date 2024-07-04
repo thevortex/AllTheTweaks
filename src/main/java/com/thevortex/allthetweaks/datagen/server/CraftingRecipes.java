@@ -6,19 +6,21 @@ import com.thevortex.allthetweaks.config.Reference;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
-import net.minecraftforge.common.Tags;
+import net.neoforged.neoforge.common.Tags;
 
+import net.minecraft.core.HolderLookup.Provider;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
 public class CraftingRecipes extends RecipeProvider {
-    public CraftingRecipes(PackOutput packOutput) {
-        super(packOutput);
+    public CraftingRecipes(PackOutput packOutput, CompletableFuture<Provider> provider) {
+        super(packOutput,provider);
     }
 
     private ShapedRecipeBuilder shaped(ItemLike provider) {
@@ -28,7 +30,7 @@ public class CraftingRecipes extends RecipeProvider {
 
 
     @Override
-    protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
+    protected void buildRecipes(RecipeOutput consumer) {
 /*
         shaped(TheGuide.TIER_1_CORE.get())
             .pattern("g g")
@@ -72,8 +74,5 @@ public class CraftingRecipes extends RecipeProvider {
                 .save(consumer);
     }
 
-    @Override
-    public String getName() {
-        return "ATT Crafting Recipes";
-    }
+    
 }

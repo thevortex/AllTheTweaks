@@ -1,6 +1,5 @@
 package com.thevortex.allthetweaks.blocks;
 
-import com.thevortex.allthetweaks.config.Reference;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 

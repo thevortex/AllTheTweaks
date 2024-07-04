@@ -5,8 +5,9 @@ import com.thevortex.allthetweaks.config.Reference;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
-import net.minecraftforge.client.model.generators.ItemModelProvider;
-import net.minecraftforge.common.data.ExistingFileHelper;
+
+import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 public class ItemModels extends ItemModelProvider {
 
@@ -15,12 +16,12 @@ public class ItemModels extends ItemModelProvider {
     }
 
     private ResourceLocation res(String name) {
-        return new ResourceLocation(Reference.MOD_ID, ITEM_FOLDER + "/" + name);
+        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, ITEM_FOLDER + "/" + name);
     }
 
     @Override
     protected void registerModels() {
-        ResourceLocation generated = new ResourceLocation("item/generated");
+        ResourceLocation generated = ResourceLocation.withDefaultNamespace("item/generated");
 
         TweakBlocks.ITEMS.getEntries().stream()
             .filter(item -> !(item.get() instanceof BlockItem))

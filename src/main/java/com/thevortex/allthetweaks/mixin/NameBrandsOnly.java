@@ -4,12 +4,12 @@ import com.google.common.collect.ImmutableList;
 import com.thevortex.allthetweaks.AllTheTweaks;
 import com.thevortex.allthetweaks.config.Configuration;
 
-import net.minecraftforge.common.ForgeI18n;
-import net.minecraftforge.fml.ModContainer;
-import net.minecraftforge.fml.ModList;
-import net.minecraftforge.internal.BrandingControl;
-import net.minecraftforge.versions.forge.ForgeVersion;
-import net.minecraftforge.versions.mcp.MCPVersion;
+import net.minecraft.DetectedVersion;
+import net.neoforged.fml.ModList;
+import net.neoforged.fml.i18n.FMLTranslations;
+import net.neoforged.neoforge.internal.BrandingControl;
+import net.neoforged.neoforge.internal.versions.neoforge.NeoForgeVersion;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
@@ -35,11 +35,10 @@ public class NameBrandsOnly {
         {
             ImmutableList.Builder<String> brd = ImmutableList.builder();
             brd.add(AllTheTweaks.DISPLAY /*+ " " + Configuration.COMMON.majorver.get() + "." + Configuration.COMMON.minorver.get() + "." + Configuration.COMMON.minorrevver.get()*/);
-            brd.add("Forge " + ForgeVersion.getVersion());
-            brd.add("Minecraft " + MCPVersion.getMCVersion());
-            brd.add("MCP " + MCPVersion.getMCPVersion());
+            brd.add("NeoForge " + NeoForgeVersion.getVersion());
+            brd.add("Minecraft " + DetectedVersion.BUILT_IN.getName());
             int tModCount = ModList.get().size();
-            brd.add(ForgeI18n.parseMessage(tModCount + " Mods Loaded", tModCount));
+            brd.add(FMLTranslations.parseMessage(tModCount + " Mods Loaded", tModCount));
             brandings = brd.build();
             brandingsNoMC = brandings.subList(1, brandings.size());
         }
