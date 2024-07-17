@@ -6,8 +6,17 @@
 /build/
 /build/classes/java/main/
 /.idea/
+/runs/
 /run/
 
 /src/generated/resources/.cache
 libs/Patchouli-1.20.1-84-FORGE.jar
 libs/TerraFirmaCraft-Forge-1.20.1-3.1.9.jar
+*.txt
+.vscode/settings.json
+*.dat
+*.json
+*.log
+*.gz
+*.gz
+*.toml

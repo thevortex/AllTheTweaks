@@ -45,6 +45,8 @@ public class AllTheTweaks
         MixinBootstrap.init();
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Configuration.COMMON_SPEC);
+        Configuration.loadConfig(Configuration.COMMON_SPEC, FMLPaths.CONFIGDIR.get().resolve("allthetweaks-common.toml"));
+     
         // Register ourselves for server and other game events we are interested in
         TweakBlocks.BLOCKS.register(modEventBus);
         TweakBlocks.ITEMS.register(modEventBus);
@@ -53,10 +55,10 @@ public class AllTheTweaks
         
         //NeoForge.EVENT_BUS.register(Configuration.class);
         //NeoForge.EVENT_BUS.register(Events.class);
-        Configuration.loadConfig(Configuration.COMMON_SPEC, FMLPaths.CONFIGDIR.get().resolve("allthetweaks-common.toml"));
-        Configuration.bakeConfigs();
+       
 
     }
+
 
        @EventBusSubscriber(modid = Reference.MOD_ID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
   public static class ClientProxy {
