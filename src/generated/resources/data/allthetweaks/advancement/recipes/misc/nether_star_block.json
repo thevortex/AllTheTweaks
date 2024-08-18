@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_ender_pearl": {
+    "has_nether_star": {
       "conditions": {
         "items": [
           {
-            "tag": "forge:ender_pearls"
+            "items": "#c:nether_stars"
           }
         ]
       },
@@ -13,21 +13,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthetweaks:ender_pearl_block"
+        "recipe": "allthetweaks:nether_star_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_ender_pearl",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_nether_star"
     ]
   ],
   "rewards": {
     "recipes": [
-      "allthetweaks:ender_pearl_block"
+      "allthetweaks:nether_star_block"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

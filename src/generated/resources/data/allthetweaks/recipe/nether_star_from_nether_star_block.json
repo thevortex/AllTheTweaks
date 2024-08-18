@@ -3,11 +3,11 @@
   "category": "misc",
   "ingredients": [
     {
-      "tag": "forge:storage_blocks/ender_pearl"
+      "tag": "c:storage_blocks/nether_star"
     }
   ],
   "result": {
     "count": 9,
-    "item": "minecraft:ender_pearl"
+    "id": "minecraft:nether_star"
   }
 }

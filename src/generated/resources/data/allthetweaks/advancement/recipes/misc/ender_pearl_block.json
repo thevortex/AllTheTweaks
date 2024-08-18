@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_greg_star_block": {
+    "has_ender_pearl": {
       "conditions": {
         "items": [
           {
-            "tag": "forge:storage_blocks/greg_star"
+            "items": "#c:ender_pearls"
           }
         ]
       },
@@ -13,21 +13,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthetweaks:greg_star_from_gregstar_block"
+        "recipe": "allthetweaks:ender_pearl_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_greg_star_block",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_ender_pearl"
     ]
   ],
   "rewards": {
     "recipes": [
-      "allthetweaks:greg_star_from_gregstar_block"
+      "allthetweaks:ender_pearl_block"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

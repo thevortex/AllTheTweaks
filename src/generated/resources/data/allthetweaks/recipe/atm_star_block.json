@@ -13,7 +13,7 @@
     "aaa"
   ],
   "result": {
-    "item": "allthetweaks:atm_star_block"
-  },
-  "show_notification": true
+    "count": 1,
+    "id": "allthetweaks:atm_star_block"
+  }
 }

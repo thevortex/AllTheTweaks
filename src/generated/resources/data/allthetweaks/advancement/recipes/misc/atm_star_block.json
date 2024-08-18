@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_atm_star_block": {
+    "has_atm_star": {
       "conditions": {
         "items": [
           {
-            "tag": "forge:storage_blocks/atm_star"
+            "items": "#allthetweaks:atm_star"
           }
         ]
       },
@@ -13,21 +13,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthetweaks:atm_star_from_atmstar_block"
+        "recipe": "allthetweaks:atm_star_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_atm_star_block",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_atm_star"
     ]
   ],
   "rewards": {
     "recipes": [
-      "allthetweaks:atm_star_from_atmstar_block"
+      "allthetweaks:atm_star_block"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -4,7 +4,7 @@
   "group": "allthetweaks",
   "key": {
     "p": {
-      "tag": "forge:ender_pearls"
+      "tag": "c:ender_pearls"
     }
   },
   "pattern": [
@@ -13,7 +13,7 @@
     "ppp"
   ],
   "result": {
-    "item": "allthetweaks:ender_pearl_block"
-  },
-  "show_notification": true
+    "count": 1,
+    "id": "allthetweaks:ender_pearl_block"
+  }
 }

@@ -4,7 +4,7 @@
   "group": "allthetweaks",
   "key": {
     "s": {
-      "tag": "forge:nether_stars"
+      "tag": "c:nether_stars"
     }
   },
   "pattern": [
@@ -13,7 +13,7 @@
     "sss"
   ],
   "result": {
-    "item": "allthetweaks:nether_star_block"
-  },
-  "show_notification": true
+    "count": 1,
+    "id": "allthetweaks:nether_star_block"
+  }
 }
