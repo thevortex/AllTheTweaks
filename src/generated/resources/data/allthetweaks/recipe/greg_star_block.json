@@ -13,7 +13,7 @@
     "aaa"
   ],
   "result": {
-    "item": "allthetweaks:greg_star_block"
-  },
-  "show_notification": true
+    "count": 1,
+    "id": "allthetweaks:greg_star_block"
+  }
 }

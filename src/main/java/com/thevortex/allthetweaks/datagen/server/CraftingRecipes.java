@@ -3,34 +3,38 @@ package com.thevortex.allthetweaks.datagen.server;
 
 import com.thevortex.allthetweaks.blocks.TweakBlocks;
 import com.thevortex.allthetweaks.config.Reference;
-import net.minecraft.advancements.critereon.ItemPredicate;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.Tags;
 
-import net.minecraft.core.HolderLookup.Provider;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
 
 public class CraftingRecipes extends RecipeProvider {
     public CraftingRecipes(PackOutput packOutput, CompletableFuture<Provider> provider) {
-        super(packOutput,provider);
+        super(packOutput, provider);
     }
 
     private ShapedRecipeBuilder shaped(ItemLike provider) {
-        return ShapedRecipeBuilder.shaped(RecipeCategory.MISC,provider)
-            .group(Reference.MOD_ID);
+        return ShapedRecipeBuilder.shaped(RecipeCategory.MISC, provider)
+                .group(Reference.MOD_ID);
+    }
+
+    private ResourceLocation recipeDir(String typeIn, String typeOut) {
+        return ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, typeIn + "_from_" + typeOut);
     }
 
 
     @Override
     protected void buildRecipes(RecipeOutput consumer) {
+        shapelessCrafting(consumer);
 /*
         shaped(TheGuide.TIER_1_CORE.get())
             .pattern("g g")
@@ -45,7 +49,7 @@ public class CraftingRecipes extends RecipeProvider {
                 .pattern("ppp")
                 .pattern("ppp")
                 .pattern("ppp")
-                .define('p',Tags.Items.ENDER_PEARLS)
+                .define('p', Tags.Items.ENDER_PEARLS)
                 .unlockedBy("has_ender_pearl", has(Tags.Items.ENDER_PEARLS))
                 .save(consumer);
 
@@ -53,7 +57,7 @@ public class CraftingRecipes extends RecipeProvider {
                 .pattern("sss")
                 .pattern("sss")
                 .pattern("sss")
-                .define('s',Tags.Items.NETHER_STARS)
+                .define('s', Tags.Items.NETHER_STARS)
                 .unlockedBy("has_nether_star", has(Tags.Items.NETHER_STARS))
                 .save(consumer);
 
@@ -61,7 +65,7 @@ public class CraftingRecipes extends RecipeProvider {
                 .pattern("aaa")
                 .pattern("aaa")
                 .pattern("aaa")
-                .define('a',Reference.ATMSTAR)
+                .define('a', Reference.ATMSTAR)
                 .unlockedBy("has_atm_star", has(Reference.ATMSTAR))
                 .save(consumer);
 
@@ -74,5 +78,29 @@ public class CraftingRecipes extends RecipeProvider {
                 .save(consumer);
     }
 
-    
+    protected void shapelessCrafting(RecipeOutput consumer) {
+
+        final String hasCondition = "has_item";
+
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.MISC, TweakBlocks.ATMSTAR.get(), 9)
+                .requires(Reference.ATMSTAR_BLOCK_ITEM)
+                .unlockedBy(getHasName(TweakBlocks.ATMSTAR_BLOCK_ITEM.get()), has(Reference.ATMSTAR_BLOCK_ITEM))
+                .save(consumer, recipeDir("atm_star", "atmstar_block"));
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.MISC, TweakBlocks.GREGSTAR.get(), 9)
+                .requires(Reference.GREGSTAR_BLOCK_ITEM)
+                .unlockedBy(getHasName(TweakBlocks.GREGSTAR_BLOCK_ITEM.get()), has(Reference.GREGSTAR_BLOCK_ITEM))
+                .save(consumer, recipeDir("greg_star", "gregstar_block"));
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.MISC, Items.ENDER_PEARL, 9)
+                .requires(Reference.ENDERPEARL_BLOCK_ITEM)
+                .unlockedBy(getHasName(TweakBlocks.ENDERPEARL_BLOCK_ITEM.get()), has(Reference.ENDERPEARL_BLOCK_ITEM))
+                .save(consumer, recipeDir("ender_pearl", "ender_pearl_block"));
+        ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.MISC, Items.NETHER_STAR, 9)
+                .requires(Reference.NETHERSTAR_BLOCK_ITEM)
+                .unlockedBy(getHasName(TweakBlocks.NETHERSTAR_BLOCK_ITEM.get()), has(Reference.NETHERSTAR_BLOCK_ITEM))
+                .save(consumer, recipeDir("nether_star", "nether_star_block"));
+    }
 }

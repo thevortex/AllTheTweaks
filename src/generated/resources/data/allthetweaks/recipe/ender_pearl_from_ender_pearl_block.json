@@ -3,11 +3,11 @@
   "category": "misc",
   "ingredients": [
     {
-      "tag": "forge:storage_blocks/greg_star"
+      "tag": "c:storage_blocks/ender_pearl"
     }
   ],
   "result": {
     "count": 9,
-    "item": "allthetweaks:greg_star"
+    "id": "minecraft:ender_pearl"
   }
 }

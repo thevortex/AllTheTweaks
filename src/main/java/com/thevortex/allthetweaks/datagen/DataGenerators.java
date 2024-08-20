@@ -1,6 +1,7 @@
 package com.thevortex.allthetweaks.datagen;
 
 
+import com.thevortex.allthetweaks.AllTheTweaks;
 import com.thevortex.allthetweaks.datagen.client.BlockStates;
 import com.thevortex.allthetweaks.datagen.client.ItemModels;
 import com.thevortex.allthetweaks.datagen.server.*;
@@ -19,7 +20,7 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
-@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, modid = AllTheTweaks.MODID)
 public final class DataGenerators
 {
     private DataGenerators() {
@@ -41,6 +42,5 @@ public final class DataGenerators
                     List.of(new LootTableProvider.SubProviderEntry(LootTables::new, LootContextParamSets.BLOCK)),event.getLookupProvider()));
 
         generator.addProvider(event.includeClient(), new CraftingRecipes(packOutput,event.getLookupProvider()));
-        generator.addProvider(event.includeClient(), new ShapelessCrafting(packOutput,event.getLookupProvider()));
     }
 }

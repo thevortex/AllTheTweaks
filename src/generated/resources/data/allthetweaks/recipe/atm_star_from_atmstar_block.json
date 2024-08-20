@@ -3,11 +3,11 @@
   "category": "misc",
   "ingredients": [
     {
-      "tag": "forge:storage_blocks/atm_star"
+      "tag": "c:storage_blocks/atm_star"
     }
   ],
   "result": {
     "count": 9,
-    "item": "allthetweaks:atm_star"
+    "id": "allthetweaks:atm_star"
   }
 }
