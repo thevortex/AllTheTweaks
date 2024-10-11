@@ -5,9 +5,9 @@
   "minVersion": "0.8",
   "refmap": "allthetweaks.refmap.json",
   "mixins": [
-
   ],
   "client": [
+    "MixinServerStatusPinger$1",
     "NameBrandsOnly"
   ],
   "injectors": {
