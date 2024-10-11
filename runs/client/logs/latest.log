@@ -1,93 +1,225 @@
-[24Jun2024 16:34:34.285] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeclientuserdev, --version, 21.0.13-beta, --assetIndex, asset-index, --assetsDir, C:\Users\thevortex\.gradle\caches\minecraft\assets\1.21, --gameDir, ., --fml.neoForgeVersion, 21.0.13-beta, --fml.fmlVersion, 4.0.6, --fml.mcVersion, 1.21, --fml.neoFormVersion, 20240613.152323]
-[24Jun2024 16:34:34.288] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: JVM identified as Eclipse Adoptium OpenJDK 64-Bit Server VM 21.0.3+9-LTS
-[24Jun2024 16:34:34.289] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 11.0.3+main.0f24dec3 starting: java version 21.0.3 by Eclipse Adoptium; OS Windows 10 arch amd64 version 10.0
-[24Jun2024 16:34:34.385] [main/INFO] [net.neoforged.fml.loading.ImmediateWindowHandler/]: Loading ImmediateWindowProvider fmlearlywindow
-[24Jun2024 16:34:34.484] [main/INFO] [EARLYDISPLAY/]: Trying GL version 4.6
-[24Jun2024 16:34:34.656] [main/INFO] [EARLYDISPLAY/]: Requested GL version 4.6 got version 4.6
-[24Jun2024 16:34:34.735] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/thevortex/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.13.4+mixin.0.8.5/8adf0cff1795a169141b9e16ad7b9f6e2527a990/sponge-mixin-0.13.4+mixin.0.8.5.jar%23135!/ Service=ModLauncher Env=CLIENT
-[24Jun2024 16:34:34.926] [main/INFO] [net.neoforged.fml.loading.moddiscovery.ModDiscoverer/SCAN]: Found mod file "neoforge-21.0.13-beta.jar" [locator: neoforge devenv provider ([C:\Users\thevortex\Documents\GitHub\AllTheTweaks\.gradle\repositories\ng_dummy_ng\net\neoforged\neoforge\21.0.13-beta\neoforge-21.0.13-beta.jar])]
-[24Jun2024 16:34:34.937] [main/INFO] [net.neoforged.fml.loading.moddiscovery.ModDiscoverer/SCAN]: Found mod file "neoforge-21.0.13-beta.jar" [locator: neoforge devenv provider ([C:\Users\thevortex\Documents\GitHub\AllTheTweaks\.gradle\repositories\ng_dummy_ng\net\neoforged\neoforge\21.0.13-beta\neoforge-21.0.13-beta.jar])]
-[24Jun2024 16:34:34.946] [main/INFO] [net.neoforged.fml.loading.moddiscovery.ModDiscoverer/SCAN]: Found mod file "main" [locator: userdev mods and services, reader: mod manifest]
-[24Jun2024 16:34:34.950] [pool-2-thread-1/INFO] [EARLYDISPLAY/]: GL info: NVIDIA GeForce RTX 3080 Ti/PCIe/SSE2 GL version 4.6.0 NVIDIA 536.23, NVIDIA Corporation
-[24Jun2024 16:34:34.955] [main/INFO] [net.neoforged.fml.loading.moddiscovery.ModDiscoverer/SCAN]: Found mod file "neoforge-21.0.13-beta.jar" [locator: userdev mods and services, reader: mod manifest]
-[24Jun2024 16:34:34.973] [main/INFO] [net.neoforged.fml.loading.moddiscovery.ModDiscoverer/SCAN]: Found gamelibrary file "mixinextras-neoforge-0.3.5.jar" [locator: userdev mods and services, reader: mod manifest]
-[24Jun2024 16:34:35.140] [main/WARN] [net.neoforged.jarjar.selection.JarSelector/]: Attempted to select a dependency jar for JarJar which was passed in as source: mixinextras-neoforge-0.3.5.jar. Using Mod File: C:\Users\thevortex\.gradle\caches\modules-2\files-2.1\io.github.llamalad7\mixinextras-neoforge\0.3.5\ef3ffcf309dae656517b2f120189b1c9b21737dd\mixinextras-neoforge-0.3.5.jar
-[24Jun2024 16:34:35.141] [main/INFO] [net.neoforged.fml.loading.moddiscovery.locators.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
-[24Jun2024 16:34:35.312] [main/INFO] [net.neoforged.fml.loading.FMLServiceProvider/CORE]: Loading coremod script-engine for [neoforge]
-[24Jun2024 16:34:36.183] [main/INFO] [mixin/]: Successfully loaded Mixin Connector [com.thevortex.allthetweaks.mixin.MixinConnector]
-[24Jun2024 16:34:36.189] [main/INFO] [mixin/]: Compatibility level set to JAVA_21
-[24Jun2024 16:34:36.190] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeclientuserdev' with arguments [--version, 21.0.13-beta, --gameDir, ., --assetsDir, C:\Users\thevortex\.gradle\caches\minecraft\assets\1.21, --assetIndex, asset-index]
-[24Jun2024 16:34:36.270] [main/WARN] [mixin/]: Reference map 'allthetweaks.refmap.json' for allthetweaks.mixins.json could not be read. If this is a development environment you can ignore this message
-[24Jun2024 16:34:37.480] [Datafixer Bootstrap/INFO] [com.mojang.datafixers.DataFixerBuilder/]: 229 Datafixer optimizations took 307 milliseconds
-[24Jun2024 16:34:41.350] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
-[24Jun2024 16:34:41.351] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, targets] with inputs: [0.1 -0.5 .9, 0 0 0]
-[24Jun2024 16:34:41.353] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, destination] and [teleport, targets] with inputs: [Player, 0123, @e, dd12be42-52a9-4a91-a8a1-11c01849e498]
-[24Jun2024 16:34:41.354] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, targets] and [teleport, destination] with inputs: [Player, 0123, dd12be42-52a9-4a91-a8a1-11c01849e498]
-[24Jun2024 16:34:41.355] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, targets, location] and [teleport, targets, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
-[24Jun2024 16:34:41.445] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/thevortex/Documents/GitHub/AllTheTweaks/.gradle/repositories/ng_dummy_ng/net/neoforged/neoforge/21.0.13-beta/neoforge-21.0.13-beta.jar%23190!/assets/.mcassetsroot' uses unexpected schema
-[24Jun2024 16:34:41.445] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/thevortex/Documents/GitHub/AllTheTweaks/.gradle/repositories/ng_dummy_ng/net/neoforged/neoforge/21.0.13-beta/neoforge-21.0.13-beta.jar%23190!/data/.mcassetsroot' uses unexpected schema
-[24Jun2024 16:34:41.464] [Render thread/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
-[24Jun2024 16:34:41.471] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Setting user: Dev
-[24Jun2024 16:34:41.541] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Backend library: LWJGL version 3.3.3+5
-[24Jun2024 16:34:41.563] [Render thread/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.3.5).
-[24Jun2024 16:34:41.732] [modloading-worker-0/INFO] [net.neoforged.neoforge.common.NeoForgeMod/NEOFORGE-MOD]: NeoForge mod loading, version 21.0.13-beta, for MC 1.21
-[24Jun2024 16:34:42.190] [Render thread/INFO] [net.neoforged.neoforge.gametest.GameTestHooks/]: Enabled Gametest Namespaces: []
-[24Jun2024 16:34:42.284] [Render thread/INFO] [net.minecraft.server.packs.resources.ReloadableResourceManager/]: Reloading ResourceManager: vanilla, mod_resources, mod/allthetweaks, mod/neoforge
-[24Jun2024 16:34:42.366] [Worker-Main-13/INFO] [net.minecraft.client.gui.font.providers.UnihexProvider/]: Found unifont_all_no_pua-15.1.05.hex, loading
-[24Jun2024 16:34:42.395] [Worker-Main-3/INFO] [net.minecraft.client.gui.font.providers.UnihexProvider/]: Found unifont_jp_patch-15.1.05.hex, loading
-[24Jun2024 16:34:42.478] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/dimensional_seed frame 1: 1
-[24Jun2024 16:34:42.478] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/dimensional_seed frame 2: 2
-[24Jun2024 16:34:42.504] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 0: 1
-[24Jun2024 16:34:42.504] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 1: 2
-[24Jun2024 16:34:42.504] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 2: 1
-[24Jun2024 16:34:42.504] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 3: 3
-[24Jun2024 16:34:42.505] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 5: 3
-[24Jun2024 16:34:42.505] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 6: 1
-[24Jun2024 16:34:42.505] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 8: 4
-[24Jun2024 16:34:42.505] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 9: 1
-[24Jun2024 16:34:42.505] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 11: 4
-[24Jun2024 16:34:42.505] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 12: 2
-[24Jun2024 16:34:42.505] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 13: 4
-[24Jun2024 16:34:42.505] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 15: 1
-[24Jun2024 16:34:42.505] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 16: 4
-[24Jun2024 16:34:42.505] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 17: 2
-[24Jun2024 16:34:42.505] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 18: 3
-[24Jun2024 16:34:42.505] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 20: 1
-[24Jun2024 16:34:42.505] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 22: 1
-[24Jun2024 16:34:42.505] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 23: 4
-[24Jun2024 16:34:42.505] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 24: 1
-[24Jun2024 16:34:42.505] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 25: 4
-[24Jun2024 16:34:42.505] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 26: 2
-[24Jun2024 16:34:42.506] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 27: 4
-[24Jun2024 16:34:42.506] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 28: 2
-[24Jun2024 16:34:42.509] [Worker-Main-9/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/pulsating_black_hole frame 1: 1
-[24Jun2024 16:34:42.509] [Worker-Main-9/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/pulsating_black_hole frame 2: 2
-[24Jun2024 16:34:42.510] [Worker-Main-9/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/pulsating_black_hole frame 3: 3
-[24Jun2024 16:34:42.510] [Worker-Main-9/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/pulsating_black_hole frame 4: 4
-[24Jun2024 16:34:42.510] [Worker-Main-9/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/pulsating_black_hole frame 5: 3
-[24Jun2024 16:34:42.510] [Worker-Main-9/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/pulsating_black_hole frame 6: 2
-[24Jun2024 16:34:42.510] [Worker-Main-9/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/pulsating_black_hole frame 7: 1
-[24Jun2024 16:34:42.526] [Worker-Main-14/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/nexium_emitter frame 1: 1
-[24Jun2024 16:34:42.527] [Worker-Main-14/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/nexium_emitter frame 2: 2
-[24Jun2024 16:34:42.527] [Worker-Main-14/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/nexium_emitter frame 3: 1
-[24Jun2024 16:34:42.898] [Worker-Main-2/INFO] [IPCClient/]: Found preferred client: ANY
-[24Jun2024 16:34:43.487] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:item.goat_horn.play
-[24Jun2024 16:34:43.487] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:entity.goat.screaming.horn_break
-[24Jun2024 16:34:43.573] [Render thread/INFO] [com.mojang.blaze3d.audio.Library/]: OpenAL initialized on device OpenAL Soft on Speakers (Reloop Mixon 8 Pro)
-[24Jun2024 16:34:43.573] [Render thread/INFO] [net.minecraft.client.sounds.SoundEngine/SOUNDS]: Sound engine started
-[24Jun2024 16:34:43.648] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x512x4 minecraft:textures/atlas/blocks.png-atlas
-[24Jun2024 16:34:43.659] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x4 minecraft:textures/atlas/signs.png-atlas
-[24Jun2024 16:34:43.659] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
-[24Jun2024 16:34:43.660] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
-[24Jun2024 16:34:43.661] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x1024x4 minecraft:textures/atlas/armor_trims.png-atlas
-[24Jun2024 16:34:43.665] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
-[24Jun2024 16:34:43.666] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 128x64x4 minecraft:textures/atlas/decorated_pot.png-atlas
-[24Jun2024 16:34:43.666] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
-[24Jun2024 16:34:43.666] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
-[24Jun2024 16:34:43.809] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x0 minecraft:textures/atlas/particles.png-atlas
-[24Jun2024 16:34:43.810] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x0 minecraft:textures/atlas/paintings.png-atlas
-[24Jun2024 16:34:43.811] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x128x0 minecraft:textures/atlas/mob_effects.png-atlas
-[24Jun2024 16:34:43.811] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 64x64x0 minecraft:textures/atlas/map_decorations.png-atlas
-[24Jun2024 16:34:43.811] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x512x0 minecraft:textures/atlas/gui.png-atlas
-[24Jun2024 16:34:43.867] [Render thread/WARN] [net.minecraft.client.renderer.ShaderInstance/]: Shader rendertype_entity_translucent_emissive could not find sampler named Sampler2 in the specified shader program.
-[24Jun2024 16:34:59.873] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Stopping!
+[20Aug2024 13:55:55.686] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeclientuserdev, --version, 21.0.95-beta, --assetIndex, asset-index, --assetsDir, C:\Users\thevortex\.gradle\caches\minecraft\assets\1.21, --gameDir, ., --fml.neoForgeVersion, 21.0.95-beta, --fml.fmlVersion, 4.0.18, --fml.mcVersion, 1.21, --fml.neoFormVersion, 20240613.152323]
+[20Aug2024 13:55:55.691] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: JVM identified as Eclipse Adoptium OpenJDK 64-Bit Server VM 21.0.3+9-LTS
+[20Aug2024 13:55:55.693] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 11.0.4+main.d2e20e43 starting: java version 21.0.3 by Eclipse Adoptium; OS Windows 10 arch amd64 version 10.0
+[20Aug2024 13:55:55.787] [main/INFO] [net.neoforged.fml.loading.ImmediateWindowHandler/]: Loading ImmediateWindowProvider fmlearlywindow
+[20Aug2024 13:55:55.883] [main/INFO] [EARLYDISPLAY/]: Trying GL version 4.6
+[20Aug2024 13:55:56.097] [main/INFO] [EARLYDISPLAY/]: Requested GL version 4.6 got version 4.6
+[20Aug2024 13:55:56.169] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.6 Source=union:/C:/Users/thevortex/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.14.0+mixin.0.8.6/c265173c84346e9e5d42a2384b2b02bd39a4a899/sponge-mixin-0.14.0+mixin.0.8.6.jar%23135!/ Service=ModLauncher Env=CLIENT
+[20Aug2024 13:55:56.363] [main/INFO] [net.neoforged.fml.loading.moddiscovery.ModDiscoverer/SCAN]: Found mod file "neoforge-21.0.95-beta.jar" [locator: neoforge devenv provider ([C:\Users\thevortex\Documents\GitHub\AllTheTweaks\.gradle\repositories\ng_dummy_ng\net\neoforged\neoforge\21.0.95-beta\neoforge-21.0.95-beta.jar])]
+[20Aug2024 13:55:56.378] [main/INFO] [net.neoforged.fml.loading.moddiscovery.ModDiscoverer/SCAN]: Found mod file "neoforge-21.0.95-beta.jar" [locator: neoforge devenv provider ([C:\Users\thevortex\Documents\GitHub\AllTheTweaks\.gradle\repositories\ng_dummy_ng\net\neoforged\neoforge\21.0.95-beta\neoforge-21.0.95-beta.jar])]
+[20Aug2024 13:55:56.389] [main/INFO] [net.neoforged.fml.loading.moddiscovery.ModDiscoverer/SCAN]: Found mod file "main" [locator: userdev mods and services, reader: mod manifest]
+[20Aug2024 13:55:56.394] [pool-2-thread-1/INFO] [EARLYDISPLAY/]: GL info: NVIDIA GeForce RTX 3080 Ti/PCIe/SSE2 GL version 4.6.0 NVIDIA 536.23, NVIDIA Corporation
+[20Aug2024 13:55:56.398] [main/INFO] [net.neoforged.fml.loading.moddiscovery.ModDiscoverer/SCAN]: Found mod file "neoforge-21.0.95-beta.jar" [locator: userdev mods and services, reader: mod manifest]
+[20Aug2024 13:55:56.419] [main/INFO] [net.neoforged.fml.loading.moddiscovery.ModDiscoverer/SCAN]: Found gamelibrary file "mixinextras-neoforge-0.3.5.jar" [locator: userdev mods and services, reader: mod manifest]
+[20Aug2024 13:55:56.579] [main/WARN] [net.neoforged.jarjar.selection.JarSelector/]: Attempted to select a dependency jar for JarJar which was passed in as source: mixinextras-neoforge-0.3.5.jar. Using Mod File: C:\Users\thevortex\.gradle\caches\modules-2\files-2.1\io.github.llamalad7\mixinextras-neoforge\0.3.5\ef3ffcf309dae656517b2f120189b1c9b21737dd\mixinextras-neoforge-0.3.5.jar
+[20Aug2024 13:55:56.579] [main/INFO] [net.neoforged.fml.loading.moddiscovery.locators.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
+[20Aug2024 13:55:56.742] [main/INFO] [net.neoforged.fml.loading.FMLServiceProvider/CORE]: Loading coremod script-engine for [neoforge]
+[20Aug2024 13:55:57.512] [main/INFO] [mixin/]: Successfully loaded Mixin Connector [com.thevortex.allthetweaks.mixin.MixinConnector]
+[20Aug2024 13:55:57.517] [main/INFO] [mixin/]: Compatibility level set to JAVA_21
+[20Aug2024 13:55:57.518] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeclientuserdev' with arguments [--version, 21.0.95-beta, --gameDir, ., --assetsDir, C:\Users\thevortex\.gradle\caches\minecraft\assets\1.21, --assetIndex, asset-index]
+[20Aug2024 13:55:57.584] [main/WARN] [mixin/]: Reference map 'allthetweaks.refmap.json' for allthetweaks.mixins.json could not be read. If this is a development environment you can ignore this message
+[20Aug2024 13:55:58.839] [Datafixer Bootstrap/INFO] [com.mojang.datafixers.DataFixerBuilder/]: 229 Datafixer optimizations took 365 milliseconds
+[20Aug2024 13:55:58.991] [pool-7-thread-1/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.3.5).
+[20Aug2024 13:56:02.481] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[20Aug2024 13:56:02.481] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, targets] with inputs: [0.1 -0.5 .9, 0 0 0]
+[20Aug2024 13:56:02.483] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, destination] and [teleport, targets] with inputs: [Player, 0123, @e, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[20Aug2024 13:56:02.484] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, targets] and [teleport, destination] with inputs: [Player, 0123, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[20Aug2024 13:56:02.485] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, targets, location] and [teleport, targets, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[20Aug2024 13:56:02.571] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/thevortex/Documents/GitHub/AllTheTweaks/.gradle/repositories/ng_dummy_ng/net/neoforged/neoforge/21.0.95-beta/neoforge-21.0.95-beta.jar%23189!/assets/.mcassetsroot' uses unexpected schema
+[20Aug2024 13:56:02.571] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/thevortex/Documents/GitHub/AllTheTweaks/.gradle/repositories/ng_dummy_ng/net/neoforged/neoforge/21.0.95-beta/neoforge-21.0.95-beta.jar%23189!/data/.mcassetsroot' uses unexpected schema
+[20Aug2024 13:56:02.601] [Render thread/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[20Aug2024 13:56:02.607] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Setting user: Dev
+[20Aug2024 13:56:02.675] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Backend library: LWJGL version 3.3.3+5
+[20Aug2024 13:56:02.901] [modloading-worker-0/INFO] [net.neoforged.neoforge.common.NeoForgeMod/NEOFORGE-MOD]: NeoForge mod loading, version 21.0.95-beta, for MC 1.21
+[20Aug2024 13:56:03.432] [Render thread/INFO] [net.neoforged.neoforge.gametest.GameTestHooks/]: Enabled Gametest Namespaces: []
+[20Aug2024 13:56:03.537] [Render thread/INFO] [net.minecraft.server.packs.resources.ReloadableResourceManager/]: Reloading ResourceManager: vanilla, mod_resources, mod/allthetweaks, mod/neoforge
+[20Aug2024 13:56:03.614] [Worker-Main-13/INFO] [net.minecraft.client.gui.font.providers.UnihexProvider/]: Found unifont_all_no_pua-15.1.05.hex, loading
+[20Aug2024 13:56:03.652] [Worker-Main-11/INFO] [net.minecraft.client.gui.font.providers.UnihexProvider/]: Found unifont_jp_patch-15.1.05.hex, loading
+[20Aug2024 13:56:03.681] [Worker-Main-5/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/dimensional_seed frame 1: 1
+[20Aug2024 13:56:03.681] [Worker-Main-5/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/dimensional_seed frame 2: 2
+[20Aug2024 13:56:03.713] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 0: 1
+[20Aug2024 13:56:03.713] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 1: 2
+[20Aug2024 13:56:03.713] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 2: 1
+[20Aug2024 13:56:03.713] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 3: 3
+[20Aug2024 13:56:03.713] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 5: 3
+[20Aug2024 13:56:03.713] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 6: 1
+[20Aug2024 13:56:03.714] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 8: 4
+[20Aug2024 13:56:03.714] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 9: 1
+[20Aug2024 13:56:03.714] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 11: 4
+[20Aug2024 13:56:03.714] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 12: 2
+[20Aug2024 13:56:03.714] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 13: 4
+[20Aug2024 13:56:03.714] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 15: 1
+[20Aug2024 13:56:03.714] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 16: 4
+[20Aug2024 13:56:03.714] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 17: 2
+[20Aug2024 13:56:03.714] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 18: 3
+[20Aug2024 13:56:03.714] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 20: 1
+[20Aug2024 13:56:03.714] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 22: 1
+[20Aug2024 13:56:03.715] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 23: 4
+[20Aug2024 13:56:03.715] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 24: 1
+[20Aug2024 13:56:03.715] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 25: 4
+[20Aug2024 13:56:03.715] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 26: 2
+[20Aug2024 13:56:03.715] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 27: 4
+[20Aug2024 13:56:03.715] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/improbable_probability_device frame 28: 2
+[20Aug2024 13:56:03.733] [Worker-Main-3/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/pulsating_black_hole frame 1: 1
+[20Aug2024 13:56:03.734] [Worker-Main-3/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/pulsating_black_hole frame 2: 2
+[20Aug2024 13:56:03.734] [Worker-Main-3/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/pulsating_black_hole frame 3: 3
+[20Aug2024 13:56:03.734] [Worker-Main-3/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/pulsating_black_hole frame 4: 4
+[20Aug2024 13:56:03.734] [Worker-Main-3/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/pulsating_black_hole frame 5: 3
+[20Aug2024 13:56:03.734] [Worker-Main-3/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/pulsating_black_hole frame 6: 2
+[20Aug2024 13:56:03.734] [Worker-Main-3/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/pulsating_black_hole frame 7: 1
+[20Aug2024 13:56:03.754] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/nexium_emitter frame 1: 1
+[20Aug2024 13:56:03.754] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/nexium_emitter frame 2: 2
+[20Aug2024 13:56:03.754] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteContents/]: Invalid frame index on sprite allthetweaks:item/nexium_emitter frame 3: 1
+[20Aug2024 13:56:03.999] [Worker-Main-11/INFO] [IPCClient/]: Found preferred client: ANY
+[20Aug2024 13:56:04.688] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:item.goat_horn.play
+[20Aug2024 13:56:04.689] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:entity.goat.screaming.horn_break
+[20Aug2024 13:56:04.777] [Render thread/INFO] [com.mojang.blaze3d.audio.Library/]: OpenAL initialized on device OpenAL Soft on Speakers (2- High Definition Audio Device)
+[20Aug2024 13:56:04.778] [Render thread/INFO] [net.minecraft.client.sounds.SoundEngine/SOUNDS]: Sound engine started
+[20Aug2024 13:56:04.880] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x512x4 minecraft:textures/atlas/blocks.png-atlas
+[20Aug2024 13:56:04.890] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x4 minecraft:textures/atlas/signs.png-atlas
+[20Aug2024 13:56:04.891] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
+[20Aug2024 13:56:04.892] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
+[20Aug2024 13:56:04.893] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x1024x4 minecraft:textures/atlas/armor_trims.png-atlas
+[20Aug2024 13:56:04.897] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
+[20Aug2024 13:56:04.897] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 128x64x4 minecraft:textures/atlas/decorated_pot.png-atlas
+[20Aug2024 13:56:04.898] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
+[20Aug2024 13:56:04.898] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
+[20Aug2024 13:56:05.039] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x0 minecraft:textures/atlas/particles.png-atlas
+[20Aug2024 13:56:05.041] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x0 minecraft:textures/atlas/paintings.png-atlas
+[20Aug2024 13:56:05.042] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x128x0 minecraft:textures/atlas/mob_effects.png-atlas
+[20Aug2024 13:56:05.042] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 64x64x0 minecraft:textures/atlas/map_decorations.png-atlas
+[20Aug2024 13:56:05.042] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x512x0 minecraft:textures/atlas/gui.png-atlas
+[20Aug2024 13:56:05.100] [Render thread/WARN] [net.minecraft.client.renderer.ShaderInstance/]: Shader rendertype_entity_translucent_emissive could not find sampler named Sampler2 in the specified shader program.
+[20Aug2024 13:57:29.649] [Render thread/ERROR] [net.minecraft.world.item.crafting.RecipeManager/]: Parsing error loading recipe immersiveengineering:atmstarshard/atm_star_shard
+com.google.gson.JsonParseException: Unknown registry key in ResourceKey[minecraft:root / minecraft:recipe_serializer]: immersiveengineering:crusher
+	at MC-BOOTSTRAP/datafixerupper@8.0.16/com.mojang.serialization.DataResult$Error.getOrThrow(DataResult.java:287) ~[datafixerupper-8.0.16.jar%23118!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.world.item.crafting.RecipeManager.apply(RecipeManager.java:60) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.world.item.crafting.RecipeManager.apply(RecipeManager.java:36) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.server.packs.resources.SimplePreparableReloadListener.lambda$reload$1(SimplePreparableReloadListener.java:19) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:718) ~[?:?]
+	at java.base/java.util.concurrent.CompletableFuture$Completion.run(CompletableFuture.java:482) ~[?:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.server.packs.resources.SimpleReloadInstance.lambda$new$3(SimpleReloadInstance.java:86) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.util.thread.BlockableEventLoop.doRunTask(BlockableEventLoop.java:148) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.util.thread.ReentrantBlockableEventLoop.doRunTask(ReentrantBlockableEventLoop.java:24) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.util.thread.BlockableEventLoop.pollTask(BlockableEventLoop.java:122) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.util.thread.BlockableEventLoop.managedBlock(BlockableEventLoop.java:132) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.screens.worldselection.WorldOpenFlows.loadWorldDataBlocking(WorldOpenFlows.java:201) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.screens.worldselection.WorldOpenFlows.loadWorldStem(WorldOpenFlows.java:142) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.screens.worldselection.WorldOpenFlows.openWorldLoadLevelStem(WorldOpenFlows.java:345) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.screens.worldselection.WorldOpenFlows.openWorldCheckVersionCompatibility(WorldOpenFlows.java:334) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.screens.worldselection.WorldOpenFlows.openWorldLoadLevelData(WorldOpenFlows.java:296) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.screens.worldselection.WorldOpenFlows.openWorld(WorldOpenFlows.java:261) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.screens.worldselection.WorldSelectionList$WorldListEntry.joinWorld(WorldSelectionList.java:498) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.screens.worldselection.WorldSelectionList$WorldListEntry.mouseClicked(WorldSelectionList.java:481) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.components.AbstractSelectionList.mouseClicked(AbstractSelectionList.java:303) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.components.events.ContainerEventHandler.mouseClicked(ContainerEventHandler.java:40) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.MouseHandler.lambda$onPress$0(MouseHandler.java:98) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.screens.Screen.wrapScreenError(Screen.java:449) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.MouseHandler.onPress(MouseHandler.java:95) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.MouseHandler.lambda$setup$4(MouseHandler.java:202) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.util.thread.BlockableEventLoop.execute(BlockableEventLoop.java:98) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.MouseHandler.lambda$setup$5(MouseHandler.java:202) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at MC-BOOTSTRAP/org.lwjgl.glfw@3.3.3+5/org.lwjgl.glfw.GLFWMouseButtonCallbackI.callback(GLFWMouseButtonCallbackI.java:43) ~[lwjgl-glfw-3.3.3.jar%23171!/:build 5]
+	at MC-BOOTSTRAP/org.lwjgl@3.3.3+5/org.lwjgl.system.JNI.invokeV(Native Method) ~[lwjgl-3.3.3.jar%23182!/:build 5]
+	at MC-BOOTSTRAP/org.lwjgl.glfw@3.3.3+5/org.lwjgl.glfw.GLFW.glfwWaitEventsTimeout(GLFW.java:3509) ~[lwjgl-glfw-3.3.3.jar%23171!/:build 5]
+	at TRANSFORMER/minecraft@1.21/com.mojang.blaze3d.systems.RenderSystem.limitDisplayFPS(RenderSystem.java:162) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.Minecraft.runTick(Minecraft.java:1223) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.Minecraft.run(Minecraft.java:810) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.main.Main.main(Main.java:230) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at MC-BOOTSTRAP/fml_loader@4.0.18/net.neoforged.fml.loading.targets.CommonLaunchHandler.runTarget(CommonLaunchHandler.java:136) ~[loader-4.0.18.jar%23143!/:4.0]
+	at MC-BOOTSTRAP/fml_loader@4.0.18/net.neoforged.fml.loading.targets.CommonLaunchHandler.clientService(CommonLaunchHandler.java:124) ~[loader-4.0.18.jar%23143!/:4.0]
+	at MC-BOOTSTRAP/fml_loader@4.0.18/net.neoforged.fml.loading.targets.NeoForgeClientUserdevLaunchHandler.runService(NeoForgeClientUserdevLaunchHandler.java:23) ~[loader-4.0.18.jar%23143!/:4.0]
+	at MC-BOOTSTRAP/fml_loader@4.0.18/net.neoforged.fml.loading.targets.CommonLaunchHandler.lambda$launchService$4(CommonLaunchHandler.java:118) ~[loader-4.0.18.jar%23143!/:4.0]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:30) [modlauncher-11.0.4.jar%23125!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:53) [modlauncher-11.0.4.jar%23125!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:71) [modlauncher-11.0.4.jar%23125!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.Launcher.run(Launcher.java:103) [modlauncher-11.0.4.jar%23125!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.Launcher.main(Launcher.java:74) [modlauncher-11.0.4.jar%23125!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:26) [modlauncher-11.0.4.jar%23125!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:23) [modlauncher-11.0.4.jar%23125!/:?]
+	at cpw.mods.bootstraplauncher@2.0.2/cpw.mods.bootstraplauncher.BootstrapLauncher.run(BootstrapLauncher.java:210) [bootstraplauncher-2.0.2.jar:?]
+	at cpw.mods.bootstraplauncher@2.0.2/cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:69) [bootstraplauncher-2.0.2.jar:?]
+[20Aug2024 13:57:29.669] [Render thread/ERROR] [net.minecraft.world.item.crafting.RecipeManager/]: Parsing error loading recipe mekanism:atmstarshard/atm_star_shard
+com.google.gson.JsonParseException: Unknown registry key in ResourceKey[minecraft:root / minecraft:recipe_serializer]: mekanism:crushing
+	at MC-BOOTSTRAP/datafixerupper@8.0.16/com.mojang.serialization.DataResult$Error.getOrThrow(DataResult.java:287) ~[datafixerupper-8.0.16.jar%23118!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.world.item.crafting.RecipeManager.apply(RecipeManager.java:60) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.world.item.crafting.RecipeManager.apply(RecipeManager.java:36) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.server.packs.resources.SimplePreparableReloadListener.lambda$reload$1(SimplePreparableReloadListener.java:19) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:718) ~[?:?]
+	at java.base/java.util.concurrent.CompletableFuture$Completion.run(CompletableFuture.java:482) ~[?:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.server.packs.resources.SimpleReloadInstance.lambda$new$3(SimpleReloadInstance.java:86) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.util.thread.BlockableEventLoop.doRunTask(BlockableEventLoop.java:148) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.util.thread.ReentrantBlockableEventLoop.doRunTask(ReentrantBlockableEventLoop.java:24) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.util.thread.BlockableEventLoop.pollTask(BlockableEventLoop.java:122) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.util.thread.BlockableEventLoop.managedBlock(BlockableEventLoop.java:132) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.screens.worldselection.WorldOpenFlows.loadWorldDataBlocking(WorldOpenFlows.java:201) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.screens.worldselection.WorldOpenFlows.loadWorldStem(WorldOpenFlows.java:142) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.screens.worldselection.WorldOpenFlows.openWorldLoadLevelStem(WorldOpenFlows.java:345) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.screens.worldselection.WorldOpenFlows.openWorldCheckVersionCompatibility(WorldOpenFlows.java:334) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.screens.worldselection.WorldOpenFlows.openWorldLoadLevelData(WorldOpenFlows.java:296) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.screens.worldselection.WorldOpenFlows.openWorld(WorldOpenFlows.java:261) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.screens.worldselection.WorldSelectionList$WorldListEntry.joinWorld(WorldSelectionList.java:498) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.screens.worldselection.WorldSelectionList$WorldListEntry.mouseClicked(WorldSelectionList.java:481) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.components.AbstractSelectionList.mouseClicked(AbstractSelectionList.java:303) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.components.events.ContainerEventHandler.mouseClicked(ContainerEventHandler.java:40) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.MouseHandler.lambda$onPress$0(MouseHandler.java:98) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.screens.Screen.wrapScreenError(Screen.java:449) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.MouseHandler.onPress(MouseHandler.java:95) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.MouseHandler.lambda$setup$4(MouseHandler.java:202) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.util.thread.BlockableEventLoop.execute(BlockableEventLoop.java:98) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.MouseHandler.lambda$setup$5(MouseHandler.java:202) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at MC-BOOTSTRAP/org.lwjgl.glfw@3.3.3+5/org.lwjgl.glfw.GLFWMouseButtonCallbackI.callback(GLFWMouseButtonCallbackI.java:43) ~[lwjgl-glfw-3.3.3.jar%23171!/:build 5]
+	at MC-BOOTSTRAP/org.lwjgl@3.3.3+5/org.lwjgl.system.JNI.invokeV(Native Method) ~[lwjgl-3.3.3.jar%23182!/:build 5]
+	at MC-BOOTSTRAP/org.lwjgl.glfw@3.3.3+5/org.lwjgl.glfw.GLFW.glfwWaitEventsTimeout(GLFW.java:3509) ~[lwjgl-glfw-3.3.3.jar%23171!/:build 5]
+	at TRANSFORMER/minecraft@1.21/com.mojang.blaze3d.systems.RenderSystem.limitDisplayFPS(RenderSystem.java:162) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.Minecraft.runTick(Minecraft.java:1223) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.Minecraft.run(Minecraft.java:810) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.main.Main.main(Main.java:230) ~[neoforge-21.0.95-beta.jar%23189!/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at MC-BOOTSTRAP/fml_loader@4.0.18/net.neoforged.fml.loading.targets.CommonLaunchHandler.runTarget(CommonLaunchHandler.java:136) ~[loader-4.0.18.jar%23143!/:4.0]
+	at MC-BOOTSTRAP/fml_loader@4.0.18/net.neoforged.fml.loading.targets.CommonLaunchHandler.clientService(CommonLaunchHandler.java:124) ~[loader-4.0.18.jar%23143!/:4.0]
+	at MC-BOOTSTRAP/fml_loader@4.0.18/net.neoforged.fml.loading.targets.NeoForgeClientUserdevLaunchHandler.runService(NeoForgeClientUserdevLaunchHandler.java:23) ~[loader-4.0.18.jar%23143!/:4.0]
+	at MC-BOOTSTRAP/fml_loader@4.0.18/net.neoforged.fml.loading.targets.CommonLaunchHandler.lambda$launchService$4(CommonLaunchHandler.java:118) ~[loader-4.0.18.jar%23143!/:4.0]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:30) [modlauncher-11.0.4.jar%23125!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:53) [modlauncher-11.0.4.jar%23125!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:71) [modlauncher-11.0.4.jar%23125!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.Launcher.run(Launcher.java:103) [modlauncher-11.0.4.jar%23125!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.Launcher.main(Launcher.java:74) [modlauncher-11.0.4.jar%23125!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:26) [modlauncher-11.0.4.jar%23125!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:23) [modlauncher-11.0.4.jar%23125!/:?]
+	at cpw.mods.bootstraplauncher@2.0.2/cpw.mods.bootstraplauncher.BootstrapLauncher.run(BootstrapLauncher.java:210) [bootstraplauncher-2.0.2.jar:?]
+	at cpw.mods.bootstraplauncher@2.0.2/cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:69) [bootstraplauncher-2.0.2.jar:?]
+[20Aug2024 13:57:29.686] [Render thread/INFO] [net.minecraft.world.item.crafting.RecipeManager/]: Loaded 1298 recipes
+[20Aug2024 13:57:29.813] [Render thread/INFO] [net.minecraft.advancements.AdvancementTree/]: Loaded 1407 advancements
+[20Aug2024 13:57:30.236] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Starting integrated minecraft server version 1.21
+[20Aug2024 13:57:30.236] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Generating keypair
+[20Aug2024 13:57:30.945] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Preparing start region for dimension minecraft:overworld
+[20Aug2024 13:57:31.127] [progressListener/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[20Aug2024 13:57:31.204] [progressListener/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Time elapsed: 242 ms
+[20Aug2024 13:57:31.204] [Server thread/INFO] [net.neoforged.neoforge.server.permission.PermissionAPI/]: Successfully initialized permission handler neoforge:default_handler
+[20Aug2024 13:57:31.287] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing view distance to 12, from 10
+[20Aug2024 13:57:31.287] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing simulation distance to 12, from 0
+[20Aug2024 13:57:31.836] [Server thread/INFO] [net.minecraft.server.players.PlayerList/]: Dev[local:E:b5dd1d79] logged in with entity id 83 at (-21.5, 69.0, 0.5)
+[20Aug2024 13:57:31.875] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev joined the game
+[20Aug2024 13:57:32.004] [Render thread/INFO] [net.minecraft.advancements.AdvancementTree/]: Loaded 2 advancements
+[20Aug2024 13:57:37.906] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
+[20Aug2024 13:57:37.917] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[20Aug2024 13:57:37.941] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[20Aug2024 13:57:37.948] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[20Aug2024 13:57:38.563] [Server thread/INFO] [net.minecraft.server.network.ServerGamePacketListenerImpl/]: Dev lost connection: Disconnected
+[20Aug2024 13:57:38.564] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev left the game
+[20Aug2024 13:57:38.572] [Server thread/INFO] [net.minecraft.server.network.ServerCommonPacketListenerImpl/]: Stopping singleplayer server as player logged out
+[20Aug2024 13:57:38.623] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Stopping server
+[20Aug2024 13:57:38.623] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving players
+[20Aug2024 13:57:38.623] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving worlds
+[20Aug2024 13:57:38.878] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[20Aug2024 13:57:39.011] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[20Aug2024 13:57:39.014] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[20Aug2024 13:57:39.021] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (New World): All chunks are saved
+[20Aug2024 13:57:39.022] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[20Aug2024 13:57:39.022] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[20Aug2024 13:57:39.022] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage: All dimensions are saved
+[20Aug2024 13:57:39.698] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Stopping!

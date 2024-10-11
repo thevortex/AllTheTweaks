@@ -1,4 +1,3 @@
-
 [packversionminrev]
 	#Pack Minor Version Revision : X
 	#Range: 0 ~ 32768
@@ -22,4 +21,3 @@
 	#ATM = 0 SLOP = 1 SKY = 2 MAGIC = 3 EXPERT = 4 GRAVITAS = 5
 	#Range: 0 ~ 5
 	enable = 0
-

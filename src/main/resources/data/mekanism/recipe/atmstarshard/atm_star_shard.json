@@ -1,17 +1,16 @@
 {
   "type": "mekanism:crushing",
   "input": {
-    "ingredient": {
-      "item": "allthetweaks:atm_star"
-    }
+    "count": 1,
+    "item": "allthetweaks:atm_star"
   },
   "output": {
-    "item": "allthetweaks:atm_star_shard",
+    "id": "allthetweaks:atm_star_shard",
     "count": 5
   },
-  "conditions": [
+  "neoforge:conditions": [
         {
-          "type": "forge:mod_loaded",
+          "type": "neoforge:mod_loaded",
           "modid": "mekanism"
         }
   ]
