@@ -1,9 +1,9 @@
 {
   "type": "immersiveengineering:crusher",
-  "secondaries": [
-  ],
   "result": {
-    "item": "allthetweaks:atm_star_shard",
+    "basePredicate": {
+      "item": "allthetweaks:atm_star_shard",
+    },
     "count": 5
   },
   "input": {
@@ -12,7 +12,7 @@
   "energy": 3200,
   "conditions": [
     {
-      "type": "forge:mod_loaded",
+      "type": "neoforge:mod_loaded",
       "modid": "immersiveengineering"
     }
   ]
