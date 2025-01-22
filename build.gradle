@@ -164,6 +164,14 @@ tasks.withType(ProcessResources).configureEach {
     }
 }
 
+tasks.named("jarJar") {
+    archiveClassifier = ""
+}
+
+tasks.named("jar") {
+    archiveClassifier = "dev"
+}
+
 // Example for how to get properties into the manifest for reading at runtime.
 publishing {
     publications {
