@@ -6,7 +6,8 @@
   "refmap": "allthetweaks.refmap.json",
   "mixins": [
     "IdDispatchCodecMixin",
-    "TreeFeatureMixin"
+    "TreeFeatureMixin",
+    "SlideInWrapper"
   ],
   "client": [
     "NameBrandsOnly"
