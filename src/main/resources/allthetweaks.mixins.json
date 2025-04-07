@@ -6,11 +6,12 @@
   "refmap": "allthetweaks.refmap.json",
   "mixins": [
     "IdDispatchCodecMixin",
-    "TreeFeatureMixin",
     "SlideInWrapper",
-    "TimeHelperMixin"
+    "TimeHelperMixin",
+    "TreeFeatureMixin"
   ],
   "client": [
+    "CreativeModeInventoryScreenMixin",
     "NameBrandsOnly"
   ],
   "injectors": {
