@@ -6,6 +6,7 @@
   "refmap": "allthetweaks.refmap.json",
   "mixins": [
     "IdDispatchCodecMixin",
+    "PipezUpgradeMixin",
     "SlideInWrapper",
     "TimeHelperMixin",
     "TreeFeatureMixin"
