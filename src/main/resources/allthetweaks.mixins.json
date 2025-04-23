@@ -8,8 +8,7 @@
     "IdDispatchCodecMixin",
     "PipezUpgradeMixin",
     "SlideInWrapper",
-    "TimeHelperMixin",
-    "TreeFeatureMixin"
+    "TimeHelperMixin"
   ],
   "client": [
     "CreativeModeInventoryScreenMixin",
