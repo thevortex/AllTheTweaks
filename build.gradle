@@ -3,7 +3,7 @@ plugins {
     id 'eclipse'
     id 'idea'
     id 'maven-publish'
-    id 'net.neoforged.gradle.userdev' version '7.0.178'
+    id 'net.neoforged.gradle.userdev' version '7.0.184'
 }
 
 version = mod_version
@@ -119,6 +119,7 @@ dependencies {
     //implementation fg.deobf("curse.maven:eidolon-repraised-870250:5317920")
     implementation "curse.maven:${corail}"
     implementation "curse.maven:${pipez}"
+    implementation "curse.maven:yacl-667299:6336630"
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html

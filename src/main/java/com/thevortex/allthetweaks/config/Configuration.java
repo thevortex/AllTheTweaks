@@ -41,8 +41,8 @@ public class Configuration {
 		
 		public Common(ModConfigSpec.Builder BUILDER) {
 			BUILDER.push("packmode");
-			mainmode = BUILDER.comment("ATM = 0 SLOP = 1 SKY = 2 MAGIC = 3 EXPERT = 4 GRAVITAS = 5").defineInRange("enable",
-					0, 0, 5);
+			mainmode = BUILDER.comment("ATM = 0 SLOP = 1 SKY = 2 MAGIC = 3 EXPERT = 4 GRAVITAS = 5 LITE = 6").defineInRange("enable",
+					0, 0, 6);
 			BUILDER.pop();
 
 			BUILDER.push("discord");
@@ -122,6 +122,14 @@ public class Configuration {
 			AllTheTweaks.ATM = cfgGrav.ATM;
 			AllTheTweaks.DISPLAY = cfgGrav.DISPLAY;
 			AllTheTweaks.BACKGROUND = cfgGrav.BACKGROUND;
+			return;
+		}
+		int LITE = Configuration.COMMON.mainmode.get();
+		if (LITE == 6) {
+			AllTheTweaks.IPCC = cfgLite.IPCC;
+			AllTheTweaks.ATM = cfgLite.ATM;
+			AllTheTweaks.DISPLAY = cfgLite.DISPLAY;
+			AllTheTweaks.BACKGROUND = cfgLite.BACKGROUND;
 			return;
 		}
 		else {

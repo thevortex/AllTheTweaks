@@ -7,7 +7,7 @@
   "mixins": [
     "IdDispatchCodecMixin",
     "PipezUpgradeMixin",
-    "SlideInWrapper",
+    "YACLNuclearBombMixin",
     "TimeHelperMixin"
   ],
   "client": [
