@@ -40,8 +40,8 @@ public class TimeHelperMixin {
         cir.setReturnValue(false);
     }
 
-    @Inject(method = {"isDateAroundEaster"}, at = {@At("HEAD")}, cancellable = true)
-    private static void isDateAroundEaster(CallbackInfoReturnable<Boolean> cir) {
+    @Inject(method = {"isDateAroundSpringBloom"}, at = {@At("HEAD")}, cancellable = true)
+    private static void isDateAroundSpringBloom(CallbackInfoReturnable<Boolean> cir) {
         cir.setReturnValue(false);
     }
 }
