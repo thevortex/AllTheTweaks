@@ -7,10 +7,11 @@
   "mixins": [
     "IdDispatchCodecMixin",
     "PipezUpgradeMixin",
-    "YACLNuclearBombMixin",
-    "TimeHelperMixin"
+    "TimeHelperMixin",
+    "YACLNuclearBombMixin"
   ],
   "client": [
+    "EnergyTooltipHelperMixin",
     "CreativeModeInventoryScreenMixin",
     "NameBrandsOnly"
   ],

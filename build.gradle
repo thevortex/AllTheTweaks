@@ -120,6 +120,7 @@ dependencies {
     implementation "curse.maven:${corail}"
     implementation "curse.maven:${pipez}"
     implementation "curse.maven:yacl-667299:6336630"
+    compileOnly("curse.maven:xycraft-machines-653791:5601045")
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
