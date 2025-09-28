@@ -101,6 +101,9 @@ dependencies {
 
     compileOnly "com.yungnickyoung.minecraft.yungsapi:YungsApi:1.21.1-NeoForge-5.1.3"
 
+    runtimeOnly "curse.maven:sodium-394468:6382651"
+    implementation "curse.maven:irisshaders-455508:6661598"
+
     // Example mod dependency with JEI - using fg.deobf() ensures the dependency is remapped to your development mappings
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
     // compileOnly fg.deobf("mezz.jei:jei-${mc_version}-common-api:${jei_version}")

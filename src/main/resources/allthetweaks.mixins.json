@@ -11,7 +11,8 @@
   ],
   "client": [
     "CreativeModeInventoryScreenMixin",
-    "NameBrandsOnly"
+    "NameBrandsOnly",
+    "ShaderPackScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1
