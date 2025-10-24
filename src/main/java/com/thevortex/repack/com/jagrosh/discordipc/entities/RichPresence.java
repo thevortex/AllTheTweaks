@@ -38,7 +38,7 @@ public class RichPresence {
 	private final String joinSecret;
 	private final String spectateSecret;
 	private final boolean instance;
-	
+
 	public RichPresence(String state, String details, OffsetDateTime startTimestamp, OffsetDateTime endTimestamp, String largeImageKey, String largeImageText, String smallImageKey, String smallImageText, String partyId, int partySize, int partyMax, String matchSecret, String joinSecret, String spectateSecret, boolean instance) {
 		this.state = state;
 		this.details = details;
@@ -67,6 +67,7 @@ public class RichPresence {
 	public JSONObject toJson() {
 		return new JSONObject().put("state", state).put("details", details).put("timestamps", new JSONObject().put("start", startTimestamp == null ? null : startTimestamp.toEpochSecond()).put("end", endTimestamp == null ? null : endTimestamp.toEpochSecond())).put("assets", new JSONObject().put("large_image", largeImageKey).put("large_text", largeImageText).put("small_image", smallImageKey).put("small_text", smallImageText)).put("party", partyId == null ? null : new JSONObject().put("id", partyId).put("size", new JSONArray().put(partySize).put(partyMax))).put("secrets", new JSONObject().put("join", joinSecret).put("spectate", spectateSecret).put("match", matchSecret)).put("instance", instance);
 	}
+
 	
 	/**
 	 * A chain builder for a {@link RichPresence} object.

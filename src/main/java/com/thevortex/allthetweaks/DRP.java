@@ -5,7 +5,9 @@ import java.util.*;
 
 import com.thevortex.allthetweaks.DRP.EnumState;
 import com.thevortex.allthetweaks.DRP.State;
+import com.thevortex.repack.com.jagrosh.discordipc.ExtendedRichPresence;
 import com.thevortex.repack.com.jagrosh.discordipc.IPCClient;
+import com.thevortex.repack.com.jagrosh.discordipc.entities.RichPresence;
 import com.thevortex.repack.com.jagrosh.discordipc.entities.RichPresence.Builder;
 import com.thevortex.repack.com.jagrosh.discordipc.exceptions.NoDiscordClientException;
 
@@ -30,7 +32,11 @@ public class DRP {
 	
 	private static final Timer TIMER = new Timer("Discord Rich Presence Timer Thread");
 	private static TimerTask timerTask;
-	
+	private static final int componentType = 2;
+	private static final String buttonLabel = "Install on CurseForge";
+	private static final String buttonUrl = "https://www.curseforge.com/minecraft/modpacks/all-the-mods-gravitas2/install";
+	private static final int buttonStyle = 5;
+
 	static {
 		Runtime.getRuntime().addShutdownHook(new Thread(() -> stop(), "Discord Rich Presence Stop Thread"));
 	}
@@ -85,7 +91,7 @@ public class DRP {
 	
 	public static void setState(State state) {
 		currentState = state;
-		final Builder builder = new Builder();
+		final ExtendedRichPresence.ExtendedBuilder builder = new ExtendedRichPresence.ExtendedBuilder();
 		builder.setDetails(ModList.get().size() + " Mods");
 		builder.setState(state.getState().getMessage(state.getReplace()));
 		builder.setStartTimestamp(TIME);
@@ -119,6 +125,9 @@ public class DRP {
 			builder.setLargeImage(AllTheTweaks.ATM,AllTheTweaks.DISPLAY);
 			builder.setSmallImage("nether", "In the Other");
 		}
+		builder.setButton1(buttonLabel, buttonUrl);
+
+
 		try {
 			CLIENT.sendRichPresence(builder.build());
 		} catch (final Exception ex) {
