@@ -4,7 +4,9 @@ import com.google.common.collect.ImmutableList;
 import com.thevortex.allthetweaks.AllTheTweaks;
 import com.thevortex.allthetweaks.config.Configuration;
 
+import com.thevortex.allthetweaks.proxy.BCCProxy;
 import net.minecraft.DetectedVersion;
+import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.i18n.FMLTranslations;
 import net.neoforged.neoforge.internal.BrandingControl;
@@ -13,6 +15,10 @@ import net.neoforged.neoforge.internal.versions.neoforge.NeoForgeVersion;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 import java.util.List;
 import java.util.Optional;
@@ -34,13 +40,19 @@ public class NameBrandsOnly {
         if (brandings == null)
         {
             ImmutableList.Builder<String> brd = ImmutableList.builder();
-            brd.add(AllTheTweaks.DISPLAY /*+ " " + Configuration.COMMON.majorver.get() + "." + Configuration.COMMON.minorver.get() + "." + Configuration.COMMON.minorrevver.get()*/);
+            if(AllTheTweaks.BCC){
+                brd.add(AllTheTweaks.DISPLAY + " v" + BCCProxy.getVersion());
+            }
+            if(AllTheTweaks.mfContainer.isPresent() && AllTheTweaks.brandingModernFix){brd.add("ModernFix " + AllTheTweaks.mfContainer.get().getModInfo().getVersion().toString());}
+            int tModCount = AllTheTweaks.ModsLoaded;
+            brd.add(FMLTranslations.parseMessage(tModCount + " Mods Loaded", tModCount));
             brd.add("NeoForge " + NeoForgeVersion.getVersion());
             brd.add("Minecraft " + DetectedVersion.BUILT_IN.getName());
-            int tModCount = ModList.get().size();
-            brd.add(FMLTranslations.parseMessage(tModCount + " Mods Loaded", tModCount));
-            brandings = brd.build();
+             brandings = brd.build();
             brandingsNoMC = brandings.subList(1, brandings.size());
+
         }
     }
+
+
 }

@@ -7,8 +7,8 @@ import java.util.Set;
 
 public class ATTMixinCanceller implements MixinCanceller {
     private static final Set<String> mixinsToCancel = Set.of(
-            "com.faboslav.villagesandpillages.mixin.LessTreesInVillageWitchMixin",
-            "com.faboslav.villagesandpillages.mixin.NoTreesOnWitchVillageHouseMixin"
+
+            "org.embeddedt.modernfix.forge.mixin.feature.branding.BrandingControlMixin"
     );
 
     @Override

@@ -3,6 +3,7 @@ package com.thevortex.allthetweaks;
 import com.thevortex.allthetweaks.blocks.TweakBlocks;
 import com.thevortex.allthetweaks.config.Configuration;
 import com.thevortex.allthetweaks.config.Reference;
+import com.thevortex.allthetweaks.proxy.MFProxy;
 import com.thevortex.allthetweaks.proxy.MyCons;
 
 import net.minecraft.resources.ResourceLocation;
@@ -10,6 +11,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
@@ -20,7 +22,10 @@ import net.neoforged.neoforge.common.NeoForge;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.embeddedt.modernfix.core.ModernFixMixinPlugin;
 import org.spongepowered.asm.launch.MixinBootstrap;
+
+import java.util.Optional;
 
 @Mod(AllTheTweaks.MODID)
 public class AllTheTweaks
@@ -33,7 +38,10 @@ public class AllTheTweaks
     public static String DISPLAY;
     public static ResourceLocation BACKGROUND;
     private static Runnable runnableCallback;
-
+    public static boolean BCC;
+    public static int ModsLoaded;
+    public static Optional<? extends ModContainer> mfContainer;
+    public static boolean brandingModernFix = false;
     public AllTheTweaks(IEventBus modEventBus, ModContainer modContainer) {
         MixinBootstrap.init();
 
@@ -44,8 +52,17 @@ public class AllTheTweaks
         TweakBlocks.BLOCKS.register(modEventBus);
         TweakBlocks.ITEMS.register(modEventBus);
         TweakBlocks.CREATIVE_TABS.register(modEventBus);
-        
-        
+        if(ModList.get().isLoaded("bcc")){
+            BCC = true;
+        } else {
+            BCC = false;
+        }
+        ModsLoaded = ModList.get().size();
+        mfContainer = ModList.get().getModContainerById("modernfix");
+        if (ModList.get().isLoaded("modernfix")) {
+            brandingModernFix = MFProxy.brandingEnabled();
+        }
+
         //NeoForge.EVENT_BUS.register(Configuration.class);
         //NeoForge.EVENT_BUS.register(Events.class);
 

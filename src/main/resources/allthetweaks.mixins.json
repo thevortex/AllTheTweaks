@@ -12,7 +12,8 @@
   "client": [
     "CreativeModeInventoryScreenMixin",
     "NameBrandsOnly",
-    "ShaderPackScreenMixin"
+    "ShaderPackScreenMixin",
+    "TitleWin"
   ],
   "injectors": {
     "defaultRequire": 1
