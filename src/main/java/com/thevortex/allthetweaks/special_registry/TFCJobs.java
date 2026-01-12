@@ -20,7 +20,7 @@ import java.util.HashSet;
 import java.util.List;
 
 public class TFCJobs {
-
+/*
     public static DeferredRegister<PoiType> POI_TYPES = DeferredRegister.create(ForgeRegistries.POI_TYPES, "minecraft");
 
     private static final HashSet<BlockState> FISH_STATES = new HashSet<>(ForgeRegistries.POI_TYPES.getDelegateOrThrow(PoiTypes.FISHERMAN).get().matchingStates());
@@ -188,6 +188,8 @@ public class TFCJobs {
         }
         return new PoiType(FLETCHER_STATES, 1, 1);
     });
+
+ */
 }
 
 

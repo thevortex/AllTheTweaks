@@ -9,7 +9,8 @@
     "TESyncFix"
   ],
   "client": [
-    "NameBrandsOnly"
+    "NameBrandsOnly",
+    "TitleWin"
   ],
   "injectors": {
     "defaultRequire": 1

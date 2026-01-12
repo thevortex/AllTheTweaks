@@ -4,6 +4,8 @@ import com.google.common.collect.ImmutableList;
 import com.thevortex.allthetweaks.AllTheTweaks;
 import com.thevortex.allthetweaks.config.Configuration;
 
+import com.thevortex.allthetweaks.proxy.BCCProxy;
+import net.minecraft.DetectedVersion;
 import net.minecraftforge.common.ForgeI18n;
 import net.minecraftforge.fml.ModContainer;
 import net.minecraftforge.fml.ModList;
@@ -34,14 +36,18 @@ public class NameBrandsOnly {
         if (brandings == null)
         {
             ImmutableList.Builder<String> brd = ImmutableList.builder();
-            brd.add(AllTheTweaks.DISPLAY /*+ " " + Configuration.COMMON.majorver.get() + "." + Configuration.COMMON.minorver.get() + "." + Configuration.COMMON.minorrevver.get()*/);
-            brd.add("Forge " + ForgeVersion.getVersion());
-            brd.add("Minecraft " + MCPVersion.getMCVersion());
-            brd.add("MCP " + MCPVersion.getMCPVersion());
-            int tModCount = ModList.get().size();
+            if(AllTheTweaks.BCC){
+                brd.add(AllTheTweaks.DISPLAY + " v" + BCCProxy.getVersion());
+            }
+            if(AllTheTweaks.mfContainer.isPresent() && AllTheTweaks.brandingModernFix){brd.add("ModernFix " + AllTheTweaks.mfContainer.get().getModInfo().getVersion().toString());}
+            int tModCount = AllTheTweaks.ModsLoaded;
             brd.add(ForgeI18n.parseMessage(tModCount + " Mods Loaded", tModCount));
+            brd.add("Forge " + ForgeVersion.getVersion());
+            brd.add("Minecraft " + DetectedVersion.BUILT_IN.getName());
             brandings = brd.build();
             brandingsNoMC = brandings.subList(1, brandings.size());
         }
     }
+
+
 }
