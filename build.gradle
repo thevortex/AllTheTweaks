@@ -160,6 +160,9 @@ repositories {
 
     // Mirror
     maven { url = "https://maven.enjarai.dev/mirrors" }
+    flatDir {
+        dir 'libs'
+    }
 }
 
 
@@ -182,7 +185,9 @@ dependencies {
     // The group id is ignored when searching -- in this case, it is "blank"
     // implementation fg.deobf("blank:coolmod-${mc_version}:${coolmod_version}")
     implementation fg.deobf("curse.maven:simple-planes-388908:4893679")
-    implementation fg.deobf("curse.maven:create-328085:4835191")
+    implementation fg.deobf("curse.maven:create-328085:7178761")
+    compileOnly fg.deobf("curse.maven:ponder-622888:7188949")
+
 //    implementation fg.deobf("curse.maven:create-steam-n-rails-688231:4836196")
     implementation fg.deobf("curse.maven:terrafirmacraft-302973:5133509")
     implementation fg.deobf("curse.maven:patchouli-306770:4966125")

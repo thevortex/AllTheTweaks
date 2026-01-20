@@ -6,6 +6,7 @@
   "refmap": "allthetweaks.refmap.json",
   "mixins": [
     "FluiDucts",
+    "SchemPrinterMixin",
     "TESyncFix"
   ],
   "client": [
