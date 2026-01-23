@@ -9,8 +9,7 @@
 
 package com.thevortex.repack.com.jagrosh.discordipc;
 
-import java.io.Closeable;
-import java.io.IOException;
+import java.io.*;
 import java.lang.management.ManagementFactory;
 import java.util.*;
 
