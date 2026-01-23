@@ -25,6 +25,7 @@ import org.apache.logging.log4j.Logger;
 import org.embeddedt.modernfix.core.ModernFixMixinPlugin;
 import org.spongepowered.asm.launch.MixinBootstrap;
 
+import java.io.IOException;
 import java.util.Optional;
 
 @Mod(AllTheTweaks.MODID)
@@ -88,7 +89,11 @@ public class AllTheTweaks
                 evt.enqueueWork(() -> {
                     NeoForge.EVENT_BUS.register(UpdateDRP.class);
                     DRP.start();
-                    MyCons.setWindowIcon();
+                    try {
+                        MyCons.setWindowIcon();
+                    } catch (IOException e) {
+                        AllTheTweaks.LOGGER.error("Failed to set window icon", e);
+                    }
                 });
             }
         }
