@@ -1,27 +1,15 @@
 package com.thevortex.allthetweaks.config;
 
-import java.util.Map;
-
-import java.nio.file.Path;
-import org.apache.commons.lang3.tuple.Pair;
-
 import com.electronwill.nightconfig.core.file.CommentedFileConfig;
 import com.electronwill.nightconfig.core.io.WritingMode;
-import com.mojang.datafixers.TypeRewriteRule.All;
 import com.thevortex.allthetweaks.AllTheTweaks;
-import com.thevortex.allthetweaks.DRP;
-import com.thevortex.allthetweaks.proxy.MyCons;
-
-import cpw.mods.modlauncher.Environment;
-import net.minecraft.util.thread.BlockableEventLoop;
-import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.LogicalSide;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.config.ModConfigEvent;
-import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.ModConfigSpec;
-import net.neoforged.neoforge.common.util.LogicalSidedProvider;
+import org.apache.commons.lang3.tuple.Pair;
+
+import java.nio.file.Path;
 @EventBusSubscriber(modid = Reference.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class Configuration {
 	public static final ModConfigSpec COMMON_SPEC;
@@ -160,18 +148,10 @@ public class Configuration {
     @SubscribeEvent
     public static void onLoad(final ModConfigEvent.Loading configEvent) {
         bakeConfigs(); 
-		if(net.neoforged.neoforgespi.Environment.get().getDist() == Dist.CLIENT) {
-			
-            MyCons.setWindowIcon(); 
-		}
 	}
 	@SuppressWarnings("unused")
     @SubscribeEvent
     public static void onreLoad(final ModConfigEvent.Reloading configEvent) {
         bakeConfigs();
-		if(net.neoforged.neoforgespi.Environment.get().getDist() == Dist.CLIENT) {
-			
-            MyCons.setWindowIcon(); 
-		}    
 	}
 	}
