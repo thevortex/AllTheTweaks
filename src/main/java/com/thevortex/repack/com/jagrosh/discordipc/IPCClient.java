@@ -267,6 +267,7 @@ public final class IPCClient implements Closeable {
 	public void close() {
 		checkConnected(true);
 		LOGGER.debug("Closing IPC Pipe...");
+		sendRichPresence(null);
 		send(OpCode.CLOSE, new JSONObject(), null);
 		status = Status.CLOSED;
 	}
