@@ -13,6 +13,8 @@ import java.io.*;
 import java.lang.management.ManagementFactory;
 import java.util.*;
 
+import com.thevortex.repack.com.jagrosh.discordipc.pipe.Pipe;
+
 import org.apache.logging.log4j.*;
 
 import com.thevortex.repack.com.jagrosh.discordipc.entities.Callback;
@@ -53,7 +55,7 @@ public final class IPCClient implements Closeable {
 	private Status status = Status.CREATED;
 	private DiscordBuild build = null;
 	private IPCListener listener = null;
-	private RandomAccessFile pipe = null;
+	private Pipe pipe = null;
 	private Thread readThread = null;
 	
 	/**
@@ -100,13 +102,13 @@ public final class IPCClient implements Closeable {
 		pipe = null;
 		build = null;
 		
-		// store some files so we can get the preferred client
-		final RandomAccessFile[] open = new RandomAccessFile[DiscordBuild.values().length];
+		// store some pipes so we can get the preferred client
+		final Pipe[] open = new Pipe[DiscordBuild.values().length];
 		for (int i = 0; i < 10; i++) {
 			try {
 				final String ipc = getIPC(i);
 				LOGGER.debug(String.format("Searching for IPC: %s", ipc));
-				pipe = new RandomAccessFile(ipc, "rw");
+				pipe = Pipe.openPipe(ipc);
 				
 				send(OpCode.HANDSHAKE, new JSONObject().put("v", version).put("client_id", Long.toString(clientId)), null);
 				
@@ -264,6 +266,7 @@ public final class IPCClient implements Closeable {
 	public void close() {
 		checkConnected(true);
 		LOGGER.debug("Closing IPC Pipe...");
+		sendRichPresence(null);
 		send(OpCode.CLOSE, new JSONObject(), null);
 		status = Status.CLOSED;
 	}
@@ -501,7 +504,7 @@ public final class IPCClient implements Closeable {
 	 * @throws JSONException If the read thread receives bad data.
 	 */
 	private Packet read() throws IOException, JSONException {
-		while (pipe.length() == 0 && status == Status.CONNECTED) {
+		while (!pipe.hasData() && status == Status.CONNECTED) {
 			try {
 				Thread.sleep(50);
 			} catch (final InterruptedException ignored) {
