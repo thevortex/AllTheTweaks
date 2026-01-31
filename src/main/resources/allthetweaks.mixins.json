@@ -13,6 +13,7 @@
     "CreativeModeInventoryScreenMixin",
     "NameBrandsOnly",
     "ShaderPackScreenMixin",
+    "MixinBerryPouch",
     "TitleWin"
   ],
   "injectors": {

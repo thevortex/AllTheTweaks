@@ -112,6 +112,7 @@ dependencies {
     implementation "curse.maven:yacl-667299:6336630"
     compileOnly("curse.maven:xycraft-machines-653791:5601045")
     implementation "curse.maven:modernfix-790626:7200212"
+    implementation "curse.maven:berry-pouch-1246510:7310810"
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
