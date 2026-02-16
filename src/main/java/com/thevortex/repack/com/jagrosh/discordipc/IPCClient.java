@@ -14,7 +14,7 @@ import java.lang.management.ManagementFactory;
 import java.util.*;
 
 import org.apache.logging.log4j.*;
-
+import com.thevortex.repack.com.jagrosh.discordipc.pipe.Pipe;
 import com.thevortex.repack.com.jagrosh.discordipc.entities.Callback;
 import com.thevortex.repack.com.jagrosh.discordipc.entities.DiscordBuild;
 import com.thevortex.repack.com.jagrosh.discordipc.entities.Packet;
@@ -45,7 +45,7 @@ import com.thevortex.repack.org.json.JSONObject;
  * @author John Grosh (john.a.grosh@gmail.com)
  */
 public final class IPCClient implements Closeable {
-	
+
 	private static final Logger LOGGER = LogManager.getLogger(IPCClient.class.getSimpleName()); // Changed Logger to Log4J
 	private final int version = 1;
 	private final long clientId;
@@ -53,9 +53,9 @@ public final class IPCClient implements Closeable {
 	private Status status = Status.CREATED;
 	private DiscordBuild build = null;
 	private IPCListener listener = null;
-	private RandomAccessFile pipe = null;
+	private Pipe pipe = null;
 	private Thread readThread = null;
-	
+
 	/**
 	 * Constructs a new IPCClient using the provided {@code clientId}.<br>
 	 * This is initially unconnected to Discord.
@@ -66,7 +66,7 @@ public final class IPCClient implements Closeable {
 	public IPCClient(long clientId) {
 		this.clientId = clientId;
 	}
-	
+
 	/**
 	 * Sets this IPCClient's {@link IPCListener} to handle received events.
 	 * <p>
@@ -81,7 +81,7 @@ public final class IPCClient implements Closeable {
 	public void setListener(IPCListener listener) {
 		this.listener = listener;
 	}
-	
+
 	/**
 	 * Opens the connection between the IPCClient and Discord.
 	 * <p>
@@ -99,31 +99,31 @@ public final class IPCClient implements Closeable {
 		callbacks.clear();
 		pipe = null;
 		build = null;
-		
-		// store some files so we can get the preferred client
-		final RandomAccessFile[] open = new RandomAccessFile[DiscordBuild.values().length];
+
+		// store some pipes so we can get the preferred client
+		final Pipe[] open = new Pipe[DiscordBuild.values().length];
 		for (int i = 0; i < 10; i++) {
 			try {
 				final String ipc = getIPC(i);
 				LOGGER.debug(String.format("Searching for IPC: %s", ipc));
-				pipe = new RandomAccessFile(ipc, "rw");
-				
+				pipe = Pipe.openPipe(ipc);
+
 				send(OpCode.HANDSHAKE, new JSONObject().put("v", version).put("client_id", Long.toString(clientId)), null);
-				
+
 				final Packet p = read(); // this is a valid client at this point
-				
+
 				build = DiscordBuild.from(p.getJson().getJSONObject("data").getJSONObject("config").getString("api_endpoint"));
-				
+
 				LOGGER.debug(String.format("Found a valid client (%s) with packet: %s", build.name(), p.toString()));
 				// we're done if we found our first choice
 				if (build == preferredOrder[0] || DiscordBuild.ANY == preferredOrder[0]) {
 					LOGGER.info(String.format("Found preferred client: %s", build.name()));
 					break;
 				}
-				
+
 				open[build.ordinal()] = pipe; // didn't find first choice yet, so store what we have
 				open[DiscordBuild.ANY.ordinal()] = pipe; // also store in 'any' for use later
-				
+
 				build = null;
 				pipe = null;
 			} catch (IOException | JSONException ex) {
@@ -131,7 +131,7 @@ public final class IPCClient implements Closeable {
 				build = null;
 			}
 		}
-		
+
 		if (pipe == null) {
 			// we already know we don't have our first pick
 			// check each of the rest to see if we have that
@@ -142,7 +142,7 @@ public final class IPCClient implements Closeable {
 					pipe = open[cb.ordinal()];
 					open[cb.ordinal()] = null;
 					if (cb == DiscordBuild.ANY) // if we pulled this from the 'any' slot, we need to figure out which build it
-												// was
+					// was
 					{
 						for (int k = 0; k < open.length; k++) {
 							if (open[k] == pipe) {
@@ -152,7 +152,7 @@ public final class IPCClient implements Closeable {
 						}
 					} else
 						build = cb;
-					
+
 					LOGGER.info(String.format("Found preferred client: %s", build.name()));
 					break;
 				}
@@ -182,7 +182,7 @@ public final class IPCClient implements Closeable {
 			listener.onReady(this);
 		startReading();
 	}
-	
+
 	/**
 	 * Sends a {@link RichPresence} to the Discord client.
 	 * <p>
@@ -197,7 +197,7 @@ public final class IPCClient implements Closeable {
 	public void sendRichPresence(RichPresence presence) {
 		sendRichPresence(presence, null);
 	}
-	
+
 	/**
 	 * Sends a {@link RichPresence} to the Discord client.
 	 * <p>
@@ -215,7 +215,7 @@ public final class IPCClient implements Closeable {
 		LOGGER.debug("Sending RichPresence to discord: " + (presence == null ? null : presence.toJson().toString()));
 		send(OpCode.FRAME, new JSONObject().put("cmd", "SET_ACTIVITY").put("args", new JSONObject().put("pid", getPID()).put("activity", presence == null ? null : presence.toJson())), callback);
 	}
-	
+
 	/**
 	 * Adds an event {@link Event} to this IPCClient.<br>
 	 * If the provided {@link Event} is added more than once, it does nothing. Once added, there is no way to remove the
@@ -227,7 +227,7 @@ public final class IPCClient implements Closeable {
 	public void subscribe(Event sub) {
 		subscribe(sub, null);
 	}
-	
+
 	/**
 	 * Adds an event {@link Event} to this IPCClient.<br>
 	 * If the provided {@link Event} is added more than once, it does nothing. Once added, there is no way to remove the
@@ -244,7 +244,7 @@ public final class IPCClient implements Closeable {
 		LOGGER.debug(String.format("Subscribing to Event: %s", sub.name()));
 		send(OpCode.FRAME, new JSONObject().put("cmd", "SUBSCRIBE").put("evt", sub.name()), callback);
 	}
-	
+
 	/**
 	 * Gets the IPCClient's current {@link Status}.
 	 *
@@ -253,7 +253,7 @@ public final class IPCClient implements Closeable {
 	public Status getStatus() {
 		return status;
 	}
-	
+
 	/**
 	 * Attempts to close an open connection to Discord.<br>
 	 * This can be reopened with another call to {@link #connect(DiscordBuild...)}.
@@ -264,10 +264,11 @@ public final class IPCClient implements Closeable {
 	public void close() {
 		checkConnected(true);
 		LOGGER.debug("Closing IPC Pipe...");
+		//sendRichPresence(null);
 		send(OpCode.CLOSE, new JSONObject(), null);
 		status = Status.CLOSED;
 	}
-	
+
 	/**
 	 * Gets the IPCClient's {@link DiscordBuild}.
 	 * <p>
@@ -282,9 +283,9 @@ public final class IPCClient implements Closeable {
 	public DiscordBuild getDiscordBuild() {
 		return build;
 	}
-	
+
 	// Enums
-	
+
 	/**
 	 * Constants representing various status that an {@link IPCClient} can have.
 	 */
@@ -295,14 +296,14 @@ public final class IPCClient implements Closeable {
 		 * All IPCClients are created starting with this status, and it never returns for the lifespan of the client.
 		 */
 		CREATED,
-		
+
 		/**
 		 * Status for when the IPCClient is attempting to connect.
 		 * <p>
 		 * This will become set whenever the #connect() method is called.
 		 */
 		CONNECTING,
-		
+
 		/**
 		 * Status for when the IPCClient is connected with Discord.
 		 * <p>
@@ -311,14 +312,14 @@ public final class IPCClient implements Closeable {
 		 * {@link Status#DISCONNECTED}.
 		 */
 		CONNECTED,
-		
+
 		/**
 		 * Status for when the IPCClient has received an {@link OpCode#CLOSE}.
 		 * <p>
 		 * This signifies that the reading thread has safely and normally shut and the client is now inactive.
 		 */
 		CLOSED,
-		
+
 		/**
 		 * Status for when the IPCClient has unexpectedly disconnected, either because of an exception, and/or due to bad data.
 		 * <p>
@@ -330,7 +331,7 @@ public final class IPCClient implements Closeable {
 		 */
 		DISCONNECTED
 	}
-	
+
 	/**
 	 * Constants representing events that can be subscribed to using {@link #subscribe(Event)}.
 	 * <p>
@@ -338,7 +339,7 @@ public final class IPCClient implements Closeable {
 	 * A full breakdown of each is available <a href=https://discordapp.com/developers/docs/rich-presence/how-to>here</a>.
 	 */
 	public enum Event {
-		
+
 		NULL(false), // used for confirmation
 		READY(false),
 		ERROR(false),
@@ -349,17 +350,17 @@ public final class IPCClient implements Closeable {
 		 * A backup key, only important if the IPCClient receives an unknown event type in a JSON payload.
 		 */
 		UNKNOWN(false);
-		
+
 		private final boolean subscribable;
-		
+
 		Event(boolean subscribable) {
 			this.subscribable = subscribable;
 		}
-		
+
 		public boolean isSubscribable() {
 			return subscribable;
 		}
-		
+
 		static Event of(String str) {
 			if (str == null)
 				return NULL;
@@ -370,9 +371,9 @@ public final class IPCClient implements Closeable {
 			return UNKNOWN;
 		}
 	}
-	
+
 	// Private methods
-	
+
 	/**
 	 * Makes sure that the client is connected (or not) depending on if it should for the current state.
 	 *
@@ -384,7 +385,7 @@ public final class IPCClient implements Closeable {
 		if (!connected && status == Status.CONNECTED)
 			throw new IllegalStateException(String.format("IPCClient (ID: %d) is already connected!", clientId));
 	}
-	
+
 	/**
 	 * Initializes this IPCClient's {@link IPCClient#readThread readThread} and calls the first {@link #read()}.
 	 */
@@ -397,53 +398,53 @@ public final class IPCClient implements Closeable {
 					final Event event = Event.of(json.optString("evt", null));
 					final String nonce = json.optString("nonce", null);
 					switch (event) {
-					case NULL:
-						if (nonce != null && callbacks.containsKey(nonce))
-							callbacks.remove(nonce).succeed();
-						break;
-					
-					case ERROR:
-						if (nonce != null && callbacks.containsKey(nonce))
-							callbacks.remove(nonce).fail(json.getJSONObject("data").optString("message", null));
-						break;
-					
-					case ACTIVITY_JOIN:
-						LOGGER.debug("Reading thread received a 'join' event.");
-						break;
-					
-					case ACTIVITY_SPECTATE:
-						LOGGER.debug("Reading thread received a 'spectate' event.");
-						break;
-					
-					case ACTIVITY_JOIN_REQUEST:
-						LOGGER.debug("Reading thread received a 'join request' event.");
-						break;
-					
-					case UNKNOWN:
-						LOGGER.debug("Reading thread encountered an event with an unknown type: " + json.getString("evt"));
-						break;
-					default:
-						break;
+						case NULL:
+							if (nonce != null && callbacks.containsKey(nonce))
+								callbacks.remove(nonce).succeed();
+							break;
+
+						case ERROR:
+							if (nonce != null && callbacks.containsKey(nonce))
+								callbacks.remove(nonce).fail(json.getJSONObject("data").optString("message", null));
+							break;
+
+						case ACTIVITY_JOIN:
+							LOGGER.debug("Reading thread received a 'join' event.");
+							break;
+
+						case ACTIVITY_SPECTATE:
+							LOGGER.debug("Reading thread received a 'spectate' event.");
+							break;
+
+						case ACTIVITY_JOIN_REQUEST:
+							LOGGER.debug("Reading thread received a 'join request' event.");
+							break;
+
+						case UNKNOWN:
+							LOGGER.debug("Reading thread encountered an event with an unknown type: " + json.getString("evt"));
+							break;
+						default:
+							break;
 					}
 					if (listener != null && json.has("cmd") && json.getString("cmd").equals("DISPATCH")) {
 						try {
 							final JSONObject data = json.getJSONObject("data");
 							switch (Event.of(json.getString("evt"))) {
-							case ACTIVITY_JOIN:
-								listener.onActivityJoin(this, data.getString("secret"));
-								break;
-							
-							case ACTIVITY_SPECTATE:
-								listener.onActivitySpectate(this, data.getString("secret"));
-								break;
-							
-							case ACTIVITY_JOIN_REQUEST:
-								final JSONObject u = data.getJSONObject("user");
-								final User user = new User(u.getString("username"), u.getString("discriminator"), Long.parseLong(u.getString("id")), u.optString("avatar", null));
-								listener.onActivityJoinRequest(this, data.optString("secret", null), user);
-								break;
-							default:
-								break;
+								case ACTIVITY_JOIN:
+									listener.onActivityJoin(this, data.getString("secret"));
+									break;
+
+								case ACTIVITY_SPECTATE:
+									listener.onActivitySpectate(this, data.getString("secret"));
+									break;
+
+								case ACTIVITY_JOIN_REQUEST:
+									final JSONObject u = data.getJSONObject("user");
+									final User user = new User(u.getString("username"), u.getString("discriminator"), Long.parseLong(u.getString("id")), u.optString("avatar", null));
+									listener.onActivityJoinRequest(this, data.optString("secret", null), user);
+									break;
+								default:
+									break;
 							}
 						} catch (final Exception e) {
 							LOGGER.error("Exception when handling event: ", e);
@@ -458,17 +459,17 @@ public final class IPCClient implements Closeable {
 					LOGGER.error("Reading thread encountered an IOException", ex);
 				else
 					LOGGER.error("Reading thread encountered an JSONException", ex);
-				
+
 				status = Status.DISCONNECTED;
 				if (listener != null)
 					listener.onDisconnect(this, ex);
 			}
 		});
-		
+
 		LOGGER.debug("Starting IPCClient reading thread!");
 		readThread.start();
 	}
-	
+
 	/**
 	 * Sends json with the given {@link OpCode}.
 	 *
@@ -492,7 +493,7 @@ public final class IPCClient implements Closeable {
 			throw new RuntimeException(ex);
 		}
 	}
-	
+
 	/**
 	 * Blocks until reading a {@link Packet} or until the read thread encounters bad data.
 	 *
@@ -501,23 +502,23 @@ public final class IPCClient implements Closeable {
 	 * @throws JSONException If the read thread receives bad data.
 	 */
 	private Packet read() throws IOException, JSONException {
-		while (pipe.length() == 0 && status == Status.CONNECTED) {
+		while (!pipe.hasData() && status == Status.CONNECTED) {
 			try {
 				Thread.sleep(50);
 			} catch (final InterruptedException ignored) {
 			}
 		}
-		
+
 		if (status == Status.DISCONNECTED)
 			throw new IOException("Disconnected!");
-		
+
 		if (status == Status.CLOSED)
 			return new Packet(OpCode.CLOSE, null);
-		
+
 		final OpCode op = OpCode.values()[Integer.reverseBytes(pipe.readInt())];
 		final int len = Integer.reverseBytes(pipe.readInt());
 		final byte[] d = new byte[len];
-		
+
 		pipe.readFully(d);
 		final Packet p = new Packet(op, new JSONObject(new String(d)));
 		LOGGER.debug(String.format("Received packet: %s", p.toString()));
@@ -525,9 +526,9 @@ public final class IPCClient implements Closeable {
 			listener.onPacketReceived(this, p);
 		return p;
 	}
-	
+
 	// Private static methods
-	
+
 	/**
 	 * Finds the current process ID.
 	 *
@@ -537,10 +538,10 @@ public final class IPCClient implements Closeable {
 		final String pr = ManagementFactory.getRuntimeMXBean().getName();
 		return Integer.parseInt(pr.substring(0, pr.indexOf('@')));
 	}
-	
+
 	// a list of system property keys to get IPC file from different unix systems.
 	private final static String[] paths = { "XDG_RUNTIME_DIR", "TMPDIR", "TMP", "TEMP" };
-	
+
 	/**
 	 * Finds the IPC location in the current system.
 	 *
@@ -560,7 +561,7 @@ public final class IPCClient implements Closeable {
 			tmppath = "/tmp";
 		return tmppath + "/discord-ipc-" + i;
 	}
-	
+
 	/**
 	 * Generates a nonce.
 	 *
