@@ -8,14 +8,12 @@
     "IdDispatchCodecMixin",
     "PipezUpgradeMixin",
     "MixinMeteoriteStructure",
-    "MappedRegistryMixin",
     "YACLNuclearBombMixin"
   ],
   "client": [
     "CreativeModeInventoryScreenMixin",
     "NameBrandsOnly",
     "ShaderPackScreenMixin",
-    "ClientPayloadHandlerMixin",
     "TitleWin"
   ],
   "injectors": {
