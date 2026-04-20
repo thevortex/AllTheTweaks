@@ -3,17 +3,14 @@
   "category": "misc",
   "group": "allthetweaks",
   "key": {
-    "p": {
-      "tag": "c:ender_pearls"
-    }
+    "a": "#c:ender_pearls"
   },
   "pattern": [
-    "ppp",
-    "ppp",
-    "ppp"
+    "aaa",
+    "aaa",
+    "aaa"
   ],
   "result": {
-    "count": 1,
     "id": "allthetweaks:ender_pearl_block"
   }
 }

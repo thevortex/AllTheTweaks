@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_greg_star_block": {
+    "has_greg_star": {
       "conditions": {
         "items": [
           {
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_greg_star_block"
+      "has_greg_star"
     ]
   ],
   "rewards": {

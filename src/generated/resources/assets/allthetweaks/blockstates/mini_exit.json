@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "allthetweaks:block/mini_exit",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "allthetweaks:block/mini_exit"
+    },
+    "facing=south": {
+      "model": "allthetweaks:block/mini_exit",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "allthetweaks:block/mini_exit",
+      "y": 270
+    }
+  }
+}

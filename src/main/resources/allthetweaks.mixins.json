@@ -1,22 +1,18 @@
 {
-  "required": false,
-  "package": "com.thevortex.allthetweaks.mixin",
-  "compatibilityLevel": "JAVA_21",
-  "minVersion": "0.8",
-  "refmap": "allthetweaks.refmap.json",
+  "required": true,
+  "package": "net.allthemods.allthetweaks.core.mixin",
+  "compatibilityLevel": "JAVA_25",
   "mixins": [
-    "IdDispatchCodecMixin",
-    "PipezUpgradeMixin",
-    "MixinMeteoriteStructure",
-    "YACLNuclearBombMixin"
-  ],
-  "client": [
-    "CreativeModeInventoryScreenMixin",
-    "NameBrandsOnly",
-    "ShaderPackScreenMixin",
-    "TitleWin"
+    "NameBrandsOny"
   ],
   "injectors": {
     "defaultRequire": 1
-  }
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  },
+  "client": [
+    "CreativeModeInventoryScreenMixin",
+    "MinecraftMixin"
+  ]
 }

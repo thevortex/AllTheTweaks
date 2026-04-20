@@ -3,17 +3,14 @@
   "category": "misc",
   "group": "allthetweaks",
   "key": {
-    "s": {
-      "tag": "c:nether_stars"
-    }
+    "a": "#c:nether_stars"
   },
   "pattern": [
-    "sss",
-    "sss",
-    "sss"
+    "aaa",
+    "aaa",
+    "aaa"
   ],
   "result": {
-    "count": 1,
     "id": "allthetweaks:nether_star_block"
   }
 }

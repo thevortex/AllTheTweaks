@@ -1,21 +1,42 @@
-/.apt_generated/
-/Users/
+### Gradle ###
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/**/build/
 
-# Project exclude paths
-/.gradle/
-/build/
-/build/classes/java/main/
-/.idea/
-/runs/
-/run/
+### IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/**/out/
 
-/src/generated/resources/.cache
-/libs
-/*.txt
-/.vscode/settings.json
-/*.dat
-/*.json
-/*.log
-/*.gz
-/*.gz
-/*.toml
+.run/
+
+### Eclipse ###
+.apt_generated
+.classpath
+.eclipse/
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/**/bin/
+
+### VS Code ###
+.vscode/
+
+### Mac OS ###
+.DS_Store
+
+### Minecraft Modding ###
+run/
+runs/
+!**/src/**/run/
+!**/src/**/runs/
+**/src/generated/**/.cache/
+repo/
+!**/src/**/repo/
