@@ -1,46 +1,32 @@
 plugins {
     id 'java-library'
-    id 'eclipse'
-    id 'idea'
     id 'maven-publish'
-    id 'net.neoforged.moddev' version '2.0.140'
+    id 'net.neoforged.moddev' version '2.0.141'
+    id 'com.gradleup.shadow' version '9.4.1'
+    id 'idea'
+}
+
+tasks.named('wrapper', Wrapper).configure {
+    distributionType = Wrapper.DistributionType.BIN
 }
 
 version = mod_version
 group = mod_group_id
 
+sourceSets.main.resources {
+    srcDir('src/generated/resources')
+    exclude("**/*.bbmodel")
+    exclude("src/generated/**/.cache")
+}
+
 base {
-    archivesName = "${mod_id}-${minecraft_version}"
+    archivesName = mod_id
 }
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(21)
-
-println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
-
-sourceSets.main.resources { srcDir 'src/generated/resources' exclude(".cache")}
-
-repositories {
-    maven {
-        url "https://www.cursemaven.com"
-        content {
-            includeGroup "curse.maven"
-        }
-    }
-    maven {
-        url = "https://maven.theillusivec4.top/"
-    }
-
-    maven { url = "https://maven.bawnorton.com/releases" }
-
-}
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
 
 neoForge {
     version = project.neo_version
-
-    parchment {
-        mappingsVersion = project.parchment_mappings_version
-        minecraftVersion = project.parchment_minecraft_version
-    }
 
     runs {
         client {
@@ -60,19 +46,12 @@ neoForge {
         }
 
         data {
-            data()
+            clientData()
             programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
         }
 
         configureEach {
             systemProperty 'forge.logging.markers', 'REGISTRIES'
-
-            jvmArgument("-XX:+IgnoreUnrecognizedVMOptions")
-            jvmArgument("-XX:+AllowEnhancedClassRedefinition")
-            systemProperty("mixin.debug.export", "true")
-            if (it.name.startsWith("client")) {
-                programArguments.addAll("--width", "1920", "--height", "1080")
-            }
             logLevel = org.slf4j.event.Level.DEBUG
         }
     }
@@ -85,35 +64,52 @@ neoForge {
 }
 
 configurations {
-    runtimeClasspath.extendsFrom localRuntime
+    shadow
+    implementation.extendsFrom(this.configurations.shadow)
 }
-dependencies {
-    // Jars in "libs" folder
-    implementation fileTree('libs') { include '*.jar'}
 
-    // MixinSquared
-    compileOnly(annotationProcessor("com.github.bawnorton.mixinsquared:mixinsquared-common:0.3.7-beta.1"))
-    jarJar(implementation("com.github.bawnorton.mixinsquared:mixinsquared-neoforge:0.3.7-beta.1")) {
-        version {
-            strictly "[0.3.7-beta.1,)"
-            prefer "0.3.7-beta.1"
+repositories {
+    mavenCentral()
+    maven {
+        url "https://cursemaven.com"
+        content {
+            includeGroup "curse.maven"
         }
     }
+    maven {
+        url = "https://jitpack.io"
+    }
+    maven {
+        name = "Jared's maven"
+        url = "https://maven.blamejared.com/"
+    }
+    maven {
+        name = "Modrinth Maven"
+        url = "https://api.modrinth.com/maven"
+    }
+}
 
-    compileOnly "curse.maven:no-chat-reports-634062:5441267"
-    compileOnly "curse.maven:villages-and-pillages-915531:5615165"
-    compileOnly "com.yungnickyoung.minecraft.yungsapi:YungsApi:1.21.1-NeoForge-5.1.3"
+dependencies {
+    compileOnly "mezz.jei:jei-26.1.2-neoforge-api:${jei_version}"
+    runtimeOnly "mezz.jei:jei-26.1.2-neoforge:${jei_version}"
 
-    runtimeOnly "curse.maven:sodium-394468:6382651"
-    implementation "curse.maven:irisshaders-455508:6661598"
+    shadow("com.github.CrashSystemZ:jDRPC:v1.2.1") {
+        transitive = false
+    }
+    shadow("net.java.dev.jna:jna-platform:5.17.0")
 
-    implementation "curse.maven:better-compatibility-checker-551894:7170665"
-    implementation "curse.maven:${pipez}"
-    implementation "curse.maven:yacl-667299:6336630"
-    compileOnly("curse.maven:xycraft-machines-653791:5601045")
-    implementation "curse.maven:modernfix-790626:7200212"
-    implementation "curse.maven:berry-pouch-1246510:7310810"
-    implementation "curse.maven:applied-energistics-2-223794:7027323"
+    implementation "curse.maven:pipez-443900:7904268"
+}
+
+tasks.named("shadowJar", com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar) {
+    archiveClassifier.set("")
+    configurations = [project.configurations.shadow]
+
+    relocate("fun.crashsystem.jdrpc", "${project.group}.shadow.jdrpc")
+}
+
+tasks.named("assemble") {
+    dependsOn(tasks.named("shadowJar"))
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
@@ -121,44 +117,24 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
             minecraft_version      : minecraft_version,
             minecraft_version_range: minecraft_version_range,
             neo_version            : neo_version,
-            neo_version_range      : neo_version_range,
-            loader_version_range   : loader_version_range,
             mod_id                 : mod_id,
             mod_name               : mod_name,
             mod_license            : mod_license,
             mod_version            : mod_version,
-            mod_authors            : mod_authors,
-            mod_description        : mod_description
     ]
     inputs.properties replaceProperties
     expand replaceProperties
     from "src/main/templates"
     into "build/generated/sources/modMetadata"
 }
+
 sourceSets.main.resources.srcDir generateModMetadata
 neoForge.ideSyncTask generateModMetadata
-
-jar {
-    manifest {
-        attributes([
-                "Specification-Title"     : mod_id,
-                "Specification-Vendor"    : group,
-                "Specification-Version"   : "1", // We are version 1 of ourselves
-                "Implementation-Title"    : project.name,
-                "Implementation-Version"  : project.jar.archiveVersion,
-                "MixinConfigs": "${mod_id}.mixins.json"
-        ])
-    }
-
-    preserveFileTimestamps = false
-    reproducibleFileOrder = true
-}
 
 publishing {
     publications {
         register('mavenJava', MavenPublication) {
-            artifactId = mod_id
-            from components.java
+            artifact tasks.named("shadowJar")
         }
     }
     repositories {
@@ -169,10 +145,9 @@ publishing {
 }
 
 tasks.withType(JavaCompile).configureEach {
-    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+    options.encoding = 'UTF-8'
 }
 
-// IDEA no longer automatically downloads sources/javadoc jars for dependencies, so we need to explicitly enable the behavior.
 idea {
     module {
         downloadSources = true

@@ -1,2 +1,0 @@
-MixinConnector: com.thevortex.allthetweaks.mixin.MixinConnector
-
