@@ -25,18 +25,20 @@ public final class ATTWindowModifier {
     
     public static void apply() {
         Minecraft minecraft = Minecraft.getInstance();
-        Window window = minecraft.getWindow();
-        PackMode mode = ATTConfig.PACK_MODE.get();
-        
-        try {
-            ATTWindowModifier.setIcon(window, mode.getIcon16(), mode.getIcon32());
-        } catch (IOException exception) {
-            AllTheTweaks.LOGGER.error(
-                    "Failed to load window icons for {}",
-                    mode.name().toLowerCase(Locale.ROOT),
-                    exception
-            );
-        }
+        minecraft.execute(() -> {
+            Window window = minecraft.getWindow();
+            PackMode mode = ATTConfig.PACK_MODE.get();
+            
+            try {
+                ATTWindowModifier.setIcon(window, mode.getIcon16(), mode.getIcon32());
+            } catch (Exception exception) {
+                AllTheTweaks.LOGGER.error(
+                        "Failed to load window icons for {}",
+                        mode.name().toLowerCase(Locale.ROOT),
+                        exception
+                );
+            }
+        });
     }
     
     private static void setIcon(Window window, String icon16Path, String icon32Path) throws IOException {
