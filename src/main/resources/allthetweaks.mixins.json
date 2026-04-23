@@ -8,6 +8,7 @@
     "IdDispatchCodecMixin",
     "PipezUpgradeMixin",
     "MixinMeteoriteStructure",
+    "MixinBaseMachineBlock",
     "YACLNuclearBombMixin"
   ],
   "client": [

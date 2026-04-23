@@ -114,6 +114,7 @@ dependencies {
     implementation "curse.maven:modernfix-790626:7200212"
     implementation "curse.maven:berry-pouch-1246510:7310810"
     implementation "curse.maven:applied-energistics-2-223794:7027323"
+    implementation "curse.maven:just-dire-things-1002348:7463040"
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
