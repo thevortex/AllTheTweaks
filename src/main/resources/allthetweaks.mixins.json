@@ -3,7 +3,7 @@
   "package": "net.allthemods.allthetweaks.core.mixin",
   "compatibilityLevel": "JAVA_25",
   "mixins": [
-    "NameBrandsOny"
+    "NameBrandsOnly"
   ],
   "injectors": {
     "defaultRequire": 1
@@ -13,6 +13,6 @@
   },
   "client": [
     "CreativeModeInventoryScreenMixin",
-    "MinecraftMixin"
+    "TitleWin"
   ]
 }

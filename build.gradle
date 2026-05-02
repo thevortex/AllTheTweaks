@@ -87,6 +87,7 @@ repositories {
         name = "Modrinth Maven"
         url = "https://api.modrinth.com/maven"
     }
+    maven { url = "https://maven.bawnorton.com/releases" }
 }
 
 dependencies {
@@ -97,8 +98,16 @@ dependencies {
         transitive = false
     }
     shadow("net.java.dev.jna:jna-platform:5.17.0")
-
+    implementation "curse.maven:better-compatibility-checker-551894:7905240"
     implementation "curse.maven:pipez-443900:7904268"
+    implementation "curse.maven:modernfix-790626:7969600"
+    compileOnly(annotationProcessor("com.github.bawnorton.mixinsquared:mixinsquared-common:0.3.7-beta.1"))
+    jarJar(implementation("com.github.bawnorton.mixinsquared:mixinsquared-neoforge:0.3.7-beta.1")) {
+        version {
+            strictly "[0.3.7-beta.1,)"
+            prefer "0.3.7-beta.1"
+        }
+    }
 }
 
 tasks.named("shadowJar", com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar) {
@@ -140,6 +149,10 @@ publishing {
     repositories {
         maven {
             url "file://${project.projectDir}/repo"
+        }
+        maven {
+            name "neoforgedReleases"
+            url "https://maven.neoforged.net/releases"
         }
     }
 }
