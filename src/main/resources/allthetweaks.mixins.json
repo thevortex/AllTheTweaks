@@ -3,7 +3,8 @@
   "package": "net.allthemods.allthetweaks.core.mixin",
   "compatibilityLevel": "JAVA_25",
   "mixins": [
-    "NameBrandsOnly"
+    "NameBrandsOnly",
+    "MeteoriteMixin"
   ],
   "injectors": {
     "defaultRequire": 1

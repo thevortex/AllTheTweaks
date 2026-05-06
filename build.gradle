@@ -99,6 +99,7 @@ dependencies {
     }
     shadow("net.java.dev.jna:jna-platform:5.17.0")
     implementation "curse.maven:better-compatibility-checker-551894:7905240"
+    implementation "curse.maven:applied-energistics-2-223794:7368867"
     implementation "curse.maven:pipez-443900:7904268"
     implementation "curse.maven:modernfix-790626:7969600"
     compileOnly(annotationProcessor("com.github.bawnorton.mixinsquared:mixinsquared-common:0.3.7-beta.1"))
