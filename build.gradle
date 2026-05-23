@@ -106,7 +106,7 @@ dependencies {
 
     runtimeOnly "curse.maven:sodium-394468:6382651"
     implementation "curse.maven:irisshaders-455508:6661598"
-
+    implementation "curse.maven:immersive-engineering-231951:6733669"
     implementation "curse.maven:better-compatibility-checker-551894:7170665"
     implementation "curse.maven:${pipez}"
     implementation "curse.maven:yacl-667299:6336630"

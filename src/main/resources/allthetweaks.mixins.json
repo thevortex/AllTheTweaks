@@ -9,7 +9,9 @@
     "PipezUpgradeMixin",
     "MixinMeteoriteStructure",
     "MixinBaseMachineBlock",
-    "YACLNuclearBombMixin"
+    "YACLNuclearBombMixin",
+    "MixinSpawnInterdictionHandler"
+
   ],
   "client": [
     "CreativeModeInventoryScreenMixin",
