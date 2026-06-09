@@ -27,9 +27,8 @@ public class AllTheTweaksClient {
     
     @SubscribeEvent
     private static void onClientSetup(final FMLClientSetupEvent event) {
-        NeoForge.EVENT_BUS.addListener(DiscordRpcManager::onClientTick);
         event.enqueueWork(DiscordRpcManager::start);
-        event.enqueueWork(() -> ATTWindowModifier.apply());
+        event.enqueueWork(ATTWindowModifier::apply);
     }
     
     @SubscribeEvent
@@ -39,6 +38,7 @@ public class AllTheTweaksClient {
     
     private static void handle(ModConfig config) {
         if (config.getSpec() != ATTConfig.CLIENT) return;
+        DiscordRpcManager.refreshFromConfig();
         ATTWindowModifier.apply();
     }
 }
