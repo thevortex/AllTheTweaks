@@ -1,5 +1,6 @@
 package net.allthemods.allthetweaks.client.discord;
 
+import net.minecraft.client.Minecraft;
 import net.neoforged.fml.ModList;
 
 import net.allthemods.allthetweaks.ATTConfig;
@@ -65,6 +66,12 @@ public final class DiscordRpcManager {
     }
     
     public static void refreshFromConfig() {
+        Minecraft minecraft = Minecraft.getInstance();
+        if (minecraft.isSameThread()) DiscordRpcManager.refreshFromConfigOnRenderThread();
+        else minecraft.execute(DiscordRpcManager::refreshFromConfigOnRenderThread);
+    }
+
+    private static void refreshFromConfigOnRenderThread() { // Peak name
         if (!DiscordRpcManager.isConfiguredEnabled()) {
             synchronized (DiscordRpcManager.LOCK) {
                 DiscordRpcManager.started = false;
