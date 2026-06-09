@@ -42,6 +42,9 @@ public class ATTLanguageProvider extends LanguageProvider {
         this.add(ATTRegistry.DIM_SEED.get(), "Dimensional Seed");
         this.add(ATTRegistry.PATRICK_STAR.get(), "Patrick Star");
         
+        this.add("allthetweaks.configuration.rpc_enabled", "Discord Rich Presence Enabled");
+        this.add("allthetweaks.configuration.rpc_mode", "Discord Rich Presence Pack Mode");
+        
         this.add("allthetweaks.valhelsia_core.cosmeticsWardrobe", "Valhelsia Team is selling Capes, violating Commercial Usage Guidelines!");
         this.add("allthetweaks.valhelsia_core.dontbuyCosmetics", "Until this ends, ALL Valhelsia cosmetic features will be disabled in ATM ModPacks.");
         this.add("travelerstitles.allthemodium.the_other", "The Other");

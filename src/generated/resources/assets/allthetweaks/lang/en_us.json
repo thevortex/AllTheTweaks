@@ -1,4 +1,6 @@
 {
+  "allthetweaks.configuration.rpc_enabled": "Discord Rich Presence Enabled",
+  "allthetweaks.configuration.rpc_mode": "Discord Rich Presence Pack Mode",
   "allthetweaks.valhelsia_core.cosmeticsWardrobe": "Valhelsia Team is selling Capes, violating Commercial Usage Guidelines!",
   "allthetweaks.valhelsia_core.dontbuyCosmetics": "Until this ends, ALL Valhelsia cosmetic features will be disabled in ATM ModPacks.",
   "block.allthetweaks.atm_star_block": "ATM Star Block",
