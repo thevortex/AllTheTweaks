@@ -97,7 +97,8 @@ dependencies {
     shadow("com.github.CrashSystemZ:jDRPC:v1.2.1") {
         transitive = false
     }
-    shadow("net.java.dev.jna:jna-platform:5.17.0")
+    // JNA is provided by Minecraft 26.1+ (MacosUtil / ca.weblite.objc). Bundling it here
+    // causes LinkageError on macOS from duplicate com.sun.jna.Pointer class loaders.
     implementation "curse.maven:better-compatibility-checker-551894:7905240"
     implementation "curse.maven:applied-energistics-2-223794:7368867"
     implementation "curse.maven:pipez-443900:7904268"
