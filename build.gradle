@@ -65,7 +65,7 @@ neoForge {
 
 configurations {
     shadow
-    implementation.extendsFrom(this.configurations.shadow)
+    implementation.extendsFrom shadow
 }
 
 repositories {
@@ -97,7 +97,7 @@ dependencies {
     shadow("com.github.CrashSystemZ:jDRPC:v1.2.1") {
         transitive = false
     }
-    shadow("net.java.dev.jna:jna-platform:5.17.0")
+    compileOnly 'net.java.dev.jna:jna-platform:5.17.0'
     implementation "curse.maven:better-compatibility-checker-551894:7905240"
     implementation "curse.maven:applied-energistics-2-223794:7368867"
     implementation "curse.maven:pipez-443900:7904268"
@@ -130,7 +130,7 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
             mod_id                 : mod_id,
             mod_name               : mod_name,
             mod_license            : mod_license,
-            mod_version            : mod_version,
+            mod_version            : mod_version
     ]
     inputs.properties replaceProperties
     expand replaceProperties
